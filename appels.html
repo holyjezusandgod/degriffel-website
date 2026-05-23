@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De appelcollectie — De Griffel</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .jumplinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 24px 0 40px;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid #c8ddc5;
+      border-radius: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .jumplinks a {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #f7f4ef;
+      color: #2d5a27;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    .jumplinks a:hover { background: #c8ddc5; }
+    .letter-section { scroll-margin-top: 80px; }
+    .letter-heading {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      color: #2d5a27;
+      margin: 40px 0 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #c8ddc5;
+    }
+    .variety-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .variety {
+      background: #fff;
+      border: 1px solid #c8ddc5;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .variety:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .variety img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: #f7f4ef;
+    }
+    .variety-body { padding: 14px 16px; }
+    .variety h3 {
+      font-size: 1.05rem;
+      color: #2d5a27;
+      margin: 0 0 6px;
+    }
+    .badges {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block; padding: 2px 8px;
+      background: #f7f4ef; color: #555;
+      border-radius: 3px; font-size: 0.75rem;
+      letter-spacing: 0.3px;
+    }
+    .badge.season { background: #fff8e7; color: #8a6d00; }
+    .badge.use { background: #e6f0e3; color: #2d5a27; }
+    .teaser {
+      font-size: 0.9rem; color: #555;
+      line-height: 1.5; margin-bottom: 8px;
+    }
+    .variety details { margin-top: 6px; font-size: 0.9rem; }
+    .variety details summary {
+      cursor: pointer; color: #2d5a27;
+      font-weight: bold; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 6px 0; list-style: none;
+    }
+    .variety details summary::-webkit-details-marker { display: none; }
+    .variety details summary::after { content: " ▾"; }
+    .variety details[open] summary::after { content: " ▴"; }
+    .variety details .field {
+      margin-top: 10px; font-size: 0.86rem;
+      color: #444; line-height: 1.5;
+    }
+    .variety details .field strong {
+      display: block; color: #2d5a27;
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 2px;
+    }
+    .no-data { font-size: 0.85rem; color: #999; font-style: italic; }
+    .summary-stats {
+      background: #fff8e7; border-left: 4px solid #2d5a27;
+      padding: 14px 20px; margin: 24px 0 32px;
+      font-size: 0.95rem; color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>De Griffel</h1>
+    <p>Een fruitarchief — 2022–2026</p>
+  </div>
+</header>
+
+<nav>
+  <a href="/">De Griffel</a>
+  <a href="het-begin.html">Het begin</a>
+  <a href="hot-pipe.html">Hot pipe</a>
+  <a href="appels.html" class="active">Appels</a>
+  <a href="/#contact">Contact</a>
+</nav>
+
+<main>
+
+  <h2 class="plain">Onze appelcollectie</h2>
+  <p class="subtitle">Een doorsnede door de pomologie — 125 rassen met foto en verhaal</p>
+
+  <p class="lead">
+    De Griffel telde rond de 180 appelrassen, geënt over vier jaar. Hieronder de 125 waarvan we foto's en historische gegevens hebben kunnen samenbrengen — van Vlaamse streekrassen tot 19e-eeuwse Engelse keukenappels en zeldzame Duitse Reinetten. Veel van deze rassen groeien vandaag verder in Noord-Frankrijk en bij Seppe.
+  </p>
+
+  <p>
+    De beschrijvingen komen uit de National Fruit Collection in Brogdale (UK), vandaag de meest complete pomologische referentie. Klik op een ras voor de volledige geschiedenis en vruchtbeschrijving.
+  </p>
+
+  <div class="summary-stats">
+    Spring naar een letter, of scroll door de collectie. Klik op <strong>"volledige beschrijving"</strong> binnen een kaart voor het volledige NFC-verhaal.
+  </div>
+
+  <div class="jumplinks">
+    <a href="#letter-A">A</a>
+    <a href="#letter-B">B</a>
+    <a href="#letter-C">C</a>
+    <a href="#letter-D">D</a>
+    <a href="#letter-E">E</a>
+    <a href="#letter-F">F</a>
+    <a href="#letter-G">G</a>
+    <a href="#letter-H">H</a>
+    <a href="#letter-I">I</a>
+    <a href="#letter-K">K</a>
+    <a href="#letter-L">L</a>
+    <a href="#letter-M">M</a>
+    <a href="#letter-N">N</a>
+    <a href="#letter-O">O</a>
+    <a href="#letter-P">P</a>
+    <a href="#letter-R">R</a>
+    <a href="#letter-S">S</a>
+    <a href="#letter-V">V</a>
+    <a href="#letter-W">W</a>
+    <a href="#letter-Z">Z</a>
+  </div>
+
+  <div id="letter-A" class="letter-section">
+    <h2 class="letter-heading">A</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-adams-pearmain">
+        <img src="images/appels/adams-pearmain.jpg" alt="Adams’s Pearmain" loading="lazy">
+        <div class="variety-body">
+          <h3>Adams’s Pearmain</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Handsome.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose in Norfolk or possibly Herefords where known as Hanging Pearmain. Brought to notice c1826 by R. Adams. Synonyms: many.</div><div class="field"><strong>Vrucht</strong>Handsome. Rich, aromatic, nutty flavour; firmly textured. Essential for Victorian and Edwardian dessert. Grown also for market in C19th.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Nov-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-akane">
+        <img src="images/appels/akane.jpg" alt="Akane" loading="lazy">
+        <div class="variety-body">
+          <h3>Akane</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Japan</span></div>
+          <div class="teaser">Crisp, juicy, sweet, slightly chewy flesh; hint of strawberry flavour.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Primrouge</div><div class="field"><strong>Geschiedenis</strong>Raised 1937 at Morioka Exp St. Jonathan X Worcester Pearmain. Introduced 1970.</div><div class="field"><strong>Vrucht</strong>Crisp, juicy, sweet, slightly chewy flesh; hint of strawberry flavour.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m/l-Aug · Bewaring: Aug-Sept · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-allington-pippin">
+        <img src="images/appels/allington-pippin.jpg" alt="Allington Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Allington Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Dc</span><span class="badge">UK</span></div>
+          <div class="teaser">Mellows to intense fruit drop or pineapple taste, although still fairly sharp by Christmas, but needs a good year.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>South Lincoln Pippin</div><div class="field"><strong>Geschiedenis</strong>Raised before 1884 by nurseryman Thomas Laxton, Lincs. King of the Pippins X Cox’s Orange Pippin. Originally South Lincoln Pippin, renamed 1894 by George Bunyard after his nursery nr Maidstone, Kent. Introduced 1896. RHS FCC 1894 as Brown’s South Lincoln Beauty. Widely planted commercially and in gardens in early 1900s.</div><div class="field"><strong>Vrucht</strong>Mellows to intense fruit drop or pineapple taste, although still fairly sharp by Christmas, but needs a good year. Very sharp and bitter-sweet in Nov, but cooks well, keeps shape with good flavour; sweet, not bland. Frt Col brownish rd flush over pale yell, becoming orng rd over bright yell; lenticels russeted.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Dec · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-api-noir">
+        <img src="images/appels/api-noir.jpg" alt="Api Noir" loading="lazy">
+        <div class="variety-body">
+          <h3>Api Noir</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Frt Col very dark red flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>de Caluau, Calvau Noire</div><div class="field"><strong>Geschiedenis</strong>Believed to be an ancient variety. As syn, de Caluau or Calvau Noire recorded in 1608 by Olivier de Serre. Very dark red flush. Very similar taste to Api; highly decorative. Formerly grown all over France.</div><div class="field"><strong>Vrucht</strong>Frt Col very dark red flush. Taste very similar to Api. Highly decorative.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: m/l-Oct · Bewaring: Dec-Apr · Productie: hvy, hngs late</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ashmeads-kernel">
+        <img src="images/appels/ashmeads-kernel.jpg" alt="Ashmead’s Kernel" loading="lazy">
+        <div class="variety-body">
+          <h3>Ashmead’s Kernel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Strong, sweet-sharp intense flavour reminiscent of fruit or acid drops and of Nonpareil, but sweeter than its probable parent; firm, white flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>According to Hogg, raised in C18th by physician Dr Ashmead, but local historians now believe this to be an error. It is more likely that William Ashmead (d 1782), Clerk of Gloucester City, raised this variety in the garden of a house, which became Ashmead House, Gloucester. Ronalds records in 1831 that the tree was then 100 years’ old. RHS FCC 1981; AGM 1993.</div><div class="field"><strong>Vrucht</strong>Strong, sweet-sharp intense flavour reminiscent of fruit or acid drops and of Nonpareil, but sweeter than its probable parent; firm, white flesh. Long esteemed by connoisseurs; widely planted from mid-C19th and recently regained popularity in England and North America.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Dec-Feb · Productie: C gd but erratic poss due to cold springs; prn bitter pit</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-B" class="letter-section">
+    <h2 class="letter-heading">B</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-baldwin">
+        <img src="images/appels/baldwin.jpg" alt="Baldwin" loading="lazy">
+        <div class="variety-body">
+          <h3>Baldwin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Sweet, fruity, retaining crisp, lively character; but often fails to ripen in England.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Found c1740 on farm of John Ball, Wilmington, Massachusetts. Originally Pecker or Woodpecker, because the tree was frequented by woodpeckers. Popularised, renamed early 1800s. Stone apple on pillar, erected in 1895, marks ‘the estate where in 1793 Saml. Thompson Esq, while locating the line of the Middlesex canal discovered the first Pecker Apple tree later named the Baldwin’. Colonel Loammi Baldwin was also an engineer on the Middlesex Canal and his statue at North Woburn is wreathed in apples and inscribed ‘Disseminator of the apple in honor of him called the Baldwin apple, which proceeds from a tree growing wild about 2 miles north of this monument’. Overtaken by Jonathan in early 1900s; but still popular in the northeastern US.</div><div class="field"><strong>Vrucht</strong>Sweet, fruity, retaining crisp, lively character; but often fails to ripen in England. Highly esteemed and widely grown across northern States in C19th; exported to UK. Also used for pies, cider and processing. Frt col dp maroon; pale grnish yell ground col; often ltl russet. Size lrge. Shape flt-rnd to almost oblng; irregular; ribbed; 5 crowned. Basin brd, dp; ribbed. Eye qte lrg, prt open; sepals lng. Cavity brd, qte dp; russet lined. Stalk shrt/med lng, qte thck. Flesh wht, tinge grn.</div><div class="field"><strong>Teelt</strong>Groei: t3 · Pluk: m-Oct · Bewaring: Dec-Apr · Productie: C gd, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ben-davis">
+        <img src="images/appels/ben-davis.jpg" alt="Ben Davis (?)" loading="lazy">
+        <div class="variety-body">
+          <h3>Ben Davis (?)</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Deep red flushed; sweet, firm flesh, light flavor.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Acc may be the variety known since the early 1800s, but with a confused history. The most widely accepted history begins in 1799 with William Davis and John Hills in Butler County, Kentucky. The variety spread through root suckers, and by 1865, it was widely known.</div><div class="field"><strong>Vrucht</strong>Deep red flushed; sweet, firm flesh, light flavor. Widely planted in the US, overtaken by Winesap and later Delicious.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Dec-Mar/May · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-berlepsch">
+        <img src="images/appels/berlepsch.jpg" alt="Berlepsch" loading="lazy">
+        <div class="variety-body">
+          <h3>Berlepsch</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>see Freiherr von Berlepsch</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-berner-rosen">
+        <img src="images/appels/berner-rosen.jpg" alt="Berner Rosen" loading="lazy">
+        <div class="variety-body">
+          <h3>Berner Rosen</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Switzerland</span></div>
+          <div class="teaser">Very pretty, flushed in deep red.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>syn Rose de Berne</div><div class="field"><strong>Geschiedenis</strong>Discovered by nurseryman Daepp of Oppligen. Fruited 1888. Very popular in Switzerland and also grown in Germany, Alsace, and Franche Comté, France. Often ripens poorly in England and tastes metallic.</div><div class="field"><strong>Vrucht</strong>Very pretty, flushed in deep red. Sweet, juicy flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Jan · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-bohemia">
+        <img src="images/appels/bohemia.jpg" alt="Bohemia" loading="lazy">
+        <div class="variety-body">
+          <h3>Bohemia</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>see Rubin</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-boiken">
+        <img src="images/appels/boiken.jpg" alt="Boïken" loading="lazy">
+        <div class="variety-body">
+          <h3>Boïken</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Dc</span><span class="badge">Germany</span></div>
+          <div class="teaser">Bright yellow with a pinky-orange flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose in Bremen, named after dike-warden Boike. Known since 1828. Still valued in eastern Germany for cooking, drying, juice manufacture, and fresh fruit. Also grown in Bas Rhin (Alsace) and early 1900s in New York as a late-market culinary variety.</div><div class="field"><strong>Vrucht</strong>Bright yellow with a pinky-orange flush. Sharp, crisp; sweetens but remains fresh and fruity until March.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: l-Oct · Bewaring: Dec-Mar/Apr</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-burchardts-reinette">
+        <img src="images/appels/burchardts-reinette.jpg" alt="Burchardt’s Reinette" loading="lazy">
+        <div class="variety-body">
+          <h3>Burchardt’s Reinette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Russia</span></div>
+          <div class="teaser">Sweet yet sprightly with refreshing savoury taste.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Reinette Burchard</div><div class="field"><strong>Geschiedenis</strong>Raised by von Hartwiss, director of the royal garden at Nikita, Crimea; recorded in 1863. Named after pomologist O. Burchardt of Landsberg.</div><div class="field"><strong>Vrucht</strong>Sweet yet sprightly with refreshing savoury taste. Soft, white, juicy flesh. Grown in Crimea, Transcaucasia.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Nov-Dec/Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-burgundy">
+        <img src="images/appels/burgundy.jpg" alt="Burgundy" loading="lazy">
+        <div class="variety-body">
+          <h3>Burgundy</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Stunning colour – dark burgundy over bright pink.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1953 by R. C. Lamb, NYSAES Geneva. Monroe X (Macoun X Antonovka). Introduced in 1974.</div><div class="field"><strong>Vrucht</strong>Stunning colour – dark burgundy over bright pink. Cream flesh heavily stained with pink. Sweet, light savoury taste; crisp flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept · Bewaring: Oct-Nov</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-C" class="letter-section">
+    <h2 class="letter-heading">C</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-carola">
+        <img src="images/appels/carola.jpg" alt="Carola" loading="lazy">
+        <div class="variety-body">
+          <h3>Carola</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Kalco</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-charlamowsky">
+        <img src="images/appels/charlamowsky.jpg" alt="Charlamowsky" loading="lazy">
+        <div class="variety-body">
+          <h3>Charlamowsky</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>syn Duchess of Oldenburg</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-claygate-pearmain">
+        <img src="images/appels/claygate-pearmain.jpg" alt="Claygate Pearmain" loading="lazy">
+        <div class="variety-body">
+          <h3>Claygate Pearmain</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Strong nutty taste, rich, aromatic.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Discovered by John Braddick at Claygate, Surrey, growing in hedge of Firs estate. Exhibited at London Hort Soc 1821. RHS FCC 1921; AGM 1993. Grown in most Victorian and Edwardian country house gardens. One of Edward Bunyard’s ‘indispensable dozen’.</div><div class="field"><strong>Vrucht</strong>Strong nutty taste, rich, aromatic. Firm, slightly crumbling flesh, like Blenheim, but with some aromatic quality of Ribston.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Dec-Feb · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-cockle-pippin">
+        <img src="images/appels/cockle-pippin.jpg" alt="Cockle Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Cockle Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Quite rich, firm; some aromatic quality in a good year.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised c1800 by Mr Cockle, Godstone, Surrey. Widely popular in 19th century; grown in gardens and for market.</div><div class="field"><strong>Vrucht</strong>Quite rich, firm; some aromatic quality in a good year.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: S Nov/Dec-Mar · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-cortland">
+        <img src="images/appels/cortland.jpg" alt="Cortland" loading="lazy">
+        <div class="variety-body">
+          <h3>Cortland</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Striped, flushed in red; McIntosh type.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1898 by S. A. Beach, New York State Agricultural Experiment Station, Geneva. Ben Davis X McIntosh. Introduced in 1915. Silver Wilder Medal 1923.</div><div class="field"><strong>Vrucht</strong>Striped, flushed in red; McIntosh type. Very sweet, soft, melting white flesh, vinous flavor; can be very good.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Oct-Jan/Mar; commercially May · Productie: hvy</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-D" class="letter-section">
+    <h2 class="letter-heading">D</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-danziger-kantapfel">
+        <img src="images/appels/danziger-kantapfel.jpg" alt="Danziger Kantapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Danziger Kantapfel</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Dc</span><span class="badge">Poland</span></div>
+          <div class="teaser">Large, Calville shape; deep red.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Calville de Danzig</div><div class="field"><strong>Geschiedenis</strong>Arose in present-day Danzig (Gdańsk). Cited in 1760 under synonym by Dutch botanist Knoop. Numerous synonyms.</div><div class="field"><strong>Vrucht</strong>Large, Calville shape; deep red. Sharp in September, but quite intense, rich flavor; crisp, firm, juicy, almost yellow flesh. Develops hints of aromatic quality. Cooked, keeps shape, good, quite brisk taste. Widely grown in northern and central Europe in the 19th century.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Sept · Bewaring: Sept-Oct/Nov; becomes greasy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-delcorf">
+        <img src="images/appels/delcorf.jpg" alt="Delcorf" loading="lazy">
+        <div class="variety-body">
+          <h3>Delcorf</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Very sweet, honeyed, deep cream, crisp flesh, with hints of aniseed flavour.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Delbarestival</div><div class="field"><strong>Geschiedenis</strong>Raised 1956 by nursmn G. Delbard, Malicorn, nr Commentry, Allier (Auvergne). Golden Delicious X Stark Jonagrimes. Trade name Delbarestival. RHS AGM 1998. Very sweet, honeyed, deep cream, crisp flesh, with hints of aniseed flavour. As Delbarestival grown commercially France, also Belgium, Italy, Germany, small extent England. Red sport Monidel is also known as Delbarestival and also grown commercially.</div><div class="field"><strong>Vrucht</strong>Very sweet, honeyed, deep cream, crisp flesh, with hints of aniseed flavour.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Sept · Bewaring: Sept-Oct; cold store-Jan · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-dumelows-seedling">
+        <img src="images/appels/dumelows-seedling.jpg" alt="Dumelow’s Seedling" loading="lazy">
+        <div class="variety-body">
+          <h3>Dumelow’s Seedling</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Pale greenish white to pale yellow, sometimes mottled with bright apricot or stripes.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Syn Wellington</div><div class="field"><strong>Geschiedenis</strong>Raised in the late 1700s by Richard Dummeller, a farmer in Shakerstone, near Ashby-de-la-Zouche, Leicestershire. Believed to come from a Northern Greening pip. Sent from Gopsall Hall (Earl Howe’s estate) to Richard Williams, who exhibited it in 1818 at the London Horticultural Society as Dumelow’s Crab. Renamed Wellington around 1819 or 1820. Also known as Normanton Wonder in northern England. RHS AGM 1993. Was widely grown in Victorian times for both gardens and markets, especially for making mincemeat. Though overtaken by Bramley in the early 1900s, many old trees remain in the west Midlands.</div><div class="field"><strong>Vrucht</strong>Pale greenish white to pale yellow, sometimes mottled with bright apricot or stripes. Lenticels as purplish dots. Becomes greasy. Medium to large-sized, flat-round, sometimes with a hairline round apex. Basin broad, shallow, slightly ribbed. Eye large and open with long, broad sepals. Cavity narrow and quite shallow with russet lining. Short, thick stalk. White flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: e/m-Oct · Bewaring: Nov-Apr · Productie: gd</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-E" class="letter-section">
+    <h2 class="letter-heading">E</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-early-julyan">
+        <img src="images/appels/early-julyan.jpg" alt="Early Julyan" loading="lazy">
+        <div class="variety-body">
+          <h3>Early Julyan</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Cd</span><span class="badge">UK</span></div>
+          <div class="teaser">Ready to use as early as July; straw yellow when fully ripe.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Tam Montgomery</div><div class="field"><strong>Geschiedenis</strong>Believed to have arisen in Scotland and known before 1800. Introduced to southern England early 1800s by nurseryman Hugh Ronalds, Brentford, Middx.</div><div class="field"><strong>Vrucht</strong>Ready to use as early as July; straw yellow when fully ripe. Good, refreshing taste; firm, brisk, cream flesh. Cooks to bright yellow purée; light, fruity. Grown for market and popular as a garden apple in the 19th century.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: use Aug · Bewaring: - · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-easter-orange">
+        <img src="images/appels/easter-orange.jpg" alt="Easter Orange" loading="lazy">
+        <div class="variety-body">
+          <h3>Easter Orange</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Handsome.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>-</div><div class="field"><strong>Geschiedenis</strong>Introduced in 1897 by Hillier &amp; Sons, Winchester, Hants. RHS AM 1897.</div><div class="field"><strong>Vrucht</strong>Handsome. Intensely flavored, rich, aromatic, deep cream flesh; rather chewy texture.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Oct · Bewaring: Nov/Dec-Feb/Apr · Productie: gd; prn bitter pit</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-edelborsdorfer">
+        <img src="images/appels/edelborsdorfer.jpg" alt="Edelborsdorfer" loading="lazy">
+        <div class="variety-body">
+          <h3>Edelborsdorfer</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Attractive, flushed in pinky-orange over yellow.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Borsdorfer</div><div class="field"><strong>Geschiedenis</strong>Arose in the village of Borsdorf in Meissen and probably very old. ‘Borsdorf’ was cited as grown in ‘Misnia’ by Valerius Cordus (died 1544). Introduced to England, listed in 1785 by Brompton Park Nursery, London. Synonyms are numerous. In the 18th century, it was the ‘Pride of the Germans’. Queen Charlotte of Mecklenburg, wife of George III, had consignments sent to London yearly. Formerly widely grown in Europe but never became popular in England.</div><div class="field"><strong>Vrucht</strong>Attractive, flushed in pinky-orange over yellow. Very sweet, scented as if with elderflowers; firm, white flesh. Needs a warm summer for good flavor; can be metallic and flat.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-edgar">
+        <img src="images/appels/edgar.jpg" alt="Edgar" loading="lazy">
+        <div class="variety-body">
+          <h3>Edgar</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Canada</span></div>
+          <div class="teaser">Brilliant red with bloom, like McIntosh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>-</div><div class="field"><strong>Geschiedenis</strong>Arose at the Central Experimental Farm, Ottawa. McIntosh X Forest. Selected in 1929.</div><div class="field"><strong>Vrucht</strong>Brilliant red with bloom, like McIntosh. Pink-stained, sweet, juicy, soft melting flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Nov-Dec · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ernst-bosch">
+        <img src="images/appels/ernst-bosch.jpg" alt="Ernst Bosch" loading="lazy">
+        <div class="variety-body">
+          <h3>Ernst Bosch</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Small, golden.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by Diedrich Uhlhorn Jr., an engineer and fruit breeder, in Grevenbroich, Rhineland. A cross of Ananas Reinette X Eva (syn Mank’s Codlin). Recorded 1908.</div><div class="field"><strong>Vrucht</strong>Small, golden. Savoury, refreshing, crisp flesh. Reported high vitamin C content.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Sept · Bewaring: Sept-Oct · Productie: C hvy, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-esopus-spitzenburg">
+        <img src="images/appels/esopus-spitzenburg.jpg" alt="Esopus Spitzenburg" loading="lazy">
+        <div class="variety-body">
+          <h3>Esopus Spitzenburg</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Most beautiful, bright red.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose with ‘low Dutch’ at Esopus, Ulster County, New York. Known before 1790. Sent in 1824 by Michael Floy of New York Hort Soc to London Hort Soc.</div><div class="field"><strong>Vrucht</strong>Most beautiful, bright red. Rich, fruity flavour; lively acidity; lots of character; hard, very crisp, almost yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Oct · Bewaring: Nov-Mar · Productie: C hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-exeter-cross">
+        <img src="images/appels/exeter-cross.jpg" alt="Exeter Cross" loading="lazy">
+        <div class="variety-body">
+          <h3>Exeter Cross</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Ripe early Aug, but can be quite astringent.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1924 by G. T. Spinks at LARS, Bristol. Worcester Pearmain X Beauty of Bath.</div><div class="field"><strong>Vrucht</strong>Ripe early Aug, but can be quite astringent.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: eat Aug · Productie: gd; frt cracks</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-F" class="letter-section">
+    <h2 class="letter-heading">F</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-falstaff">
+        <img src="images/appels/falstaff.jpg" alt="Falstaff" loading="lazy">
+        <div class="variety-body">
+          <h3>Falstaff</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Pretty red flush, stripes.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by Dr F. Alston, EMRS, Kent. James Grieve X Golden Delicious. Introd 1986. RHS AGM 1993.</div><div class="field"><strong>Vrucht</strong>Pretty red flush, stripes. Fruity, well balanced; crisp, juicy. Planted commercially in Kent.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Oct-Dec · Productie: C hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-fameuse">
+        <img src="images/appels/fameuse.jpg" alt="Fameuse" loading="lazy">
+        <div class="variety-body">
+          <h3>Fameuse</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Canada</span></div>
+          <div class="teaser">Deep red flush with pink undertones and snow white flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Snow Apple</div><div class="field"><strong>Geschiedenis</strong>Either originated as scions, or more prob as seed, brought from France. Trees recorded as planted c1730 on eastern shores Lake Champlain at Chimney Point, from here scions widely distributed to early French settlements.</div><div class="field"><strong>Vrucht</strong>Deep red flush with pink undertones and snow white flesh. Sweet, crisp, juicy yet soft and melting; light strawberry flavour. Formerly widely grown, especially around Montreal. Displaced by McIntosh, but still grown.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept/e-Oct · Bewaring: S Oct-Dec · Productie: C hvy; frt often sml</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-fearns-pippin">
+        <img src="images/appels/fearns-pippin.jpg" alt="Fearn’s Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Fearn’s Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Brilliant scarlet.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised before 1780 in Mr Bagley’s garden, Fulham, London.</div><div class="field"><strong>Vrucht</strong>Brilliant scarlet. Crisp, juicy, sweet-sharp, almost lemon quality; mellows to hint raspberry flavour. Prized for dining table; among Victorian top dozen varieties. Widely grown in gardens, by London market gardeners and in Kent, but popularity waned by 1890s.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Oct-Jan/Feb · Productie: C gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-fiessers-erstling">
+        <img src="images/appels/fiessers-erstling.jpg" alt="Fiessers Erstling" loading="lazy">
+        <div class="variety-body">
+          <h3>Fiessers Erstling</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Stoof</span><span class="badge">Germany</span></div>
+          <div class="teaser">Cooks to strong, sharp fruity purée; needs sugar.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised before 1904 by gardener Fiesser of Baden Baden, from Bismark seed. Often very large. Cooks to strong, sharp fruity purée; needs sugar.</div><div class="field"><strong>Vrucht</strong>Cooks to strong, sharp fruity purée; needs sugar.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Sept · Bewaring: S Oct-Nov</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-finkenwerder-prinz">
+        <img src="images/appels/finkenwerder-prinz.jpg" alt="Finkenwerder Prinz" loading="lazy">
+        <div class="variety-body">
+          <h3>Finkenwerder Prinz</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Distinctive flavour in home territory.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>None</div><div class="field"><strong>Geschiedenis</strong>Arose c1860 on island of Finkenwerder in Elbe near Hamburg. Formerly widely grown around Hamburg; recommended for juice.</div><div class="field"><strong>Vrucht</strong>Distinctive flavour in home territory.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Dec-Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-florianer-rosenapfel">
+        <img src="images/appels/florianer-rosenapfel.jpg" alt="Florianer Rosenapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Florianer Rosenapfel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Quite rich, honeyed taste; soft, deep cream flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Rose de Saint-Florian</div><div class="field"><strong>Geschiedenis</strong>Described 1776. Prettily red striped.</div><div class="field"><strong>Vrucht</strong>Quite rich, honeyed taste; soft, deep cream flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Dec/Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-florina">
+        <img src="images/appels/florina.jpg" alt="Florina" loading="lazy">
+        <div class="variety-body">
+          <h3>Florina</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Handsome, red flushed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Querina</div><div class="field"><strong>Geschiedenis</strong>France; raised INRA, Angers. Complex parentage involving scab resistant seedling. Trade name Querina. Introd 1977. Planted commercially in France.</div><div class="field"><strong>Vrucht</strong>Handsome, red flushed. Sweet, quite crisp, pale yellow flesh; modest richness.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec · Productie: Hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-freiherr-von-berlepsch">
+        <img src="images/appels/freiherr-von-berlepsch.jpg" alt="Freiherr Von Berlepsch" loading="lazy">
+        <div class="variety-body">
+          <h3>Freiherr Von Berlepsch</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Intense pineapple flavor, sweet with plenty of acidity; crisp and juicy.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Baron de Berlepsch, Berlepsch</div><div class="field"><strong>Geschiedenis</strong>Raised around 1880 by Diedrich Uhlhorn Jr., engineer and fruit breeder, at Grevenbroich, Rhineland. Named after Hans Hermann Freiherr von Berlepsch, president of Rhineland (1884–90) and Minister for Trade and Industry in Imperial Germany.</div><div class="field"><strong>Vrucht</strong>Intense pineapple flavor, sweet with plenty of acidity; crisp and juicy. Also used for cooking; high in vitamin C (25–35mg/100g).</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: e-Oct · Bewaring: Nov-Dec/Jan · Productie: gd, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-freyberg">
+        <img src="images/appels/freyberg.jpg" alt="Freyberg" loading="lazy">
+        <div class="variety-body">
+          <h3>Freyberg</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">New Zealand</span></div>
+          <div class="teaser">Amazingly strongly scented flavour; very sweet, honeyed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>New Zealand; raised 1934 by J. H. Kidd at Greytown, Wairarapa Valley. Golden Delicious X Cox’s Orange Pippin. On his death, Kidd’s seedlings passed to DSIR, Havelock North; select by Dr. W. McKenzie for amateurs. Introd 1958. Named after military hero Lord Freyberg, Governor General New Zealand, 1946–52.</div><div class="field"><strong>Vrucht</strong>Amazingly strongly scented flavour; very sweet, honeyed. Can be low in juice, acidity, little taste fruit.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: m-Oct · Bewaring: Nov-Dec/Jan</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-G" class="letter-section">
+    <h2 class="letter-heading">G</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-galloway-pippin">
+        <img src="images/appels/galloway-pippin.jpg" alt="Galloway Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Galloway Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Cd</span><span class="badge">UK</span></div>
+          <div class="teaser">Large, russet freckled over yellow.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose Wigtown, Galloway, Scotland. Brought to notice 1871, then said to be old. RHS FCC 1871. Siddington Russet; arose 1923 with John Jeffries &amp; Sons Ltd; Siddington, Gloucs.</div><div class="field"><strong>Vrucht</strong>Large, russet freckled over yellow. Cooked, keeps shape; quite rich flavour. Best used early for cooking as flavour, acidity fade.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept/e-Oct · Bewaring: Nov-Feb · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-george-cave">
+        <img src="images/appels/george-cave.jpg" alt="George Cave" loading="lazy">
+        <div class="variety-body">
+          <h3>George Cave</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Strong, sweet-sharp taste, more interesting than most summer apples; reminiscent of Nonpareil family.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1923 by George Cave, Dovercourt, Essex. Acquired by Seabrook &amp; Sons, Boreham, Essex, and named in 1945. Formerly a market apple following Beauty of Bath in shops, now only grown for Farm Shop trade.</div><div class="field"><strong>Vrucht</strong>Strong, sweet-sharp taste, more interesting than most summer apples; reminiscent of Nonpareil family.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Aug</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-gewurzluiken">
+        <img src="images/appels/gewurzluiken.jpg" alt="Gewürzluiken" loading="lazy">
+        <div class="variety-body">
+          <h3>Gewürzluiken</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Crisp, juicy, sweet, plenty of acidity, with a spicy, almost peppery taste.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Unknown origin; old local variety of Württemberg. May be a seedling of Luikenapfel.</div><div class="field"><strong>Vrucht</strong>Crisp, juicy, sweet, plenty of acidity, with a spicy, almost peppery taste.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Dec-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-gloria-mundi">
+        <img src="images/appels/gloria-mundi.jpg" alt="Gloria Mundi" loading="lazy">
+        <div class="variety-body">
+          <h3>Gloria Mundi</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">Germany or possibly USA</span></div>
+          <div class="teaser">Very large.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Monstrous Pippin, Ox Apple</div><div class="field"><strong>Geschiedenis</strong>Confused history. Recorded in the USA in 1804; introduced to England in 1817. Possibly the same as Baltimore Monstrous Pippin, which arose around 1780 in Baltimore, Maryland. Formerly a ‘show’ apple for country fairs in the US; a specimen recorded in 1860 weighed three and a half pounds.</div><div class="field"><strong>Vrucht</strong>Very large. Cooks to dark gold, sweet purée, with some flavour. Acidity fades with keeping.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-gloster-69">
+        <img src="images/appels/gloster-69.jpg" alt="Gloster 69" loading="lazy">
+        <div class="variety-body">
+          <h3>Gloster 69</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Attractive, dark red flushed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1951 at Fruit Res St, Jork, nr Hamburg. Weisser Winterglockenapfel (Glockenapfel) X Richared Delicious. Introduced 1967. Widely planted over northern Europe, although now declined, but remains important variety in Germany, Belgium, Austria, northern Italy, Switzerland, Poland.</div><div class="field"><strong>Vrucht</strong>Attractive, dark red flushed. Sweetness of Red Delicious, some balancing acidity; good flavour; crisp flesh. Dual purpose on continent. (Vit C 4–8mg/100gm).</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Oct · Bewaring: Nov-Feb/Mar · Productie: hvy; prn develop mouldy core in store</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-grandmere">
+        <img src="images/appels/grandmere.jpg" alt="Grand’mère" loading="lazy">
+        <div class="variety-body">
+          <h3>Grand’mère</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">France</span></div>
+          <div class="teaser">Large.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Probable one of many Grand’mère varieties that exist in France. Large. Slightly scented, quite sweet. Cooked, keeps shape, sweet, light.</div><div class="field"><strong>Vrucht</strong>Large. Slightly scented, quite sweet. Cooked, keeps shape, sweet, light.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: Late October · Bewaring: Nov/Dec-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-greenups-pippin">
+        <img src="images/appels/greenups-pippin.jpg" alt="Greenup’s Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Greenup’s Pippin</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Dc</span><span class="badge">UK</span></div>
+          <div class="teaser">Sharp, savoury, quite acidic; soft, juicy, white flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Green Rolland, Yorkshire Beauty, Cumberland Favourite, Red Hawthornden</div><div class="field"><strong>Geschiedenis</strong>Found in the garden of shoemaker Greenup in Keswick, Cumberland. Introduced in the late 1700s by Clarke &amp; Atkinson Nursery, Keswick. Grown &#x27;throughout Border Counties&#x27; in the 19th century and considered &#x27;valuable where choicer varieties do not attain perfection.&#x27;</div><div class="field"><strong>Vrucht</strong>Sharp, savoury, quite acidic; soft, juicy, white flesh. Cooks to creamy juicy froth or purée, brisk, well-flavoured.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Sept · Bewaring: Sept-Nov</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-grenadier">
+        <img src="images/appels/grenadier.jpg" alt="Grenadier" loading="lazy">
+        <div class="variety-body">
+          <h3>Grenadier</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Frt Col grn/yell; scarf skin at base.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Origin unknown; recorded 1862. Exhibited by nurseryman Charles Turner of Slough at the 1863 Crystal Palace Show; RHS FCC 1883; AGM 1993. Brought to prominence at the 1883 Congress by George Bunyard, and soon promoted as an ‘improvement on Keswick Codlin’, as it produced much larger fruit. Early market fruit up to the 1980s; now overtaken by early-picked Bramley’s Seedling. Remains valued in Belgium, where it is an RGF variety, recommended for cultivation by Agric Res Centre, Gembloux.</div><div class="field"><strong>Vrucht</strong>Frt Col grn/yell; scarf skin at base. Size lrge. Shape rnd con; qte irregular; ribbed, flt sided. Basin nrw, qte shal; ribbed, puckered. Eye sml, clsd. Cavity brd, qte dp. Stalk shrt, thck. Flesh wht.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Aug · Bewaring: Aug-Sept · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-gustavs-dauerapfel">
+        <img src="images/appels/gustavs-dauerapfel.jpg" alt="Gustavs Dauerapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Gustavs Dauerapfel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Switzerland</span></div>
+          <div class="teaser">Dark orange red flush, stripes.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Switzerland; raised by Löbner, Wädenswil. First desc 1899.</div><div class="field"><strong>Vrucht</strong>Dark orange red flush, stripes. Lightly perfumed, aromatic quality; sweet, slightly crumbling texture.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Mar</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-H" class="letter-section">
+    <h2 class="letter-heading">H</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-harberts-reinette">
+        <img src="images/appels/harberts-reinette.jpg" alt="Harberts Reinette" loading="lazy">
+        <div class="variety-body">
+          <h3>Harberts Reinette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Large; handsome.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Reinette Harbert</div><div class="field"><strong>Geschiedenis</strong>Recorded 1828 by A. Diel, sent to him by pomologist Harbert from Westphalia. Diel thought poss arose in old monastery. Esteemed in Germany, grown also Alsace, Netherlands; also used for juice, drying and cooking, especially to top ‘Apple Cake’.</div><div class="field"><strong>Vrucht</strong>Large; handsome. Sweet, plenty of fruit and acidity, recalls Golden Reinette.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: e-Oct · Bewaring: Oct-Jan/Mar · Productie: gd; prn bitter pit</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-helios">
+        <img src="images/appels/helios.jpg" alt="Helios" loading="lazy">
+        <div class="variety-body">
+          <h3>Helios</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Red flecks over pale primrose.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by M. Schmidt and H. Muraski at Institute for Agriculture &amp; Horticulture, Münchenberg-Mark. Oldenburg X. Introduced 1969.</div><div class="field"><strong>Vrucht</strong>Red flecks over pale primrose. Sweet, savoury, quite rich.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: eat m-Aug</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-herefordshire-beefing">
+        <img src="images/appels/herefordshire-beefing.jpg" alt="Herefordshire Beefing" loading="lazy">
+        <div class="variety-body">
+          <h3>Herefordshire Beefing</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Sharp, firm flesh; cooked keeps shape; not very juicy.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose in Herefords. Known since the late 1700s. Deep red flush with stripes. Sharp, firm, and not very juicy flesh. Cooked, keeps shape; pretty yellow; quite rich flavour. Suitable for open tarts; best early in the season. In C19th, recommended for drying.</div><div class="field"><strong>Vrucht</strong>Sharp, firm flesh; cooked keeps shape; not very juicy.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec · Productie: frt drops</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-hibernal">
+        <img src="images/appels/hibernal.jpg" alt="Hibernal" loading="lazy">
+        <div class="variety-body">
+          <h3>Hibernal</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Bright red flush stripes over clear yellow.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Discovered 1933 in Abilene, Texas by Anna Morris Daniels. Believed to be a Jonathan and Red Delicious cross. Introduced 1960 by Stark Bros Nurseries, Missouri.</div><div class="field"><strong>Vrucht</strong>Bright red flush stripes over clear yellow. Slightly honeyed, but often rather bland, yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: M-Oct · Bewaring: Nov-Jan; commercially-Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-holiday">
+        <img src="images/appels/holiday.jpg" alt="Holiday" loading="lazy">
+        <div class="variety-body">
+          <h3>Holiday</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Deep red with waxy bloom; sweet, crisp, juicy, slight vinous or strawberry flavour; tough skin.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1940 by F. S. Howlett, Ohio Agricultural Experiment Station, Wooster, Ohio. Macoun X Jonathan. Introduced in 1964. Ripe during Christmas holidays.</div><div class="field"><strong>Vrucht</strong>Deep red with waxy bloom; sweet, crisp, juicy, slight vinous or strawberry flavour; tough skin.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov/Dec-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-howgate-wonder">
+        <img src="images/appels/howgate-wonder.jpg" alt="Howgate Wonder" loading="lazy">
+        <div class="variety-body">
+          <h3>Howgate Wonder</h3>
+          <div class="badges"><span class="badge use">Uk</span><span class="badge">Raised in 1915–16 by G. Wratten, Howgate Lane, Bembridge, Isle of Wight. A cross of Blenheim Orange and Newton Wonder. Introduced in 1932 by Stuart Low Co.; RHS AM in 1929.</span></div>
+          <div class="teaser">When fresh, quite sweet, juicy, and pleasant.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>None</div><div class="field"><strong>Geschiedenis</strong>Flushed brownish-red with red stripes over pale green; turns bright orange-red over yellow; becomes greasy. Size: large/very large. Shape: short-rounded-conical, ribbed; 5-crowned; flat base tapering to flat apex. Basin: broad, deep, ribbed, puckered; sometimes slightly russet. Eye: large, closed or half-open; sepals large, broad, very downy. Cavity: broad, deep, russet-lined. Stalk: short, thick. Flesh: pale cream.</div><div class="field"><strong>Vrucht</strong>When fresh, quite sweet, juicy, and pleasant. Cooked, keeps shape but very light and insipid compared to Bramley.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: Nov.–Mar. · Productie: Early/Mid-Oct.</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-I" class="letter-section">
+    <h2 class="letter-heading">I</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-iduna">
+        <img src="images/appels/iduna.jpg" alt="Iduna" loading="lazy">
+        <div class="variety-body">
+          <h3>Iduna</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Switzerland</span></div>
+          <div class="teaser">Golden; perfect even shape.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised Fed. Agric. Res. St. Wädenswil. Glockenapfel X Golden Delicious. Received 1999.</div><div class="field"><strong>Vrucht</strong>Golden; perfect even shape. Firm, juicy, cream flesh; some honeyed quality, but more piquant and savoury than Golden Delicious.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ingol">
+        <img src="images/appels/ingol.jpg" alt="Ingol" loading="lazy">
+        <div class="variety-body">
+          <h3>Ingol</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Large; bright red flush over yellow.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1954 at Fruit Res St, Jork, nr Hamburg. Ingrid Marie X Golden Delicious.</div><div class="field"><strong>Vrucht</strong>Large; bright red flush over yellow. Good, rich taste; strong pineapple acidity; soft, juicy flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Nov/Dec; commercially-Apr · Productie: C hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ingrid-marie">
+        <img src="images/appels/ingrid-marie.jpg" alt="Ingrid Marie" loading="lazy">
+        <div class="variety-body">
+          <h3>Ingrid Marie</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Denmark</span></div>
+          <div class="teaser">At best, quite rich, lightly aromatic flavour, soft juicy flesh; but in England often rather bleak.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised c1910 at Flemløse, Westfyn Island. Believed Cox’s Orange Pippin seedling. Desc 1924. Named after daughter of Mr Madsen, a teacher, who found the tree.</div><div class="field"><strong>Vrucht</strong>At best, quite rich, lightly aromatic flavour, soft juicy flesh; but in England often rather bleak. Frt Col dark rd flush, rd stripes; grnish yell/yell background; lenticels prom as lrg russet dots. Size med/lrg. Shape flt-rnd. Basin brd, shal; sltly ribbed. Eye hlf/fully open; sepals pointed. Cavity brd, dp; russet lined. Stalk med, qte thin. Flesh pale cream.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept · Bewaring: Oct-Dec</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-isaac-newtons-tree">
+        <img src="images/appels/isaac-newtons-tree.jpg" alt="Isaac Newton’s Tree" loading="lazy">
+        <div class="variety-body">
+          <h3>Isaac Newton’s Tree</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Large, heavily ribbed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Propagated from tree growing in Isaac Newton’s garden at Woolsthorpe Manor, nr Grantham, Lincs. Appears identical to Flower of Kent, which was listed 1629 by Parkinson, but not mentioned again until 1802 by Forsyth. Large, heavily ribbed. Cooks to sweet, delicately flavoured purée. Newton’s early work on gravitation was done 1665–66 when he was staying at his mother’s house, Woolsthorpe, where he had gone to avoid the plague. While sitting under an apple tree, the ‘notion of gravitation came into his mind occasion’d by the fall of an apple’. This tree, eventually supported by props, died in 1814. Its wood was used to make a chair for the Woolsthorpe Library. Some years previously the Manor owners had repropagated the tree and planted it in Lord Brownlow’s garden at nearby Belton. Material from this tree, via Kew Gardens and EMRS, Kent has provided scion wood for Isaac Newton trees at National Physics Laboratory Teddington and sites in Cambridge, USA, New Zealand.</div><div class="field"><strong>Vrucht</strong>Large, heavily ribbed. Cooks to sweet, delicately flavoured purée.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: P m-Oct · Bewaring: S Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ivette">
+        <img src="images/appels/ivette.jpg" alt="Ivette" loading="lazy">
+        <div class="variety-body">
+          <h3>Ivette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Netherlands</span></div>
+          <div class="teaser">Honeyed, crisp; more acidity than Golden Delicious and elements of Cox’s aromatic flavour.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1950 by A. A. Schaap at IVT, Wageningen. Cox’s Orange Pippin X Golden Delicious. Introd 1966.</div><div class="field"><strong>Vrucht</strong>Honeyed, crisp; more acidity than Golden Delicious and elements of Cox’s aromatic flavour.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Nov-Jan/Feb</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-K" class="letter-section">
+    <h2 class="letter-heading">K</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-kaiser-wilhelm">
+        <img src="images/appels/kaiser-wilhelm.jpg" alt="Kaiser Wilhelm" loading="lazy">
+        <div class="variety-body">
+          <h3>Kaiser Wilhelm</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Sweet, plenty of fruit, acidity, quite nutty.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Germany; found c1800 by head teacher, Hesselman, in Witzhelden, Kreis Solingen, Rhur. Poss Harberts Reinette seedling. Introd by mid-1800s. Grown Germany mainly for juice.</div><div class="field"><strong>Vrucht</strong>Sweet, plenty of fruit, acidity, quite nutty.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Feb/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-kandil-sinap">
+        <img src="images/appels/kandil-sinap.jpg" alt="Kandil Sinap" loading="lazy">
+        <div class="variety-body">
+          <h3>Kandil Sinap</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Russia</span></div>
+          <div class="teaser">Sweet, plenty of fresh acidity; juicy, crisp.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Prob arose early 1800s in Crimea. Grown Crimea, Transcaucasia, Turkey. Also grown France – around Paris especially Montreuil in 1920s as luxury fruit; now found at high altitudes in Franche-Comté, Puy de Dôme (Auvergne).</div><div class="field"><strong>Vrucht</strong>Sweet, plenty of fresh acidity; juicy, crisp.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: m-Oct · Bewaring: Dec-Feb · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-kim">
+        <img src="images/appels/kim.jpg" alt="Kim" loading="lazy">
+        <div class="variety-body">
+          <h3>Kim</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Dc</span><span class="badge">Sweden</span></div>
+          <div class="teaser">Pronounced strawberry flavor, crisp, juicy, quite sweet but with plenty of acidity.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1946 by P. Bergendal at Agricultural College, Balsgård. A cross between Kortland (Cortland) and Ingrid Marie. Introduced in the late 1970s. The apple&#x27;s name comes from the initials of its parent varieties. Large maroon-flushed fruit grown commercially in Sweden.</div><div class="field"><strong>Vrucht</strong>Pronounced strawberry flavor, crisp, juicy, quite sweet but with plenty of acidity. Cooks to good savory purée.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept · Bewaring: Oct-Nov/Dec, cold store-Mar · Productie: C gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-kronprinz-rudolf">
+        <img src="images/appels/kronprinz-rudolf.jpg" alt="Kronprinz Rudolf" loading="lazy">
+        <div class="variety-body">
+          <h3>Kronprinz Rudolf</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Austria</span></div>
+          <div class="teaser">Scented, sweet, white flesh; recalls Edelborsdorfer.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose 1863 with I. Klöchner Steiermark.</div><div class="field"><strong>Vrucht</strong>Scented, sweet, white flesh; recalls Edelborsdorfer.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Oct · Bewaring: Nov-Jan/Feb</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-krugers-dickstiel">
+        <img src="images/appels/krugers-dickstiel.jpg" alt="Krügers Dickstiel" loading="lazy">
+        <div class="variety-body">
+          <h3>Krügers Dickstiel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Brisk, savoury taste; rather like sharp Golden Reinette; firm flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose Mecklenburg; known 1852; first fruited with Revenue Officer Woltmann, in Zeven nr Bremen.</div><div class="field"><strong>Vrucht</strong>Brisk, savoury taste; rather like sharp Golden Reinette; firm flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Oct · Bewaring: Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-konigin-sophiensapfel">
+        <img src="images/appels/konigin-sophiensapfel.jpg" alt="Königin Sophiensapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Königin Sophiensapfel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Similar appearance to Lemon Pippin with swelling at base of stalk, but not the same.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Reine Sophie</div><div class="field"><strong>Geschiedenis</strong>Origins confused with Lemon Pippin, but prob arose England late 1700s; distributed as Winter Queen by nursmn Loddiges of London. Renamed 1821 by German pomologist Diel.</div><div class="field"><strong>Vrucht</strong>Similar appearance to Lemon Pippin with swelling at base of stalk, but not the same. Modest richness, quite sweet, firm, chewy, nearly yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Dec/Mar</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-L" class="letter-section">
+    <h2 class="letter-heading">L</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-lady-sudeley">
+        <img src="images/appels/lady-sudeley.jpg" alt="Lady Sudeley" loading="lazy">
+        <div class="variety-body">
+          <h3>Lady Sudeley</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Quite sweet, strongly flavoured, but underlying astringent taste; firm yellow flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>RED SUDELEY</div><div class="field"><strong>Geschiedenis</strong>UK; raised c1849 by Mr Jacobs, prob when farm bailiff at Sharsted Farm, Chatham, Kent. Renamed and introd 1885 by nursmn George Bunyard, Kent. RHS AM 1884. Widely grown, even in north, Scotland; many old trees remain.</div><div class="field"><strong>Vrucht</strong>Quite sweet, strongly flavoured, but underlying astringent taste; firm yellow flesh. Frt Col bold rd stripes, pink flush over grnish yell/gold; russet at base.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Sept · Bewaring: Sept · Productie: gd;</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-landsberger-reinette">
+        <img src="images/appels/landsberger-reinette.jpg" alt="Landsberger Reinette" loading="lazy">
+        <div class="variety-body">
+          <h3>Landsberger Reinette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Slight savoury flavour, sweet, juicy, soft, white flesh; can be empty.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised c1840 by Councillor Burchardt, Landsberg, Brandenburg. RHS FCC 1882. Formerly widely grown Northern Europe. Grown eastern Germany for juice processing, but in decline.</div><div class="field"><strong>Vrucht</strong>Slight savoury flavour, sweet, juicy, soft, white flesh; can be empty.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept · Bewaring: Oct-Jan · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-lanes-prince-albert">
+        <img src="images/appels/lanes-prince-albert.jpg" alt="Lane’s Prince Albert" loading="lazy">
+        <div class="variety-body">
+          <h3>Lane’s Prince Albert</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Cooks to lemon coloured purée, brisk but not as strong as Bramley.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised before 1841 by Thomas Squire, Berkampstead, Herts. Believed Russet Nonpareil X Dumelow’s Seedling. Introd c1850 by John Lane, Berkhampstead. Exhib British Pom Soc 1857. RHS FCC 1872; AGM 1993. Tree transplanted 1841 by Squire on the day Prince Albert and Queen Victoria visited. Remained small and neat. Popular garden apple by 1880s. Planted for market but bruises easily, leading to its decline, though still valued by amateurs. Widely distributed in northern Europe.</div><div class="field"><strong>Vrucht</strong>Cooks to lemon coloured purée, brisk but not as strong as Bramley. Sweetens with time.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-laxtons-superb">
+        <img src="images/appels/laxtons-superb.jpg" alt="Laxton’s Superb" loading="lazy">
+        <div class="variety-body">
+          <h3>Laxton’s Superb</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Some of richness and complexity of Cox, but sweetness is main feature; finely textured, quite juicy flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>NFT Clone; Crimson Superb; Maxton; Red Superb (Fox-Den); Russet Superb</div><div class="field"><strong>Geschiedenis</strong>Raised 1897 by Laxton Bros, Bedford. Wyken Pippin X Cox’s Orange Pippin. Introduced 1922. RHS AM 1919; FCC 1921. Formerly grown for market, but its biennial bearing led to its demise; remains popular garden apple; will grow where Cox fails to thrive.</div><div class="field"><strong>Vrucht</strong>Some of richness and complexity of Cox, but sweetness is main feature; finely textured, quite juicy flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: e/m-Oct · Bewaring: Nov-Jan · Productie: Hvy, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-lemon-pippin">
+        <img src="images/appels/lemon-pippin.jpg" alt="Lemon Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Lemon Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Lemon-colored and shaped, especially king fruits; quite sweet with some lemony acidity, firm yellow flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Believed English, but history is confused; possibly introduced from Normandy. Mentioned in 1744 by agricultural writer Ellis but probably known earlier. Grown for market in the 18th and 19th centuries. Recommended for drying and used by Victorian chefs for ‘Apple Jelly’ and sweetmeats.</div><div class="field"><strong>Vrucht</strong>Lemon-colored and shaped, especially king fruits; quite sweet with some lemony acidity, firm yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-lodi">
+        <img src="images/appels/lodi.jpg" alt="Lodi" loading="lazy">
+        <div class="variety-body">
+          <h3>Lodi</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Stoof</span><span class="badge">USA</span></div>
+          <div class="teaser">Cooks to white froth, sweet, very juicy, but rather watery.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised in 1911 by R. Wellington, NYSAES, Geneva. Montgomery X White Transparent. Introduced 1924.</div><div class="field"><strong>Vrucht</strong>Cooks to white froth, sweet, very juicy, but rather watery. Larger, firmer, not bruising as easily as White Transparent, which it has replaced as the earliest market cooker in the States.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: l-July-m-Aug</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-lombarts-calville">
+        <img src="images/appels/lombarts-calville.jpg" alt="Lombarts Calville" loading="lazy">
+        <div class="variety-body">
+          <h3>Lombarts Calville</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Netherlands</span></div>
+          <div class="teaser">Rich, sprightly, lots of flavour of fruit; sweet, juicy.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1906 by P. Lombarts, Zundert. Believed Calville Blanche d’Hiver seedling. Introduced 1911 by Lombarts family.</div><div class="field"><strong>Vrucht</strong>Rich, sprightly, lots of flavour of fruit; sweet, juicy. Remains valued in Netherlands.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-london-pippin">
+        <img src="images/appels/london-pippin.jpg" alt="London Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>London Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Sweet, plenty of acidity, quite nutty.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Five Crowned Pippin</div><div class="field"><strong>Geschiedenis</strong>Arose in Essex or Norfolk according to Norwich nurseryman, G. Lindley, who described it in 1831. Possibly dating from the 16th century. Known by many synonyms.</div><div class="field"><strong>Vrucht</strong>Sweet, plenty of acidity, quite nutty. Cooked keeps shape, bright lemon, quite rich, sweet taste.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-lord-grosvenor">
+        <img src="images/appels/lord-grosvenor.jpg" alt="Lord Grosvenor" loading="lazy">
+        <div class="variety-body">
+          <h3>Lord Grosvenor</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Frothy, codlin-type cooker, juicy, brisk.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Believed new in 1872. Brought to prominence at the 1883 Congress.</div><div class="field"><strong>Vrucht</strong>Frothy, codlin-type cooker, juicy, brisk.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: m-Aug · Bewaring: Aug-Oct · Productie: hvy; small fruit unless thinned</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-luntersche-pippeling">
+        <img src="images/appels/luntersche-pippeling.jpg" alt="Luntersche Pippeling" loading="lazy">
+        <div class="variety-body">
+          <h3>Luntersche Pippeling</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Netherlands</span></div>
+          <div class="teaser">Quite rich, sweet-sharp quality; recalling Belle de Boskoop.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Lunteren Pippin</div><div class="field"><strong>Geschiedenis</strong>Raised late C19th by notary J. H. Th. van den Hamm, or villagers of Lunteren in Veluwe, north west Arnhem. Quite rich, sweet-sharp quality; recalling Belle de Boskoop. Among seedlings raised to improve local farmers’ conditions. Remains valued Netherlands.</div><div class="field"><strong>Vrucht</strong>Quite rich, sweet-sharp quality; recalling Belle de Boskoop.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan/Feb</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-luxemburger-renette">
+        <img src="images/appels/luxemburger-renette.jpg" alt="Luxemburger Renette" loading="lazy">
+        <div class="variety-body">
+          <h3>Luxemburger Renette</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Dc</span><span class="badge">Luxembourg</span></div>
+          <div class="teaser">Crisp, sharp, juicy white flesh; fully ripe full of fruit and flavour, lightly perfumed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Reinette des Vergers, Cwastresse Double, Triomphe du Luxembourg, Calville de Luxembourg</div><div class="field"><strong>Geschiedenis</strong>Known to Leroy (1873), also as Coastress; acc is variety now known as Cwastresse Double, long grown in standard orchards of Belgium. Name derives from Walloon word ‘cwasterê’ meaning sides or ribs and equivalent to Calville shape. Recommended for cultivation by Agric Res Centre, Gembloux for disease resistance.</div><div class="field"><strong>Vrucht</strong>Crisp, sharp, juicy white flesh; fully ripe full of fruit and flavour, lightly perfumed. Cooked, keeps shape.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Sept · Bewaring: Oct-Nov/Dec</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-M" class="letter-section">
+    <h2 class="letter-heading">M</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-macoun">
+        <img src="images/appels/macoun.jpg" alt="Macoun" loading="lazy">
+        <div class="variety-body">
+          <h3>Macoun</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Very sweet, scented, hint of strawberry flavour; snow white, juicy flesh; tough skin.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by R. Wellington, NYSAES, Geneva. McIntosh X Jersey Black. Introd 1923. Named after Canadian fruit breeder, W. T. Macoun. Almost purple flush, with bloom. Very sweet, scented, hint of strawberry flavour. Snow white, juicy flesh; tough skin. Esteemed by American connoisseurs; renewed commercial interest.</div><div class="field"><strong>Vrucht</strong>Very sweet, scented, hint of strawberry flavour; snow white, juicy flesh; tough skin.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Sept · Bewaring: Oct-Dec · Productie: hvy, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-mantet">
+        <img src="images/appels/mantet.jpg" alt="Mantet" loading="lazy">
+        <div class="variety-body">
+          <h3>Mantet</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Canada</span></div>
+          <div class="teaser">Sweet, juicy, light, perhaps almond flavour; soft, melting flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised at Dominion Experimental Station, Morden, Manitoba. Tetofsky X. Introduced 1929.</div><div class="field"><strong>Vrucht</strong>Sweet, juicy, light, perhaps almond flavour; soft, melting flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Aug · Bewaring: Aug-Sept</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-marienwerder-gulderling">
+        <img src="images/appels/marienwerder-gulderling.jpg" alt="Marienwerder Gulderling" loading="lazy">
+        <div class="variety-body">
+          <h3>Marienwerder Gulderling</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Quite fruity, slightly perfumed; sweet, soft, cream flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Recorded in France 1876 by nurseryman Simon-Louis Frères.</div><div class="field"><strong>Vrucht</strong>Quite fruity, slightly perfumed; sweet, soft, cream flesh.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: l-Oct · Bewaring: Dec-Feb/Apr</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-martini">
+        <img src="images/appels/martini.jpg" alt="Martini" loading="lazy">
+        <div class="variety-body">
+          <h3>Martini</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Rich, sweet-sharp, intense flavour; crisp, cream flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Found 1875 near Kollmar, Holstein. Believed seedling of Cox’s Orange Pippin, or Prinzen Apfel, or Edelborsdorfer; mother tree existed in the 1960s. Named after the time of harvest, St Martin’s Day, Nov 11.</div><div class="field"><strong>Vrucht</strong>Rich, sweet-sharp, intense flavour; crisp, cream flesh.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Oct · Bewaring: l-Oct-Dec; cold store-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-minister-von-hammerstein">
+        <img src="images/appels/minister-von-hammerstein.jpg" alt="Minister Von Hammerstein" loading="lazy">
+        <div class="variety-body">
+          <h3>Minister Von Hammerstein</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Sweet, juicy, quite fruity, but often rather flavourless.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1882 by R. Goethe in Geisenheim, Rhine. Landsberger Reinette seedling. Named after Minister of Agriculture.</div><div class="field"><strong>Vrucht</strong>Sweet, juicy, quite fruity, but often rather flavourless. Only large fruits develop &#x27;flavour of cumarin&#x27;. Vit C 5mg/100gm.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Oct · Bewaring: Nov-Jan/Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-mio">
+        <img src="images/appels/mio.jpg" alt="Mio" loading="lazy">
+        <div class="variety-body">
+          <h3>Mio</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Sweden</span></div>
+          <div class="teaser">Bright red flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1932 by Emil Johansson at Hort Res St, Alnarp. Worcester Pearmain X Oranie.</div><div class="field"><strong>Vrucht</strong>Bright red flush. Good sweet taste, slight strawberry flavour; soft, juicy white flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: Aug · Productie: hvy; easily bruised</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-mutsu">
+        <img src="images/appels/mutsu.jpg" alt="Mutsu" loading="lazy">
+        <div class="variety-body">
+          <h3>Mutsu</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Cd</span><span class="badge">Japan</span></div>
+          <div class="teaser">Sweet, honeyed, crisp, juicy flesh, similar to Golden Delicious but coarser texture.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Crispin</div><div class="field"><strong>Geschiedenis</strong>Raised 1930 at Aomori Apple Exp St. Golden Delicious X Indo. Named 1948. Renamed Crispin 1968 in England, but elsewhere known as Mutsu. Major Japanese variety grown to great size. Grown US, Canada, much used in pie trade, also Italy. As Crispin, in England formerly grown small extent commercially.</div><div class="field"><strong>Vrucht</strong>Sweet, honeyed, crisp, juicy flesh, similar to Golden Delicious but coarser texture. Cooked, tends keep shape; sweet, light flavour.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Oct · Bewaring: Dec-Feb · Productie: hvy</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-N" class="letter-section">
+    <h2 class="letter-heading">N</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-nonpareil">
+        <img src="images/appels/nonpareil.jpg" alt="Nonpareil" loading="lazy">
+        <div class="variety-body">
+          <h3>Nonpareil</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France (prob)</span></div>
+          <div class="teaser">Intense sweet-sharp flavour of acid or fruit drops; firm, almost spongy, cream-tinged green flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>A very old variety, according to Hogg (1884). Tradition claims it was introduced from France by a Jesuit in the 16th century during the reign of Queen Mary or Queen Elizabeth, but the name was not recorded until 1696 in a list of Brompton Park Nursery, London. Prized for 18th-century dessert; also a decorative tree, grown in pots to set about a fruit garden or parterre. Apples hang very late, and it was claimed they could be in fruit and flower at the same time, like orange trees. Remained popular throughout the 19th century, grown by London market gardeners and in Kent; still commended in 1920.</div><div class="field"><strong>Vrucht</strong>Intense sweet-sharp flavour of acid or fruit drops; firm, almost spongy, cream-tinged green flesh. Can be over-sharp and needs plenty of autumn sunshine to build up flavour.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m/l-Oct · Bewaring: Dec/Jan-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-northern-greening">
+        <img src="images/appels/northern-greening.jpg" alt="Northern Greening" loading="lazy">
+        <div class="variety-body">
+          <h3>Northern Greening</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">‘Valuable sauce apple’; cooked keeps little of form; juicy, sharp.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Pres English. Cited 1802 by Forsyth, but prob older; desc Ronalds, Hogg.</div><div class="field"><strong>Vrucht</strong>‘Valuable sauce apple’; cooked keeps little of form; juicy, sharp.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Dec-Apr · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-nottingham-pippin">
+        <img src="images/appels/nottingham-pippin.jpg" alt="Nottingham Pippin" loading="lazy">
+        <div class="variety-body">
+          <h3>Nottingham Pippin</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Strong flavour of fruit, sweet, plenty of acidity; crisp, juicy.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>arose pres Nottingham. Existed 1815; desc Hogg.</div><div class="field"><strong>Vrucht</strong>Strong flavour of fruit, sweet, plenty of acidity; crisp, juicy.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: e-Oct · Bewaring: Oct-Dec/Feb</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-O" class="letter-section">
+    <h2 class="letter-heading">O</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-oberlausitzer-muskatrenette">
+        <img src="images/appels/oberlausitzer-muskatrenette.jpg" alt="Oberlausitzer Muskatrenette" loading="lazy">
+        <div class="variety-body">
+          <h3>Oberlausitzer Muskatrenette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Handsome.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>received 1951 from Fruit Res St, Jork, nr Hamburg.</div><div class="field"><strong>Vrucht</strong>Handsome. Lightly aromatic, quite rich, sweet; tough skin.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-odin">
+        <img src="images/appels/odin.jpg" alt="Odin" loading="lazy">
+        <div class="variety-body">
+          <h3>Odin</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Netherlands</span></div>
+          <div class="teaser">Rich, intense, some aromatic quality; sweet, juicy, but rather coarsely textured flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>raised 1953 by A. A. Schaap, IVT, Wageningen. Golden Delicious X Ingrid Marie. Introd 1966.</div><div class="field"><strong>Vrucht</strong>Rich, intense, some aromatic quality; sweet, juicy, but rather coarsely textured flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Sept · Bewaring: Oct-Nov, cold store-Dec</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-old-pearmain-kelsey">
+        <img src="images/appels/old-pearmain-kelsey.jpg" alt="Old Pearmain (kelsey)" loading="lazy">
+        <div class="variety-body">
+          <h3>Old Pearmain (kelsey)</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Pear shaped, well coloured; quite richly flavoured.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>acc received 1924 from Mr Kelsey, Surrey under this name, but prob not variety of Hogg. Old Pearmain is syn of Pearmain, mentioned France and UK c1200, but most unlikley that acc is ancient Pearmain.</div><div class="field"><strong>Vrucht</strong>Pear shaped, well coloured; quite richly flavoured.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Dec/Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-ontario">
+        <img src="images/appels/ontario.jpg" alt="Ontario" loading="lazy">
+        <div class="variety-body">
+          <h3>Ontario</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Cd</span><span class="badge">Canada</span></div>
+          <div class="teaser">Ivory/pink flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Geneva Ontario; Ontario sport (Geneva)</div><div class="field"><strong>Geschiedenis</strong>Raised circa 1820 by Charles Arnold, Paris, Ontario. Wagener, Northern Spy cross. Introduced to Britain and Europe. RHS AM 1898. Fairly sharp when eaten fresh. Cooked, it keeps its shape or makes brisk, well-flavoured, juicy lemon purée. Formerly widely grown in Canada as a dual-purpose apple. Grown in Saxony, Germany, where valued for juice, spring eating, and a source of vitamin C (21mg/100gm); also grown in northern France.</div><div class="field"><strong>Vrucht</strong>Ivory/pink flush. Fairly sharp when fresh; keeps shape when cooked. Juicy, lemon-flavoured purée.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Nov-Apr · Productie: gd; fruit bruises easily</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-opal">
+        <img src="images/appels/opal.jpg" alt="Opal" loading="lazy">
+        <div class="variety-body">
+          <h3>Opal</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Crimson flushed, striped with bloom.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by W. P. Seabrook, Boreham, Essex. Rival X Worcester Pearmain. Received in 1936. One of a series named after semi-precious stones.</div><div class="field"><strong>Vrucht</strong>Crimson flushed, striped with bloom. Quite rich, hint of strawberry flavour; crisp, juicy, can be moderately flavoured.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Sept · Bewaring: Sept-Oct</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-orangenburg">
+        <img src="images/appels/orangenburg.jpg" alt="Orangenburg" loading="lazy">
+        <div class="variety-body">
+          <h3>Orangenburg</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Quite rich, aromatic with a flowery scent.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Received in 1976 from Max Planck Institute, Cologne. Cox’s Orange Pippin X Geheimrat Doktor Oldenburg. Some of Cox’s flavour; scented flowery quality; quite rich, aromatic. Crisp but coarse texture. Grown in Rhineland.</div><div class="field"><strong>Vrucht</strong>Quite rich, aromatic with a flowery scent. Crisp but coarse texture.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-orleans-reinette">
+        <img src="images/appels/orleans-reinette.jpg" alt="Orleans Reinette" loading="lazy">
+        <div class="variety-body">
+          <h3>Orleans Reinette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Aromatic, nutty; sweet, firm, rather dry flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Described 1776 by Dutch botanist Knoop. Widely distributed in Europe with 121 synonyms. RHS AM 1914 as Winter Ribston; 1921 as Orleans Reinette. Became popular in England early 1900s. Among Edward Bunyard’s top six apples; widely grown garden variety.</div><div class="field"><strong>Vrucht</strong>Aromatic, nutty; sweet, firm, rather dry flesh. Slight orange-red flush, short red stripes, over gold. Size medium.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan · Productie: gd; needs warm spot for good flavor</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-osnabrucker-reinette">
+        <img src="images/appels/osnabrucker-reinette.jpg" alt="Osnabrücker Reinette" loading="lazy">
+        <div class="variety-body">
+          <h3>Osnabrücker Reinette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Scented, flowery quality; sweet, some balancing acidity; quite juicy.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Reinette d’Osnabrück</div><div class="field"><strong>Geschiedenis</strong>Arose in Osnabrück, Hannover. Well known since 1802.</div><div class="field"><strong>Vrucht</strong>Scented, flowery quality; sweet, some balancing acidity; quite juicy.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: m-Oct · Bewaring: Nov-Jan/Mar</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-P" class="letter-section">
+    <h2 class="letter-heading">P</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-pfirsichroter-sommerapfel">
+        <img src="images/appels/pfirsichroter-sommerapfel.jpg" alt="Pfirsichroter Sommerapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Pfirsichroter Sommerapfel</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">‘Peach Red Summer Apple’; bright pink flush over pale cream; prominently ribbed, crowned.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Probably arose in Thuringia. Described early 1800s. Synonyms many; widely distributed in Europe. Much grown in Denmark, Switzerland in 1940s.</div><div class="field"><strong>Vrucht</strong>‘Peach Red Summer Apple’; bright pink flush over pale cream; prominently ribbed, crowned. Slightly scented; quite sharp, soft flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Aug</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-pilot">
+        <img src="images/appels/pilot.jpg" alt="Pilot" loading="lazy">
+        <div class="variety-body">
+          <h3>Pilot</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Quite sweet and fruity, deep cream firm flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised Inst Fruit Res, Dresden-Pillnitz. Clivia X Undine. Introd 1988.</div><div class="field"><strong>Vrucht</strong>Quite sweet and fruity, deep cream firm flesh</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Jan-Feb/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-piros">
+        <img src="images/appels/piros.jpg" alt="Piros" loading="lazy">
+        <div class="variety-body">
+          <h3>Piros</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Attractive pinky red flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised Inst Fruit Res, Dresden-Pillnitz. Helios X Apollo (Cox’s Orange Pippin X Oldenburg). Introd 1985.</div><div class="field"><strong>Vrucht</strong>Attractive pinky red flush. Crisp, juicy, plenty of sugar and acid and distinctive almost cidery taste.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: eat Aug</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-pitmaston-pine-apple">
+        <img src="images/appels/pitmaston-pine-apple.jpg" alt="Pitmaston Pine Apple" loading="lazy">
+        <div class="variety-body">
+          <h3>Pitmaston Pine Apple</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Frt Col golden, fine netting, dots of russet.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised c1785 by Mr White, steward to Lord Foley of Stoke Edith, Herefords. Golden Pippin seedling. Exhib 1845 at London Hort Soc by J. Williams, Pitmaston, Worcester. Repopularised by Bunyard Nursery in 1920s.</div><div class="field"><strong>Vrucht</strong>Frt Col golden, fine netting, dots of russet. Intense pineapple flavour; sweet yet sharp, rich, nutty, honeyed.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: l-Oct-Dec · Productie: hvy, bien</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-pohorka">
+        <img src="images/appels/pohorka.jpg" alt="Pohorka" loading="lazy">
+        <div class="variety-body">
+          <h3>Pohorka</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Serbia</span></div>
+          <div class="teaser">Red streaked, flushed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Unknown parentage. Received 1978 from Inst Fruit Research, Čačak.</div><div class="field"><strong>Vrucht</strong>Red streaked, flushed. Rich, full of fresh flavour in Dec; sweet, often quite scented; very juicy, crisp flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-pomme-noire">
+        <img src="images/appels/pomme-noire.jpg" alt="Pomme Noire" loading="lazy">
+        <div class="variety-body">
+          <h3>Pomme Noire</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Extraordinary color, virtually black.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Received 1973.</div><div class="field"><strong>Vrucht</strong>Extraordinary color, virtually black. Sweet but no flavour; pale green flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Dec-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-prima">
+        <img src="images/appels/prima.jpg" alt="Prima" loading="lazy">
+        <div class="variety-body">
+          <h3>Prima</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Striking red flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1957 by co-operative breeding programme of Purdue, Rutgers, and Illinois Universities. Complex parentage involving Malus floribunda. Introd 1970.</div><div class="field"><strong>Vrucht</strong>Striking red flush. Good taste of fruit; sweet, juicy, rather coarse, deep cream flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: l-Sept · Bewaring: Oct-Nov · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-primate">
+        <img src="images/appels/primate.jpg" alt="Primate" loading="lazy">
+        <div class="variety-body">
+          <h3>Primate</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Sweet, quite sprightly acidity, almost winey flavour; soft, juicy, white flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Believed arose c1940 with Calvin D. Bingham, Camillus, Onondaga County, New York. Listed 1854 by American Pom Soc.</div><div class="field"><strong>Vrucht</strong>Sweet, quite sprightly acidity, almost winey flavour; soft, juicy, white flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: e-Sept · Bewaring: Sept-Oct</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-prinz-albrecht-von-preussen">
+        <img src="images/appels/prinz-albrecht-von-preussen.jpg" alt="Prinz Albrecht Von Preussen" loading="lazy">
+        <div class="variety-body">
+          <h3>Prinz Albrecht Von Preussen</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Sweet, juicy, slightly perfumed quality, like Alexander, but later season.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1865 by Braun, at Kamenz, east of Dresden, Silesia. Alexander seedling.</div><div class="field"><strong>Vrucht</strong>Sweet, juicy, slightly perfumed quality, like Alexander, but later season. Refreshing in Jan.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: l-Sept · Bewaring: Oct-Jan · Productie: hvy</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-R" class="letter-section">
+    <h2 class="letter-heading">R</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-red-melba">
+        <img src="images/appels/red-melba.jpg" alt="Red Melba" loading="lazy">
+        <div class="variety-body">
+          <h3>Red Melba</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>see Melba</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-reinette-de-maurs">
+        <img src="images/appels/reinette-de-maurs.jpg" alt="Reinette De Maurs" loading="lazy">
+        <div class="variety-body">
+          <h3>Reinette De Maurs</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">France</span></div>
+          <div class="teaser">Sweet, rich, but modest flavour; firm flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>France; desc 1948 (Verger Français) when grown Maurs, Cantal (Auvergne).</div><div class="field"><strong>Vrucht</strong>Sweet, rich, but modest flavour; firm flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Dec-Feb/Apr</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-rheinischer-krummstiel">
+        <img src="images/appels/rheinischer-krummstiel.jpg" alt="Rheinischer Krummstiel" loading="lazy">
+        <div class="variety-body">
+          <h3>Rheinischer Krummstiel</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <div class="no-data">Beschrijving nog niet beschikbaar.</div>
+        </div>
+      </article>
+      <article class="variety" id="ras-rosmarina-bianca">
+        <img src="images/appels/rosmarina-bianca.jpg" alt="Rosmarina Bianca" loading="lazy">
+        <div class="variety-body">
+          <h3>Rosmarina Bianca</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Cd</span><span class="badge">Italy</span></div>
+          <div class="teaser">Tall, conical, pale gold.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Weisser Rosmarin</div><div class="field"><strong>Geschiedenis</strong>Arose in Bolzano, South Tyrol. Known since the early 1800s. Widely distributed across Europe. Many synonyms. Named for its aroma of rosemary, but this is not obvious in England.</div><div class="field"><strong>Vrucht</strong>Tall, conical, pale gold. Firm, sweet flesh. Cooked, keeps shape; mildly flavoured.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-roter-stettiner">
+        <img src="images/appels/roter-stettiner.jpg" alt="Roter Stettiner" loading="lazy">
+        <div class="variety-body">
+          <h3>Roter Stettiner</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Dark red flush, ribbed, irregularly shaped.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>syn Török Bálint</div><div class="field"><strong>Geschiedenis</strong>Believed ancient variety; acquired present name 1776. As syn ‘Vineuse Rouge d’Hiver’, listed 1598 by Jean Bauhin. As ‘De Signeur d’Hiver’ catalogued 1628 by Le Lectier. Widely distributed over Europe. Syns numerous – 170.</div><div class="field"><strong>Vrucht</strong>Dark red flush, ribbed, irregularly shaped. Vinous quality, like a cross between melon and strawberry; in Feb, sweet, quite intense taste, crisp.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Oct · Bewaring: Jan-Mar/Apr</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-rubens">
+        <img src="images/appels/rubens.jpg" alt="Rubens" loading="lazy">
+        <div class="variety-body">
+          <h3>Rubens</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Netherlands</span></div>
+          <div class="teaser">Rubens red flush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised IVT, Wageningen. Reinette Rouge Étoilée X Cox’s Orange Pippin. Recorded 1954.</div><div class="field"><strong>Vrucht</strong>Rubens red flush. Raspberry flavour of Reinette Rouge Étoilée, sweeter, more appealing.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Jan-March · Productie: C gd</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-S" class="letter-section">
+    <h2 class="letter-heading">S</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-salome">
+        <img src="images/appels/salome.jpg" alt="Salome" loading="lazy">
+        <div class="variety-body">
+          <h3>Salome</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Sweet with good taste of fruit; crisp, quite juicy, deep cream flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Arose c1853 in nursery in Ottawa, Illinois. Introd 1884 by Arthur Bryant, Princeton, Illinois.</div><div class="field"><strong>Vrucht</strong>Sweet with good taste of fruit; crisp, quite juicy, deep cream flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Nov-Jan</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-scarlet-crofton">
+        <img src="images/appels/scarlet-crofton.jpg" alt="Scarlet Crofton" loading="lazy">
+        <div class="variety-body">
+          <h3>Scarlet Crofton</h3>
+          <div class="badges"><span class="badge">UK or Ireland</span></div>
+          <div class="teaser">Striking dark red flush, under network of russet.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>7 M D</div><div class="field"><strong>Geschiedenis</strong>Well known early 1800s, when sent to London Hort Soc by nursmn John Robertson of Kilkenny. Tradition claims introd Ireland late 1500s by founder of Crofton family, Longford House, County Sligo.</div><div class="field"><strong>Vrucht</strong>Striking dark red flush, under network of russet. Sweet, almost scented taste. Still found County Sligo in 1950s.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Sept · Bewaring: S Sept-Oct/Nov</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-spartan">
+        <img src="images/appels/spartan.jpg" alt="Spartan" loading="lazy">
+        <div class="variety-body">
+          <h3>Spartan</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Canada</span></div>
+          <div class="teaser">At best, perfumed with flavour like a cross between strawberry and melon; usually described as vinous.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1926 by R. C. Palmer, CDARS, Summerland, British Columbia. McIntosh X Yellow Newtown Pippin. Introduced 1936. Major Canadian market apple, also grown in Switzerland, Poland, and small extent in England.</div><div class="field"><strong>Vrucht</strong>At best, perfumed with flavour like a cross between strawberry and melon; usually described as vinous. Sweet, some acidity, juicy, crisp, white flesh; can lapse into metallic blandness. Tough skin.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Nov-Jan; commercially-Feb · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-spencer">
+        <img src="images/appels/spencer.jpg" alt="Spencer" loading="lazy">
+        <div class="variety-body">
+          <h3>Spencer</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Canada</span></div>
+          <div class="teaser">Crimson flushed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised 1926 by R. C. Palmer, CDARS, Summerland, British Columbia. McIntosh X Golden Delicious. Introduced 1959.</div><div class="field"><strong>Vrucht</strong>Crimson flushed. Honeyed, very sweet in early October; crisp, juicy.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Oct-Dec; cold store-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-spigold">
+        <img src="images/appels/spigold.jpg" alt="Spigold" loading="lazy">
+        <div class="variety-body">
+          <h3>Spigold</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Very large.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised by R. D. Way, NYSAES, New York. Red Spy X Golden Delicious. Introduced 1962. Highly esteemed by American enthusiasts.</div><div class="field"><strong>Vrucht</strong>Very large. Sweet, honeyed, more acidity than Golden Delicious, but similar; very juicy, crisp, yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Oct · Bewaring: Nov-Jan · Productie: hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-starks-earliest">
+        <img src="images/appels/starks-earliest.jpg" alt="Stark’s Earliest" loading="lazy">
+        <div class="variety-body">
+          <h3>Stark’s Earliest</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Sharp yet plenty of sweetness; juicy, soft, melting flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>Scarlet Pimpernel</div><div class="field"><strong>Geschiedenis</strong>Discv 1938 by Douglas Bonner at Orofino, Idaho. Introd 1944 by Stark Bros, Missouri. Formerly grown for early English markets, but small, easily bruised fruit and short season led to commercial demise.</div><div class="field"><strong>Vrucht</strong>Sharp yet plenty of sweetness; juicy, soft, melting flesh. Best eaten from tree.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: eat e-m-Aug · Productie: C hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-stina-lohmann">
+        <img src="images/appels/stina-lohmann.jpg" alt="Stina Lohmann" loading="lazy">
+        <div class="variety-body">
+          <h3>Stina Lohmann</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Quite rich; strong blend of sugars and acid; pale yellow flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Found 1841 on property in Kellinghusen, Holstein by Stina Lohmann; tree then 40/50 yrs old.</div><div class="field"><strong>Vrucht</strong>Quite rich; strong blend of sugars and acid; pale yellow flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: Dec-Feb/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-strauwaldts-goldparmane">
+        <img src="images/appels/strauwaldts-goldparmane.jpg" alt="Strauwaldts Goldparmäne" loading="lazy">
+        <div class="variety-body">
+          <h3>Strauwaldts Goldparmäne</h3>
+          <div class="badges"></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>syn Neue Goldparmäne</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-V" class="letter-section">
+    <h2 class="letter-heading">V</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-vanda">
+        <img src="images/appels/vanda.jpg" alt="Vanda" loading="lazy">
+        <div class="variety-body">
+          <h3>Vanda</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Czech Rep</span></div>
+          <div class="teaser">Intense savoury taste, brisk, juicy, soft pale cream flesh; reminiscent of James Grieve or Gravenstein.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Raised at Exp Botany St, Strizovice. Jolana (scab res selection) X Lord Lambourne; fruited 1983.</div><div class="field"><strong>Vrucht</strong>Intense savoury taste, brisk, juicy, soft pale cream flesh; reminiscent of James Grieve or Gravenstein.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: l-Sept · Bewaring: S Oct-Nov</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-W" class="letter-section">
+    <h2 class="letter-heading">W</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-warners-king">
+        <img src="images/appels/warners-king.jpg" alt="Warner’s King" loading="lazy">
+        <div class="variety-body">
+          <h3>Warner’s King</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Stoof</span><span class="badge">UK</span></div>
+          <div class="teaser">Cooks to sharp, strongly flavoured purée, but never as sharp as Bramley; mellows with keeping.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>King Apple, Killick’s Apple, D. T. Fish</div><div class="field"><strong>Geschiedenis</strong>Known late 1700s. Originally King Apple, but sent by Mr Warner to nursmn Thomas Rivers, who gave it prefix. Also known around Maidstone as Killick’s Apple after fruit grower, and further north as D. T. Fish, after HG. RHS AGM 1993.</div><div class="field"><strong>Vrucht</strong>Cooks to sharp, strongly flavoured purée, but never as sharp as Bramley; mellows with keeping.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: l-Sept · Bewaring: l-Sept-Dec · Productie: C hvy; prn bitter pit,</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-weigelts-zinszahler">
+        <img src="images/appels/weigelts-zinszahler.jpg" alt="Weigelts Zinszahler" loading="lazy">
+        <div class="variety-body">
+          <h3>Weigelts Zinszahler</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Eet</span><span class="badge">Germany</span></div>
+          <div class="teaser">Rich, sweet-sharp taste; mellowing to very sweet; curious crumbling texture.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Received 1951 from Fruit Res St, Jork, nr Hamburg.</div><div class="field"><strong>Vrucht</strong>Rich, sweet-sharp taste; mellowing to very sweet; curious crumbling texture.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Sept · Bewaring: Sept-Nov</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-weisser-winter-taffetapfel">
+        <img src="images/appels/weisser-winter-taffetapfel.jpg" alt="Weisser Winter Taffetapfel" loading="lazy">
+        <div class="variety-body">
+          <h3>Weisser Winter Taffetapfel</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Dc</span><span class="badge">Germany</span></div>
+          <div class="teaser"></div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Recorded 1800. Syns many. Strong savoury taste of fruit; quite sharp early Nov; firm white flesh. Grown particularly in Hannover in C19th; popular and dual purpose throughout Germany.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: l-Sept · Bewaring: S Oct-Jan/Feb</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-winter-banana">
+        <img src="images/appels/winter-banana.jpg" alt="Winter Banana" loading="lazy">
+        <div class="variety-body">
+          <h3>Winter Banana</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">USA</span></div>
+          <div class="teaser">Yellow with slight blush.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>arose 1876 on farm of David Flory, nr Adamsboro, Cass County, Indiana. Introd 1890. RHS AM 1912. Yellow with slight blush. Sweet, scented in good year; juicy, melting flesh; in US develops ‘aromatic flavour similar to bananas’. Grown early 1900s in Washington, British Columbia and exported to UK. Currently being revived by American amateurs. Planted 1920s in English gardens, but needs warmer climate. Still grown small extent on continent; in Germany used for juice manufacture and valued garden fruit.</div><div class="field"><strong>Vrucht</strong>Yellow with slight blush. Sweet, scented, juicy, melting flesh.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e-Oct · Bewaring: S Nov-Jan/Mar</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-winter-lemon">
+        <img src="images/appels/winter-lemon.jpg" alt="Winter Lemon" loading="lazy">
+        <div class="variety-body">
+          <h3>Winter Lemon</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Ukraine</span></div>
+          <div class="teaser">Lemon yellow, markedly conical.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>raised at Scientific Inst Hort, Kiev. Introd 1968.</div><div class="field"><strong>Vrucht</strong>Lemon yellow, markedly conical. Refreshing; crisp, juicy; high vit C content.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Dec-Feb/Mar · Productie: C hvy</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-wolf-river">
+        <img src="images/appels/wolf-river.jpg" alt="Wolf River" loading="lazy">
+        <div class="variety-body">
+          <h3>Wolf River</h3>
+          <div class="badges"><span class="badge season">Mid</span><span class="badge use">Dc</span><span class="badge">USA</span></div>
+          <div class="teaser">Very large, dark red flushed.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>arose nr Wolf River, Fremont County, Wisconsin with W. A. Springer. Believed Alexander seedling. Recorded 1875; listed 1881 by American Pom Soc.</div><div class="field"><strong>Vrucht</strong>Very large, dark red flushed. Soft, juicy flesh. Dual purpose in States – ‘one apple makes a pie’. Resembles and overtook Alexander as market fruit in western US; now only grown by amateurs.</div><div class="field"><strong>Teelt</strong>Groei: T3 · Pluk: m-Sept · Bewaring: S Sept-Oct · Productie: C reported res scab, mildew</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-worcester-pearmain">
+        <img src="images/appels/worcester-pearmain.jpg" alt="Worcester Pearmain" loading="lazy">
+        <div class="variety-body">
+          <h3>Worcester Pearmain</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">Eet</span><span class="badge">UK</span></div>
+          <div class="teaser">Bright red and sunbaked, densely sweet with intense strawberry flavour; firm, juicy, white flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>arose with market gardener Mr Hale, of Swan Pool, St Johns, nr Worcester. Believed Devonshire Quarrenden seedling. Richard Smith of St John’s Nursery, Worcester, bought grafts in 1873; showed it to RHS; FCC 1875. Smith selling trees at guinea each in 1876. RHS AGM 1993.</div><div class="field"><strong>Vrucht</strong>Bright red and sunbaked, densely sweet with intense strawberry flavour; firm, juicy, white flesh. Can be rather cloying; reminding Morton Shand of ‘boiled sweet flavoured with synthetic pear juice’. Often picked early and less colourful and tends to be chewy with little definite flavour. England’s main early autumn commercial variety since late 1800, but now only grown small extent for market. Remains widely popular garden apple. Its bright fruits and distinctive blossom – almond opening to silvery white – led to its decorative use in shrubbery in 1890s. Frt Col bright rd flush, some faint rd stripes, grnish yell/pale yell background; lenticels conspic as russet dots. Size med. Shape rnd-con; sometimes sltly lop-sided; sltly ribbed. Basin nrw, med/shall; sltly ribbed; often 5 beads. Eye sml, clsd; sepals sml, qte downy. Cavity med wdth dpth; russet lined. Stalk shrt, qte thck. Flesh wht.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: e/m-Sept · Bewaring: S Sept-Oct · Productie: C hvy</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-Z" class="letter-section">
+    <h2 class="letter-heading">Z</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-zabergau-renette">
+        <img src="images/appels/zabergau-renette.jpg" alt="Zabergäu Renette" loading="lazy">
+        <div class="variety-body">
+          <h3>Zabergäu Renette</h3>
+          <div class="badges"><span class="badge season">Laat</span><span class="badge use">Eet</span><span class="badge">Germany/Belgium</span></div>
+          <div class="teaser">Intense sweet-sharp taste; firm flesh; becomes sweeter, quite nutty by January.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniemen</strong>reinette parmentier</div><div class="field"><strong>Geschiedenis</strong>Obtained in 1885 at Hausen on Zaber, Württemberg; distributed in 1926 according to German pomologist Petzold. French and Belgian pomologists believe it to be Reinette Parmentier, obtained by Parmentier, a Belgian nurseryman in 1830 and widely distributed in northern Europe. Bronzed russet, often large. Intense sweet-sharp taste, firm flesh. By January sweeter, quite nutty, sometimes with little of the ‘russet’ flavor associated with Egremont Russet. Grown in Germany, considered ‘less sharp substitute for Belle de Boskoop’. Known as Reinette Parmentier in Belgium and France.</div><div class="field"><strong>Vrucht</strong>Intense sweet-sharp taste; firm flesh; becomes sweeter, quite nutty by January.</div><div class="field"><strong>Teelt</strong>Groei: T2 · Pluk: m-Oct · Bewaring: Dec-Mar · Productie: gd</div></details>
+        </div>
+      </article>
+      <article class="variety" id="ras-zigeunerin">
+        <img src="images/appels/zigeunerin.jpg" alt="Zigeunerin" loading="lazy">
+        <div class="variety-body">
+          <h3>Zigeunerin</h3>
+          <div class="badges"><span class="badge season">Vroeg</span><span class="badge use">D, C</span><span class="badge">Latvia</span></div>
+          <div class="teaser">Refreshing, juicy, soft flesh.</div>
+          <details><summary>Volledige beschrijving</summary><div class="field"><strong>Geschiedenis</strong>Possibly arose in Riga; introduced to the Netherlands by Vallen of Swalmen. Dark red flushed over pale yellow; tall, ribbed, like Red Astrachan. Its name means ‘Gypsy’. Refreshing, juicy, soft flesh. Cooks to juicy purée, lightly flavoured. Remains popular in the Netherlands, mainly for its appearance.</div><div class="field"><strong>Vrucht</strong>Refreshing, juicy, soft flesh. Cooks to juicy purée, lightly flavoured.</div><div class="field"><strong>Teelt</strong>Groei: T1 · Pluk: Aug</div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <p class="page-end">
+    Volgende: <a href="/">de hazelaars (binnenkort)</a> of <a href="/">terug naar De Griffel</a>.
+  </p>
+
+</main>
+
+<footer>
+  Dank aan Tom, Kaat en Ona van Loof en Bezen voor vier jaar grond in concessie. Aan Elin, voor het luisteren naar elk idee. Aan Seppe, voor de sprong. Aan Hugo Vets, Dimitri Jacobs en Jos Arits voor het eerste enthout. En aan Het Schavaaienhof, Grasroots, en de mensen in Noord-Frankrijk die de collectie verder dragen.
+  <br><br>
+  &copy; De Griffel &nbsp;|&nbsp; <a href="mailto:martin@degriffel.eu">martin@degriffel.eu</a>
+</footer>
+
+</body>
+</html>
