@@ -6,133 +6,146 @@
   <title>Bestuivingstool — De Griffel</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .tabs {
+      display: flex; gap: 4px; margin-bottom: 0;
+      border-bottom: 2px solid #c8ddc5;
+    }
+    .tab-btn {
+      background: #f7f4ef; border: 1px solid #c8ddc5; border-bottom: none;
+      padding: 12px 20px; cursor: pointer; font-family: inherit;
+      font-size: 0.95rem; color: #555; border-radius: 6px 6px 0 0;
+      margin-bottom: -2px; transition: background 0.15s, color 0.15s;
+    }
+    .tab-btn:hover { background: #fff; color: #2d5a27; }
+    .tab-btn.active {
+      background: #fff; color: #2d5a27; font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
     .tool {
-      background: #fff;
-      border: 1px solid #c8ddc5;
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 32px;
+      background: #fff; border: 1px solid #c8ddc5; border-top: none;
+      border-radius: 0 8px 8px 8px; padding: 24px; margin-bottom: 32px;
     }
-    .tool-input {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 20px;
+    .input-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .input-row label {
+      font-size: 0.8rem; color: #2d5a27;
+      text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold;
     }
-    .tool-input label {
-      font-size: 0.85rem;
-      color: #2d5a27;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: bold;
+    .input-row select, .input-row input[type="text"] {
+      padding: 10px 12px; border: 1px solid #c8ddc5; border-radius: 4px;
+      background: #f7f4ef; font-family: inherit; font-size: 1rem; color: #2c2c2c;
     }
-    .tool-input select {
-      padding: 10px 12px;
-      border: 1px solid #c8ddc5;
-      border-radius: 4px;
-      background: #f7f4ef;
-      font-family: inherit;
-      font-size: 1rem;
-      color: #2c2c2c;
+    .input-row select:focus, .input-row input[type="text"]:focus {
+      outline: none; border-color: #2d5a27; background: #fff;
     }
-    .tool-input select:focus {
-      outline: none;
-      border-color: #2d5a27;
-      background: #fff;
+    .filter-row {
+      display: grid; grid-template-columns: 1fr; gap: 12px;
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      background: #f7f4ef; border-radius: 6px;
+    }
+    @media (min-width: 720px) { .filter-row { grid-template-columns: repeat(3, 1fr); } }
+    .filter-row label {
+      font-size: 0.75rem; color: #555;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 2px; display: block;
+    }
+    .filter-row select {
+      width: 100%; padding: 6px 8px; border: 1px solid #c8ddc5;
+      border-radius: 4px; background: #fff; font-family: inherit; font-size: 0.9rem;
     }
     .target-info {
-      background: #fff8e7;
-      border-left: 4px solid #2d5a27;
-      padding: 14px 20px;
-      border-radius: 4px;
-      margin-bottom: 24px;
-      font-size: 1rem;
+      background: #fff8e7; border-left: 4px solid #2d5a27;
+      padding: 14px 20px; border-radius: 4px;
+      margin-bottom: 24px; font-size: 1rem;
     }
     .target-info strong { color: #2d5a27; }
-    .target-info .triploid-warning {
-      margin-top: 10px;
-      color: #b85c00;
-      font-size: 0.9rem;
-    }
+    .triploid-warning { margin-top: 10px; color: #b85c00; font-size: 0.9rem; }
     .results-header {
-      font-size: 1.1rem;
-      color: #2d5a27;
-      margin: 20px 0 12px;
-      font-weight: bold;
+      font-size: 1.05rem; color: #2d5a27;
+      margin: 20px 0 12px; font-weight: bold;
     }
-    .offset-group {
-      margin-bottom: 24px;
-    }
+    .offset-group { margin-bottom: 22px; }
     .offset-label {
-      font-size: 0.8rem;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-      padding: 4px 10px;
-      background: #f7f4ef;
-      border-radius: 3px;
-      display: inline-block;
+      font-size: 0.78rem; color: #555;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 8px; padding: 3px 10px;
+      background: #f7f4ef; border-radius: 3px; display: inline-block;
     }
     .pollinator-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px;
     }
     .pollinator {
-      background: #fff;
-      border: 1px solid #c8ddc5;
-      border-radius: 6px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
+      background: #fff; border: 1px solid #c8ddc5; border-radius: 6px;
+      overflow: hidden; text-decoration: none; color: inherit;
       transition: transform 0.15s, box-shadow 0.15s;
     }
-    .pollinator:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-    .pollinator img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: #f7f4ef;
-    }
-    .pollinator-body {
-      padding: 8px 10px;
-    }
-    .pollinator-name {
-      font-size: 0.85rem;
-      color: #2d5a27;
-      font-weight: bold;
-      line-height: 1.3;
-      margin-bottom: 2px;
-    }
-    .pollinator-meta {
-      font-size: 0.75rem;
-      color: #777;
-    }
-    .no-result {
-      padding: 30px;
-      text-align: center;
-      color: #999;
-      font-style: italic;
-    }
+    .pollinator:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    .pollinator img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #f7f4ef; }
+    .pollinator-body { padding: 6px 9px; }
+    .pollinator-name { font-size: 0.82rem; color: #2d5a27; font-weight: bold; line-height: 1.3; margin-bottom: 2px; }
+    .pollinator-meta { font-size: 0.72rem; color: #777; }
+    .no-result { padding: 24px; text-align: center; color: #999; font-style: italic; }
     .legend {
-      background: #f7f4ef;
-      border-radius: 6px;
-      padding: 16px 20px;
-      margin-top: 24px;
-      font-size: 0.9rem;
-      color: #444;
-      line-height: 1.7;
+      background: #f7f4ef; border-radius: 6px;
+      padding: 16px 20px; margin-top: 24px;
+      font-size: 0.9rem; color: #444; line-height: 1.7;
     }
-    .legend h4 {
-      color: #2d5a27;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
+    .legend h4 { color: #2d5a27; font-size: 1rem; margin-bottom: 8px; }
     .legend p { margin-bottom: 10px; }
+
+    /* Orchard planner */
+    .orchard-add {
+      display: flex; gap: 8px; align-items: end; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .orchard-add .input-row { flex: 1; min-width: 260px; margin-bottom: 0; }
+    .orchard-summary {
+      background: #fff8e7; border-left: 4px solid #2d5a27;
+      padding: 14px 20px; border-radius: 4px; margin-bottom: 18px;
+      font-size: 1rem;
+    }
+    .orchard-summary.empty { background: #f7f4ef; border-left-color: #999; color: #777; }
+    .orchard-chips {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
+    }
+    .chip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: 6px;
+      background: #fff; border: 1px solid #c8ddc5;
+      font-size: 0.92rem;
+    }
+    .chip.status-good { border-color: #4a8a44; background: #f0f8ee; }
+    .chip.status-warn { border-color: #d49c1e; background: #fff8e7; }
+    .chip.status-bad { border-color: #c14e3a; background: #fdebe7; }
+    .chip .badge-status {
+      font-size: 0.72rem; padding: 1px 8px; border-radius: 99px;
+      font-weight: bold;
+    }
+    .chip.status-good .badge-status { background: #4a8a44; color: #fff; }
+    .chip.status-warn .badge-status { background: #d49c1e; color: #fff; }
+    .chip.status-bad .badge-status { background: #c14e3a; color: #fff; }
+    .chip .remove {
+      cursor: pointer; color: #999; font-size: 1.1rem;
+      padding: 0 4px; line-height: 1;
+    }
+    .chip .remove:hover { color: #c14e3a; }
+    .chip-name { color: #2d5a27; font-weight: bold; }
+    .chip-detail { color: #777; font-size: 0.82rem; }
+    .chip-partners {
+      font-size: 0.78rem; color: #555; max-width: 100%; flex-basis: 100%;
+      margin-top: 2px;
+    }
+    .actions-bar {
+      display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;
+    }
+    .btn-secondary {
+      background: #fff; border: 1px solid #c8ddc5; padding: 8px 14px;
+      border-radius: 4px; cursor: pointer; font-family: inherit; color: #555;
+      font-size: 0.88rem;
+    }
+    .btn-secondary:hover { background: #f7f4ef; color: #2d5a27; }
   </style>
 </head>
 <body>
@@ -159,11 +172,17 @@
   <p class="subtitle">Welke rassen kunnen elkaar bestuiven?</p>
 
   <p class="lead">
-    Appelbomen zijn meestal zelf-onverenigbaar: ze hebben pollen nodig van een ander ras dat <em>rond dezelfde tijd</em> bloeit. Selecteer hieronder een ras uit onze collectie en zie welke andere rassen geschikt zijn als stuifmeel-donor.
+    Appelbomen zijn meestal zelf-onverenigbaar: ze hebben pollen nodig van een ander ras dat rond dezelfde tijd bloeit. Gebruik deze tool om bestuivers voor één ras te zoeken, of om een volledige boomgaard te plannen.
   </p>
 
-  <div class="tool">
-    <div class="tool-input">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="single">Eén boom zoeken</button>
+    <button class="tab-btn" data-tab="orchard">Boomgaard plannen</button>
+  </div>
+
+  <!-- TAB 1: SINGLE TREE -->
+  <div class="tab-content active tool" id="tab-single">
+    <div class="input-row">
       <label for="variety-select">Kies een ras</label>
       <select id="variety-select">
         <option value="">— Selecteer —</option>
@@ -295,22 +314,204 @@
       </select>
     </div>
 
-    <div id="output"></div>
+    <div class="filter-row">
+      <div>
+        <label for="f-use">Gebruik bestuiver</label>
+        <select id="f-use">
+          <option value="">Alle</option>
+          <option value="EAT">Eet</option>
+          <option value="COOK">Stoof</option>
+          <option value="DUAL">Eet/Stoof</option>
+          <option value="CIDER">Cider</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-pick">Pluk-maand bestuiver</label>
+        <select id="f-pick">
+          <option value="">Alle</option>
+          <option value="8">Augustus</option>
+          <option value="9">September</option>
+          <option value="10">Oktober</option>
+          <option value="11">November</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-storage">Bewaart minstens tot</label>
+        <select id="f-storage">
+          <option value="">Alle</option>
+          <option value="3">November</option>
+          <option value="4">December</option>
+          <option value="5">Januari</option>
+          <option value="6">Februari</option>
+          <option value="7">Maart</option>
+          <option value="8">April</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="single-output"></div>
+  </div>
+
+  <!-- TAB 2: ORCHARD PLANNER -->
+  <div class="tab-content tool" id="tab-orchard">
+    <p style="color:#555; font-size:0.95rem; margin-bottom:14px;">
+      Selecteer de bomen die je hebt of wil planten. We tonen per boom of die genoeg bestuivers heeft <em>binnen je selectie</em>. Het ideaal is <strong>2 bestuivers per boom</strong> — voor triploïden is dat een vereiste.
+    </p>
+
+    <div class="orchard-add">
+      <div class="input-row">
+        <label for="orchard-select">Boom toevoegen</label>
+        <select id="orchard-select">
+          <option value="">— Kies een ras —</option>
+        <option value="adams-pearmain">Adams’s Pearmain (F9)</option>
+        <option value="akane">Akane (F14)</option>
+        <option value="allington-pippin">Allington Pippin (F11)</option>
+        <option value="api-noir">Api Noir (F11)</option>
+        <option value="ashmeads-kernel">Ashmead’s Kernel (F14)</option>
+        <option value="baldwin">Baldwin (F12*tri)</option>
+        <option value="ben-davis">Ben Davis (?) (F15)</option>
+        <option value="berlepsch">Berlepsch (F11*tri)</option>
+        <option value="berner-rosen">Berner Rosen (F11)</option>
+        <option value="bohemia">BOHEMIA (F10)</option>
+        <option value="boiken">Boïken (F14)</option>
+        <option value="burchardts-reinette">Burchardt’s Reinette (F13)</option>
+        <option value="burgundy">Burgundy (F15)</option>
+        <option value="carola">Carola (F10)</option>
+        <option value="charlamowsky">Charlamowsky (F4)</option>
+        <option value="claygate-pearmain">Claygate Pearmain (F12)</option>
+        <option value="cockle-pippin">Cockle Pippin (F11)</option>
+        <option value="cortland">Cortland (F9)</option>
+        <option value="danziger-kantapfel">Danziger Kantapfel (F11)</option>
+        <option value="delcorf">Delcorf (F11)</option>
+        <option value="dumelows-seedling">Dumelow’s Seedling (F15)</option>
+        <option value="early-julyan">Early Julyan (F9)</option>
+        <option value="easter-orange">Easter Orange (F12)</option>
+        <option value="edelborsdorfer">Edelborsdorfer (F14)</option>
+        <option value="edgar">Edgar (F15)</option>
+        <option value="ernst-bosch">Ernst Bosch (F6)</option>
+        <option value="esopus-spitzenburg">Esopus Spitzenburg (F12)</option>
+        <option value="exeter-cross">Exeter Cross (F11)</option>
+        <option value="falstaff">Falstaff (F11)</option>
+        <option value="fameuse">Fameuse (F7)</option>
+        <option value="fearns-pippin">Fearn’s Pippin (F9)</option>
+        <option value="fiessers-erstling">Fiessers Erstling (F5)</option>
+        <option value="finkenwerder-prinz">Finkenwerder Prinz (F12)</option>
+        <option value="florianer-rosenapfel">Florianer Rosenapfel (F10)</option>
+        <option value="florina">Florina (F13)</option>
+        <option value="freiherr-von-berlepsch">Freiherr Von Berlepsch (F11*tri)</option>
+        <option value="freyberg">Freyberg (F11)</option>
+        <option value="galloway-pippin">Galloway Pippin (F14)</option>
+        <option value="george-cave">George Cave (F8)</option>
+        <option value="gewurzluiken">Gewürzluiken (F17)</option>
+        <option value="gloria-mundi">Gloria Mundi (F13)</option>
+        <option value="gloster-69">Gloster 69 (F17)</option>
+        <option value="grandmere">Grand’mère (F6)</option>
+        <option value="greenups-pippin">Greenup’s Pippin (F15)</option>
+        <option value="grenadier">Grenadier (F11)</option>
+        <option value="gustavs-dauerapfel">Gustavs Dauerapfel (F11)</option>
+        <option value="harberts-reinette">Harberts Reinette (F13*tri)</option>
+        <option value="helios">Helios (F12)</option>
+        <option value="herefordshire-beefing">Herefordshire Beefing (F17)</option>
+        <option value="hibernal">Hibernal (F6*tri)</option>
+        <option value="holiday">Holiday (F10)</option>
+        <option value="howgate-wonder">Howgate Wonder (F12)</option>
+        <option value="iduna">Iduna (F7)</option>
+        <option value="ingol">Ingol (F16)</option>
+        <option value="ingrid-marie">Ingrid Marie (F14)</option>
+        <option value="isaac-newtons-tree">Isaac Newton’s Tree (F20)</option>
+        <option value="ivette">Ivette (F13)</option>
+        <option value="kaiser-wilhelm">Kaiser Wilhelm (F15)</option>
+        <option value="kandil-sinap">Kandil Sinap (F11)</option>
+        <option value="kim">Kim (F14)</option>
+        <option value="kronprinz-rudolf">Kronprinz Rudolf (F5)</option>
+        <option value="krugers-dickstiel">Krügers Dickstiel (F21)</option>
+        <option value="konigin-sophiensapfel">Königin Sophiensapfel (F9)</option>
+        <option value="lady-sudeley">Lady Sudeley (F13)</option>
+        <option value="landsberger-reinette">Landsberger Reinette (F9)</option>
+        <option value="lanes-prince-albert">Lane’s Prince Albert (F12)</option>
+        <option value="laxtons-superb">Laxton’s Superb (F13)</option>
+        <option value="lemon-pippin">Lemon Pippin (F15)</option>
+        <option value="lodi">Lodi (F6)</option>
+        <option value="lombarts-calville">Lombarts Calville (F12)</option>
+        <option value="london-pippin">London Pippin (F15)</option>
+        <option value="lord-grosvenor">Lord Grosvenor (F10)</option>
+        <option value="luntersche-pippeling">Luntersche Pippeling (F8)</option>
+        <option value="luxemburger-renette">Luxemburger Renette (F16)</option>
+        <option value="macoun">Macoun (F11)</option>
+        <option value="mantet">Mantet (F11)</option>
+        <option value="marienwerder-gulderling">Marienwerder Gulderling (F15)</option>
+        <option value="martini">Martini (F14)</option>
+        <option value="minister-von-hammerstein">Minister Von Hammerstein (F9)</option>
+        <option value="mio">Mio (F13)</option>
+        <option value="mutsu">Mutsu (F10*tri)</option>
+        <option value="nonpareil">Nonpareil (F11)</option>
+        <option value="northern-greening">Northern Greening (F15)</option>
+        <option value="nottingham-pippin">Nottingham Pippin (F12)</option>
+        <option value="oberlausitzer-muskatrenette">Oberlausitzer Muskatrenette (F12)</option>
+        <option value="odin">Odin (F15)</option>
+        <option value="old-pearmain-kelsey">Old Pearmain (kelsey) (F11)</option>
+        <option value="ontario">Ontario (F12)</option>
+        <option value="opal">Opal (F9)</option>
+        <option value="orangenburg">Orangenburg (F14)</option>
+        <option value="orleans-reinette">Orleans Reinette (F16)</option>
+        <option value="osnabrucker-reinette">Osnabrücker Reinette (F11)</option>
+        <option value="pfirsichroter-sommerapfel">Pfirsichroter Sommerapfel (F4)</option>
+        <option value="pilot">Pilot (F12)</option>
+        <option value="piros">Piros (F10)</option>
+        <option value="pitmaston-pine-apple">Pitmaston Pine Apple (F10)</option>
+        <option value="pohorka">Pohorka (F19)</option>
+        <option value="pomme-noire">Pomme Noire (F5)</option>
+        <option value="prima">Prima (F9)</option>
+        <option value="primate">Primate (F7)</option>
+        <option value="prinz-albrecht-von-preussen">Prinz Albrecht Von Preussen (F13)</option>
+        <option value="red-melba">Red Melba (F8)</option>
+        <option value="reinette-de-maurs">Reinette De Maurs (F16)</option>
+        <option value="rheinischer-krummstiel">RHEINISCHER KRUMMSTIEL (F15)</option>
+        <option value="rosmarina-bianca">Rosmarina Bianca (F14)</option>
+        <option value="roter-stettiner">Roter Stettiner (F10)</option>
+        <option value="rubens">Rubens (F13)</option>
+        <option value="salome">Salome (F7)</option>
+        <option value="scarlet-crofton">Scarlet Crofton (F12)</option>
+        <option value="spartan">Spartan (F12)</option>
+        <option value="spencer">Spencer (F12)</option>
+        <option value="spigold">Spigold (F17*tri)</option>
+        <option value="starks-earliest">Stark’s Earliest (F3)</option>
+        <option value="stina-lohmann">Stina Lohmann (F14)</option>
+        <option value="strauwaldts-goldparmane">Strauwaldts Goldparmäne (F9)</option>
+        <option value="vanda">Vanda (F15)</option>
+        <option value="warners-king">Warner’s King (F7*tri)</option>
+        <option value="weigelts-zinszahler">Weigelts Zinszahler (F10)</option>
+        <option value="weisser-winter-taffetapfel">Weisser Winter Taffetapfel (F11)</option>
+        <option value="winter-banana">Winter Banana (F12)</option>
+        <option value="winter-lemon">Winter Lemon (F21)</option>
+        <option value="wolf-river">Wolf River (F10)</option>
+        <option value="worcester-pearmain">Worcester Pearmain (F11)</option>
+        <option value="zabergau-renette">Zabergäu Renette (F10*tri)</option>
+        <option value="zigeunerin">Zigeunerin (F5)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn-secondary" id="orchard-clear">Selectie wissen</button>
+      <button class="btn-secondary" id="orchard-suggest" title="Voeg 2-3 goede bestuivers toe voor elke onbestoven boom">Auto-aanvullen bestuivers</button>
+    </div>
+
+    <div class="orchard-summary empty" id="orchard-summary">Voeg bomen toe om de analyse te zien.</div>
+
+    <div class="orchard-chips" id="orchard-chips"></div>
   </div>
 
   <div class="legend">
     <h4>Hoe lees je deze tool?</h4>
     <p>
-      Elk appelras heeft een <strong>bloeigroep</strong> (F1 tot F42) — een getal dat aangeeft <em>wanneer</em> de boom bloeit ten opzichte van anderen in het seizoen. Lager getal = vroeger in het voorjaar.
+      Elk appelras heeft een <strong>bloeigroep</strong> (F1 tot F42). Lager getal = vroeger in het voorjaar. Twee bomen kunnen elkaar bestuiven als hun bloei overlapt — in de praktijk binnen een venster van ongeveer <strong>4 bloeigroepen verschil</strong>. We gebruiken het venster F<sub>doel</sub> − 4 tot F<sub>doel</sub> + 3.
     </p>
     <p>
-      Twee bomen kunnen elkaar bestuiven als hun bloei overlapt. In de praktijk: bloeigroepen binnen ongeveer <strong>4 groepen verschil</strong>. Onze tool toont rassen van F<sub>doel</sub> − 4 tot F<sub>doel</sub> + 3, gelijk aan de marge die professionele kwekers hanteren.
+      <strong>Triploïden</strong> (gemarkeerd met <em>*tri</em>) produceren geen levensvatbaar stuifmeel. Ze hebben zelf wél een bestuiver nodig — idealiter twee — maar kunnen geen andere boom bestuiven. Daarom worden ze in de tool niet als <em>donor</em> getoond.
     </p>
     <p>
-      <strong>Triploïden</strong> (gemarkeerd met <em>*tri</em>) produceren geen levensvatbaar stuifmeel. Ze hebben zelf wél een bestuiver nodig, maar kunnen geen andere boom bestuiven. Triploïden zijn daarom uit deze lijst gefilterd als donor.
-    </p>
-    <p>
-      <strong>Belangrijk:</strong> deze tool kijkt enkel naar bloeitijd en ploïdie. Bestuiving wordt ook beïnvloed door afstand (idealiter binnen 25 m), aanwezigheid van bijen, en weer tijdens de bloei. Voor een betrouwbare oogst plant je liefst minstens twee verschillende bestuivers in de buurt.
+      <strong>Belangrijk:</strong> deze tool kijkt alleen naar bloeitijd en ploïdie. Bestuiving wordt ook beïnvloed door afstand (idealiter binnen 25 m), aanwezigheid van bijen, en weer tijdens de bloei. Plant liefst minstens twee verschillende bestuivers in de buurt van elke boom.
     </p>
   </div>
 
@@ -327,69 +528,263 @@
 </footer>
 
 <script>
-const VARIETIES = [{"s":"adams-pearmain","n":"Adams’s Pearmain","f":9,"t":0},{"s":"akane","n":"Akane","f":14,"t":0},{"s":"allington-pippin","n":"Allington Pippin","f":11,"t":0},{"s":"api-noir","n":"Api Noir","f":11,"t":0},{"s":"ashmeads-kernel","n":"Ashmead’s Kernel","f":14,"t":0},{"s":"baldwin","n":"Baldwin","f":12,"t":1},{"s":"ben-davis","n":"Ben Davis (?)","f":15,"t":0},{"s":"berlepsch","n":"Berlepsch","f":11,"t":1},{"s":"berner-rosen","n":"Berner Rosen","f":11,"t":0},{"s":"bohemia","n":"BOHEMIA","f":10,"t":0},{"s":"boiken","n":"Boïken","f":14,"t":0},{"s":"burchardts-reinette","n":"Burchardt’s Reinette","f":13,"t":0},{"s":"burgundy","n":"Burgundy","f":15,"t":0},{"s":"carola","n":"Carola","f":10,"t":0},{"s":"charlamowsky","n":"Charlamowsky","f":4,"t":0},{"s":"claygate-pearmain","n":"Claygate Pearmain","f":12,"t":0},{"s":"cockle-pippin","n":"Cockle Pippin","f":11,"t":0},{"s":"cortland","n":"Cortland","f":9,"t":0},{"s":"danziger-kantapfel","n":"Danziger Kantapfel","f":11,"t":0},{"s":"delcorf","n":"Delcorf","f":11,"t":0},{"s":"dumelows-seedling","n":"Dumelow’s Seedling","f":15,"t":0},{"s":"early-julyan","n":"Early Julyan","f":9,"t":0},{"s":"easter-orange","n":"Easter Orange","f":12,"t":0},{"s":"edelborsdorfer","n":"Edelborsdorfer","f":14,"t":0},{"s":"edgar","n":"Edgar","f":15,"t":0},{"s":"ernst-bosch","n":"Ernst Bosch","f":6,"t":0},{"s":"esopus-spitzenburg","n":"Esopus Spitzenburg","f":12,"t":0},{"s":"exeter-cross","n":"Exeter Cross","f":11,"t":0},{"s":"falstaff","n":"Falstaff","f":11,"t":0},{"s":"fameuse","n":"Fameuse","f":7,"t":0},{"s":"fearns-pippin","n":"Fearn’s Pippin","f":9,"t":0},{"s":"fiessers-erstling","n":"Fiessers Erstling","f":5,"t":0},{"s":"finkenwerder-prinz","n":"Finkenwerder Prinz","f":12,"t":0},{"s":"florianer-rosenapfel","n":"Florianer Rosenapfel","f":10,"t":0},{"s":"florina","n":"Florina","f":13,"t":0},{"s":"freiherr-von-berlepsch","n":"Freiherr Von Berlepsch","f":11,"t":1},{"s":"freyberg","n":"Freyberg","f":11,"t":0},{"s":"galloway-pippin","n":"Galloway Pippin","f":14,"t":0},{"s":"george-cave","n":"George Cave","f":8,"t":0},{"s":"gewurzluiken","n":"Gewürzluiken","f":17,"t":0},{"s":"gloria-mundi","n":"Gloria Mundi","f":13,"t":0},{"s":"gloster-69","n":"Gloster 69","f":17,"t":0},{"s":"grandmere","n":"Grand’mère","f":6,"t":0},{"s":"greenups-pippin","n":"Greenup’s Pippin","f":15,"t":0},{"s":"grenadier","n":"Grenadier","f":11,"t":0},{"s":"gustavs-dauerapfel","n":"Gustavs Dauerapfel","f":11,"t":0},{"s":"harberts-reinette","n":"Harberts Reinette","f":13,"t":1},{"s":"helios","n":"Helios","f":12,"t":0},{"s":"herefordshire-beefing","n":"Herefordshire Beefing","f":17,"t":0},{"s":"hibernal","n":"Hibernal","f":6,"t":1},{"s":"holiday","n":"Holiday","f":10,"t":0},{"s":"howgate-wonder","n":"Howgate Wonder","f":12,"t":0},{"s":"iduna","n":"Iduna","f":7,"t":0},{"s":"ingol","n":"Ingol","f":16,"t":0},{"s":"ingrid-marie","n":"Ingrid Marie","f":14,"t":0},{"s":"isaac-newtons-tree","n":"Isaac Newton’s Tree","f":20,"t":0},{"s":"ivette","n":"Ivette","f":13,"t":0},{"s":"kaiser-wilhelm","n":"Kaiser Wilhelm","f":15,"t":0},{"s":"kandil-sinap","n":"Kandil Sinap","f":11,"t":0},{"s":"kim","n":"Kim","f":14,"t":0},{"s":"kronprinz-rudolf","n":"Kronprinz Rudolf","f":5,"t":0},{"s":"krugers-dickstiel","n":"Krügers Dickstiel","f":21,"t":0},{"s":"konigin-sophiensapfel","n":"Königin Sophiensapfel","f":9,"t":0},{"s":"lady-sudeley","n":"Lady Sudeley","f":13,"t":0},{"s":"landsberger-reinette","n":"Landsberger Reinette","f":9,"t":0},{"s":"lanes-prince-albert","n":"Lane’s Prince Albert","f":12,"t":0},{"s":"laxtons-superb","n":"Laxton’s Superb","f":13,"t":0},{"s":"lemon-pippin","n":"Lemon Pippin","f":15,"t":0},{"s":"lodi","n":"Lodi","f":6,"t":0},{"s":"lombarts-calville","n":"Lombarts Calville","f":12,"t":0},{"s":"london-pippin","n":"London Pippin","f":15,"t":0},{"s":"lord-grosvenor","n":"Lord Grosvenor","f":10,"t":0},{"s":"luntersche-pippeling","n":"Luntersche Pippeling","f":8,"t":0},{"s":"luxemburger-renette","n":"Luxemburger Renette","f":16,"t":0},{"s":"macoun","n":"Macoun","f":11,"t":0},{"s":"mantet","n":"Mantet","f":11,"t":0},{"s":"marienwerder-gulderling","n":"Marienwerder Gulderling","f":15,"t":0},{"s":"martini","n":"Martini","f":14,"t":0},{"s":"minister-von-hammerstein","n":"Minister Von Hammerstein","f":9,"t":0},{"s":"mio","n":"Mio","f":13,"t":0},{"s":"mutsu","n":"Mutsu","f":10,"t":1},{"s":"nonpareil","n":"Nonpareil","f":11,"t":0},{"s":"northern-greening","n":"Northern Greening","f":15,"t":0},{"s":"nottingham-pippin","n":"Nottingham Pippin","f":12,"t":0},{"s":"oberlausitzer-muskatrenette","n":"Oberlausitzer Muskatrenette","f":12,"t":0},{"s":"odin","n":"Odin","f":15,"t":0},{"s":"old-pearmain-kelsey","n":"Old Pearmain (kelsey)","f":11,"t":0},{"s":"ontario","n":"Ontario","f":12,"t":0},{"s":"opal","n":"Opal","f":9,"t":0},{"s":"orangenburg","n":"Orangenburg","f":14,"t":0},{"s":"orleans-reinette","n":"Orleans Reinette","f":16,"t":0},{"s":"osnabrucker-reinette","n":"Osnabrücker Reinette","f":11,"t":0},{"s":"pfirsichroter-sommerapfel","n":"Pfirsichroter Sommerapfel","f":4,"t":0},{"s":"pilot","n":"Pilot","f":12,"t":0},{"s":"piros","n":"Piros","f":10,"t":0},{"s":"pitmaston-pine-apple","n":"Pitmaston Pine Apple","f":10,"t":0},{"s":"pohorka","n":"Pohorka","f":19,"t":0},{"s":"pomme-noire","n":"Pomme Noire","f":5,"t":0},{"s":"prima","n":"Prima","f":9,"t":0},{"s":"primate","n":"Primate","f":7,"t":0},{"s":"prinz-albrecht-von-preussen","n":"Prinz Albrecht Von Preussen","f":13,"t":0},{"s":"red-melba","n":"Red Melba","f":8,"t":0},{"s":"reinette-de-maurs","n":"Reinette De Maurs","f":16,"t":0},{"s":"rheinischer-krummstiel","n":"RHEINISCHER KRUMMSTIEL","f":15,"t":0},{"s":"rosmarina-bianca","n":"Rosmarina Bianca","f":14,"t":0},{"s":"roter-stettiner","n":"Roter Stettiner","f":10,"t":0},{"s":"rubens","n":"Rubens","f":13,"t":0},{"s":"salome","n":"Salome","f":7,"t":0},{"s":"scarlet-crofton","n":"Scarlet Crofton","f":12,"t":0},{"s":"spartan","n":"Spartan","f":12,"t":0},{"s":"spencer","n":"Spencer","f":12,"t":0},{"s":"spigold","n":"Spigold","f":17,"t":1},{"s":"starks-earliest","n":"Stark’s Earliest","f":3,"t":0},{"s":"stina-lohmann","n":"Stina Lohmann","f":14,"t":0},{"s":"strauwaldts-goldparmane","n":"Strauwaldts Goldparmäne","f":9,"t":0},{"s":"vanda","n":"Vanda","f":15,"t":0},{"s":"warners-king","n":"Warner’s King","f":7,"t":1},{"s":"weigelts-zinszahler","n":"Weigelts Zinszahler","f":10,"t":0},{"s":"weisser-winter-taffetapfel","n":"Weisser Winter Taffetapfel","f":11,"t":0},{"s":"winter-banana","n":"Winter Banana","f":12,"t":0},{"s":"winter-lemon","n":"Winter Lemon","f":21,"t":0},{"s":"wolf-river","n":"Wolf River","f":10,"t":0},{"s":"worcester-pearmain","n":"Worcester Pearmain","f":11,"t":0},{"s":"zabergau-renette","n":"Zabergäu Renette","f":10,"t":1},{"s":"zigeunerin","n":"Zigeunerin","f":5,"t":0}];
+const VARIETIES = [{"name":"Adams’s Pearmain","slug":"adamss-pearmain","f":9,"t":0,"u":"EAT","p":10,"k":3,"s":"adams-pearmain"},{"name":"Akane","slug":"akane","f":14,"t":0,"u":"EAT","p":8,"k":9,"s":"akane"},{"name":"Allington Pippin","slug":"allington-pippin","f":11,"t":0,"u":"","p":10,"k":12,"s":"allington-pippin"},{"name":"Api Noir","slug":"api-noir","f":11,"t":0,"u":"EAT","p":10,"k":4,"s":"api-noir"},{"name":"Ashmead’s Kernel","slug":"ashmeads-kernel","f":14,"t":0,"u":"EAT","p":10,"k":2,"s":"ashmeads-kernel"},{"name":"Baldwin","slug":"baldwin","f":12,"t":1,"u":"EAT","p":10,"k":4,"s":"baldwin"},{"name":"Ben Davis (?)","slug":"ben-davis","f":15,"t":0,"u":"EAT","p":10,"k":3,"s":"ben-davis"},{"name":"Berlepsch","slug":"berlepsch","f":11,"t":1,"u":"EAT","p":10,"k":12,"s":"berlepsch"},{"name":"Berner Rosen","slug":"berner-rosen","f":11,"t":0,"u":"EAT","p":10,"k":1,"s":"berner-rosen"},{"name":"BOHEMIA","slug":"bohemia","f":10,"t":0,"u":"EAT","p":10,"k":12,"s":"bohemia"},{"name":"Boïken","slug":"boiken","f":14,"t":0,"u":"","p":10,"k":3,"s":"boiken"},{"name":"Burchardt’s Reinette","slug":"burchardts-reinette","f":13,"t":0,"u":"EAT","p":10,"k":12,"s":"burchardts-reinette"},{"name":"Burgundy","slug":"burgundy","f":15,"t":0,"u":"EAT","p":9,"k":11,"s":"burgundy"},{"name":"Carola","slug":"carola","f":10,"t":0,"u":"EAT","p":9,"k":11,"s":"carola"},{"name":"Charlamowsky","slug":"charlamowsky","f":4,"t":0,"u":"","p":8,"k":9,"s":"charlamowsky"},{"name":"Claygate Pearmain","slug":"claygate-pearmain","f":12,"t":0,"u":"EAT","p":10,"k":2,"s":"claygate-pearmain"},{"name":"Cockle Pippin","slug":"cockle-pippin","f":11,"t":0,"u":"EAT","p":10,"k":12,"s":"cockle-pippin"},{"name":"Cortland","slug":"cortland","f":9,"t":0,"u":"EAT","p":10,"k":1,"s":"cortland"},{"name":"Danziger Kantapfel","slug":"danziger-kantapfel","f":11,"t":0,"u":"","p":9,"k":10,"s":"danziger-kantapfel"},{"name":"Delcorf","slug":"delcorf","f":11,"t":0,"u":"EAT","p":9,"k":10,"s":"delcorf"},{"name":"Dumelow’s Seedling","slug":"dumelows-seedling","f":15,"t":0,"u":"COOK","p":10,"k":4,"s":"dumelows-seedling"},{"name":"Early Julyan","slug":"early-julyan","f":9,"t":0,"u":"","p":8,"k":8,"s":"early-julyan"},{"name":"Easter Orange","slug":"easter-orange","f":12,"t":0,"u":"EAT","p":10,"k":12,"s":"easter-orange"},{"name":"Edelborsdorfer","slug":"edelborsdorfer","f":14,"t":0,"u":"EAT","p":10,"k":1,"s":"edelborsdorfer"},{"name":"Edgar","slug":"edgar","f":15,"t":0,"u":"EAT","p":10,"k":12,"s":"edgar"},{"name":"Ernst Bosch","slug":"ernst-bosch","f":6,"t":0,"u":"EAT","p":9,"k":10,"s":"ernst-bosch"},{"name":"Esopus Spitzenburg","slug":"esopus-spitzenburg","f":12,"t":0,"u":"EAT","p":10,"k":3,"s":"esopus-spitzenburg"},{"name":"Exeter Cross","slug":"exeter-cross","f":11,"t":0,"u":"EAT","p":8,"k":8,"s":"exeter-cross"},{"name":"Falstaff","slug":"falstaff","f":11,"t":0,"u":"EAT","p":10,"k":12,"s":"falstaff"},{"name":"Fameuse","slug":"fameuse","f":7,"t":0,"u":"EAT","p":10,"k":12,"s":"fameuse"},{"name":"Fearn’s Pippin","slug":"fearns-pippin","f":9,"t":0,"u":"EAT","p":10,"k":1,"s":"fearns-pippin"},{"name":"Fiessers Erstling","slug":"fiessers-erstling","f":5,"t":0,"u":"COOK","p":9,"k":11,"s":"fiessers-erstling"},{"name":"Finkenwerder Prinz","slug":"finkenwerder-prinz","f":12,"t":0,"u":"EAT","p":10,"k":3,"s":"finkenwerder-prinz"},{"name":"Florianer Rosenapfel","slug":"florianer-rosenapfel","f":10,"t":0,"u":"EAT","p":10,"k":12,"s":"florianer-rosenapfel"},{"name":"Florina","slug":"florina","f":13,"t":0,"u":"EAT","p":10,"k":12,"s":"florina"},{"name":"Freiherr Von Berlepsch","slug":"freiherr-von-berlepsch","f":11,"t":1,"u":"EAT","p":10,"k":12,"s":"freiherr-von-berlepsch"},{"name":"Freyberg","slug":"freyberg","f":11,"t":0,"u":"EAT","p":10,"k":12,"s":"freyberg"},{"name":"Galloway Pippin","slug":"galloway-pippin","f":14,"t":0,"u":"","p":10,"k":2,"s":"galloway-pippin"},{"name":"George Cave","slug":"george-cave","f":8,"t":0,"u":"EAT","p":8,"k":8,"s":"george-cave"},{"name":"Gewürzluiken","slug":"gewurzluiken","f":17,"t":0,"u":"EAT","p":10,"k":3,"s":"gewurzluiken"},{"name":"Gloria Mundi","slug":"gloria-mundi","f":13,"t":0,"u":"COOK","p":10,"k":12,"s":"gloria-mundi"},{"name":"Gloster 69","slug":"gloster-69","f":17,"t":0,"u":"EAT","p":10,"k":2,"s":"gloster-69"},{"name":"Grand’mère","slug":"grandmere","f":6,"t":0,"u":"COOK","p":10,"k":12,"s":"grandmere"},{"name":"Greenup’s Pippin","slug":"greenups-pippin","f":15,"t":0,"u":"","p":9,"k":11,"s":"greenups-pippin"},{"name":"Grenadier","slug":"grenadier","f":11,"t":0,"u":"COOK","p":8,"k":9,"s":"grenadier"},{"name":"Gustavs Dauerapfel","slug":"gustavs-dauerapfel","f":11,"t":0,"u":"EAT","p":10,"k":3,"s":"gustavs-dauerapfel"},{"name":"Harberts Reinette","slug":"harberts-reinette","f":13,"t":1,"u":"EAT","p":10,"k":1,"s":"harberts-reinette"},{"name":"Helios","slug":"helios","f":12,"t":0,"u":"EAT","p":8,"k":8,"s":"helios"},{"name":"Herefordshire Beefing","slug":"herefordshire-beefing","f":17,"t":0,"u":"COOK","p":10,"k":12,"s":"herefordshire-beefing"},{"name":"Hibernal","slug":"hibernal","f":6,"t":1,"u":"COOK","p":9,"k":10,"s":"hibernal"},{"name":"Holiday","slug":"holiday","f":10,"t":0,"u":"EAT","p":10,"k":12,"s":"holiday"},{"name":"Howgate Wonder","slug":"howgate-wonder","f":12,"t":0,"u":"","p":10,"k":3,"s":"howgate-wonder"},{"name":"Iduna","slug":"iduna","f":7,"t":0,"u":"EAT","p":10,"k":1,"s":"iduna"},{"name":"Ingol","slug":"ingol","f":16,"t":0,"u":"EAT","p":10,"k":11,"s":"ingol"},{"name":"Ingrid Marie","slug":"ingrid-marie","f":14,"t":0,"u":"EAT","p":9,"k":12,"s":"ingrid-marie"},{"name":"Isaac Newton’s Tree","slug":"isaac-newtons-tree","f":20,"t":0,"u":"COOK","p":10,"k":1,"s":"isaac-newtons-tree"},{"name":"Ivette","slug":"ivette","f":13,"t":0,"u":"EAT","p":10,"k":1,"s":"ivette"},{"name":"Kaiser Wilhelm","slug":"kaiser-wilhelm","f":15,"t":0,"u":"EAT","p":10,"k":2,"s":"kaiser-wilhelm"},{"name":"Kandil Sinap","slug":"kandil-sinap","f":11,"t":0,"u":"EAT","p":10,"k":2,"s":"kandil-sinap"},{"name":"Kim","slug":"kim","f":14,"t":0,"u":"","p":9,"k":11,"s":"kim"},{"name":"Kronprinz Rudolf","slug":"kronprinz-rudolf","f":5,"t":0,"u":"EAT","p":10,"k":1,"s":"kronprinz-rudolf"},{"name":"Krügers Dickstiel","slug":"krugers-dickstiel","f":21,"t":0,"u":"EAT","p":10,"k":1,"s":"krugers-dickstiel"},{"name":"Königin Sophiensapfel","slug":"konigin-sophiensapfel","f":9,"t":0,"u":"EAT","p":10,"k":12,"s":"konigin-sophiensapfel"},{"name":"Lady Sudeley","slug":"lady-sudeley","f":13,"t":0,"u":"EAT","p":9,"k":9,"s":"lady-sudeley"},{"name":"Landsberger Reinette","slug":"landsberger-reinette","f":9,"t":0,"u":"EAT","p":9,"k":1,"s":"landsberger-reinette"},{"name":"Lane’s Prince Albert","slug":"lanes-prince-albert","f":12,"t":0,"u":"COOK","p":10,"k":3,"s":"lanes-prince-albert"},{"name":"Laxton’s Superb","slug":"laxtons-superb","f":13,"t":0,"u":"EAT","p":10,"k":1,"s":"laxtons-superb"},{"name":"Lemon Pippin","slug":"lemon-pippin","f":15,"t":0,"u":"COOK","p":10,"k":12,"s":"lemon-pippin"},{"name":"Lodi","slug":"lodi","f":6,"t":0,"u":"COOK","p":8,"k":8,"s":"lodi"},{"name":"Lombarts Calville","slug":"lombarts-calville","f":12,"t":0,"u":"EAT","p":10,"k":1,"s":"lombarts-calville"},{"name":"London Pippin","slug":"london-pippin","f":15,"t":0,"u":"COOK","p":10,"k":3,"s":"london-pippin"},{"name":"Lord Grosvenor","slug":"lord-grosvenor","f":10,"t":0,"u":"COOK","p":8,"k":10,"s":"lord-grosvenor"},{"name":"Luntersche Pippeling","slug":"luntersche-pippeling","f":8,"t":0,"u":"EAT","p":10,"k":1,"s":"luntersche-pippeling"},{"name":"Luxemburger Renette","slug":"luxemburger-renette","f":16,"t":0,"u":"","p":9,"k":11,"s":"luxemburger-renette"},{"name":"Macoun","slug":"macoun","f":11,"t":0,"u":"EAT","p":9,"k":12,"s":"macoun"},{"name":"Mantet","slug":"mantet","f":11,"t":0,"u":"EAT","p":8,"k":9,"s":"mantet"},{"name":"Marienwerder Gulderling","slug":"marienwerder-gulderling","f":15,"t":0,"u":"EAT","p":10,"k":2,"s":"marienwerder-gulderling"},{"name":"Martini","slug":"martini","f":14,"t":0,"u":"EAT","p":10,"k":12,"s":"martini"},{"name":"Minister Von Hammerstein","slug":"minister-von-hammerstein","f":9,"t":0,"u":"EAT","p":10,"k":1,"s":"minister-von-hammerstein"},{"name":"Mio","slug":"mio","f":13,"t":0,"u":"EAT","p":8,"k":8,"s":"mio"},{"name":"Mutsu","slug":"mutsu","f":10,"t":1,"u":"","p":10,"k":2,"s":"mutsu"},{"name":"Nonpareil","slug":"nonpareil","f":11,"t":0,"u":"EAT","p":10,"k":1,"s":"nonpareil"},{"name":"Northern Greening","slug":"northern-greening","f":15,"t":0,"u":"COOK","p":10,"k":4,"s":"northern-greening"},{"name":"Nottingham Pippin","slug":"nottingham-pippin","f":12,"t":0,"u":"EAT","p":10,"k":12,"s":"nottingham-pippin"},{"name":"Oberlausitzer Muskatrenette","slug":"oberlausitzer-muskatrenette","f":12,"t":0,"u":"EAT","p":10,"k":12,"s":"oberlausitzer-muskatrenette"},{"name":"Odin","slug":"odin","f":15,"t":0,"u":"EAT","p":9,"k":11,"s":"odin"},{"name":"Old Pearmain (kelsey)","slug":"old-pearmain-kelsey","f":11,"t":0,"u":"EAT","p":10,"k":12,"s":"old-pearmain-kelsey"},{"name":"Ontario","slug":"ontario","f":12,"t":0,"u":"","p":10,"k":4,"s":"ontario"},{"name":"Opal","slug":"opal","f":9,"t":0,"u":"EAT","p":9,"k":10,"s":"opal"},{"name":"Orangenburg","slug":"orangenburg","f":14,"t":0,"u":"EAT","p":10,"k":1,"s":"orangenburg"},{"name":"Orleans Reinette","slug":"orleans-reinette","f":16,"t":0,"u":"EAT","p":10,"k":1,"s":"orleans-reinette"},{"name":"Osnabrücker Reinette","slug":"osnabrucker-reinette","f":11,"t":0,"u":"EAT","p":10,"k":1,"s":"osnabrucker-reinette"},{"name":"Pfirsichroter Sommerapfel","slug":"pfirsichroter-sommerapfel","f":4,"t":0,"u":"EAT","p":8,"k":8,"s":"pfirsichroter-sommerapfel"},{"name":"Pilot","slug":"pilot","f":12,"t":0,"u":"EAT","p":10,"k":2,"s":"pilot"},{"name":"Piros","slug":"piros","f":10,"t":0,"u":"EAT","p":8,"k":8,"s":"piros"},{"name":"Pitmaston Pine Apple","slug":"pitmaston-pine-apple","f":10,"t":0,"u":"EAT","p":10,"k":12,"s":"pitmaston-pine-apple"},{"name":"Pohorka","slug":"pohorka","f":19,"t":0,"u":"EAT","p":10,"k":1,"s":"pohorka"},{"name":"Pomme Noire","slug":"pomme-noire","f":5,"t":0,"u":"EAT","p":10,"k":3,"s":"pomme-noire"},{"name":"Prima","slug":"prima","f":9,"t":0,"u":"EAT","p":9,"k":11,"s":"prima"},{"name":"Primate","slug":"primate","f":7,"t":0,"u":"EAT","p":9,"k":10,"s":"primate"},{"name":"Prinz Albrecht Von Preussen","slug":"prinz-albrecht-von-preussen","f":13,"t":0,"u":"EAT","p":9,"k":1,"s":"prinz-albrecht-von-preussen"},{"name":"Red Melba","slug":"red-melba","f":8,"t":0,"u":"EAT","p":8,"k":8,"s":"red-melba"},{"name":"Reinette De Maurs","slug":"reinette-de-maurs","f":16,"t":0,"u":"EAT","p":10,"k":2,"s":"reinette-de-maurs"},{"name":"RHEINISCHER KRUMMSTIEL","slug":"rheinischer-krummstiel","f":15,"t":0,"u":"COOK","p":10,"k":3,"s":"rheinischer-krummstiel"},{"name":"Rosmarina Bianca","slug":"rosmarina-bianca","f":14,"t":0,"u":"","p":10,"k":1,"s":"rosmarina-bianca"},{"name":"Roter Stettiner","slug":"roter-stettiner","f":10,"t":0,"u":"EAT","p":10,"k":3,"s":"roter-stettiner"},{"name":"Rubens","slug":"rubens","f":13,"t":0,"u":"EAT","p":10,"k":3,"s":"rubens"},{"name":"Salome","slug":"salome","f":7,"t":0,"u":"EAT","p":10,"k":1,"s":"salome"},{"name":"Scarlet Crofton","slug":"scarlet-crofton","f":12,"t":0,"u":"","p":9,"k":10,"s":"scarlet-crofton"},{"name":"Spartan","slug":"spartan","f":12,"t":0,"u":"EAT","p":10,"k":1,"s":"spartan"},{"name":"Spencer","slug":"spencer","f":12,"t":0,"u":"EAT","p":10,"k":12,"s":"spencer"},{"name":"Spigold","slug":"spigold","f":17,"t":1,"u":"EAT","p":10,"k":1,"s":"spigold"},{"name":"Stark’s Earliest","slug":"starks-earliest","f":3,"t":0,"u":"EAT","p":8,"k":8,"s":"starks-earliest"},{"name":"Stina Lohmann","slug":"stina-lohmann","f":14,"t":0,"u":"EAT","p":10,"k":2,"s":"stina-lohmann"},{"name":"Strauwaldts Goldparmäne","slug":"strauwaldts-goldparmane","f":9,"t":0,"u":"EAT","p":10,"k":1,"s":"strauwaldts-goldparmane"},{"name":"Vanda","slug":"vanda","f":15,"t":0,"u":"EAT","p":9,"k":11,"s":"vanda"},{"name":"Warner’s King","slug":"warners-king","f":7,"t":1,"u":"COOK","p":9,"k":12,"s":"warners-king"},{"name":"Weigelts Zinszahler","slug":"weigelts-zinszahler","f":10,"t":0,"u":"EAT","p":9,"k":11,"s":"weigelts-zinszahler"},{"name":"Weisser Winter Taffetapfel","slug":"weisser-winter-taffetapfel","f":11,"t":0,"u":"","p":9,"k":1,"s":"weisser-winter-taffetapfel"},{"name":"Winter Banana","slug":"winter-banana","f":12,"t":0,"u":"EAT","p":10,"k":1,"s":"winter-banana"},{"name":"Winter Lemon","slug":"winter-lemon","f":21,"t":0,"u":"EAT","p":10,"k":2,"s":"winter-lemon"},{"name":"Wolf River","slug":"wolf-river","f":10,"t":0,"u":"","p":9,"k":10,"s":"wolf-river"},{"name":"Worcester Pearmain","slug":"worcester-pearmain","f":11,"t":0,"u":"EAT","p":9,"k":10,"s":"worcester-pearmain"},{"name":"Zabergäu Renette","slug":"zabergau-renette","f":10,"t":1,"u":"EAT","p":10,"k":3,"s":"zabergau-renette"},{"name":"Zigeunerin","slug":"zigeunerin","f":5,"t":0,"u":"","p":8,"k":8,"s":"zigeunerin"}];
 const BY_SLUG = Object.fromEntries(VARIETIES.map(v => [v.s, v]));
 
+// === TAB SWITCHING ===
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    const t = btn.dataset.tab;
+    document.querySelectorAll('.tab-content').forEach(c => {
+      c.classList.toggle('active', c.id === 'tab-' + t);
+    });
+  });
+});
+
+// === STORAGE SCORE: month -> seasonal lateness ===
+// Sept=1, Oct=2, Nov=3, Dec=4, Jan=5, Feb=6, Mar=7, Apr=8, May=9
+function storageScore(m) {
+  if (m == null) return 0;
+  if (m >= 8) return m - 7;  // Aug=1, Sept=2... wait need to recalculate
+  return m + 4;  // Jan=5
+}
+// Simpler: map directly
+const STORAGE_SCORE = {8:1, 9:2, 10:3, 11:4, 12:5, 1:6, 2:7, 3:8, 4:9, 5:10, 6:11, 7:12};
+function storeScore(m) {
+  return STORAGE_SCORE[m] || 0;
+}
+// User threshold mapping: "minstens tot Nov" = the storage_end >= Nov-equivalent score
+// We expose threshold values matching STORAGE_SCORE: Nov=4, Dec=5, Jan=6, Feb=7, Mar=8, Apr=9
+// Need to remap select option values:
+const STORAGE_THRESHOLD = {3:4, 4:5, 5:6, 6:7, 7:8, 8:9};  // dropdown value -> required score
+
+// === MONTH NAMES NL ===
+const MONTH_NL = {8:'Aug',9:'Sept',10:'Okt',11:'Nov',12:'Dec',1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'Mei',6:'Jun',7:'Jul'};
+
+// === TAB 1: SINGLE TREE ===
 function offsetLabel(o) {
   if (o === 0) return 'Zelfde bloeigroep';
-  if (o < 0) return `${Math.abs(o)} groep${Math.abs(o)>1?'en':''} vroeger`;
-  return `${o} groep${o>1?'en':''} later`;
+  if (o < 0) return Math.abs(o) + ' groep' + (Math.abs(o)>1?'en':'') + ' vroeger';
+  return o + ' groep' + (o>1?'en':'') + ' later';
 }
 
-function render(slug) {
-  const out = document.getElementById('output');
+function passesFilters(v, filters) {
+  if (filters.use && v.u !== filters.use) return false;
+  if (filters.pick && v.p !== filters.pick) return false;
+  if (filters.storage) {
+    const required = STORAGE_THRESHOLD[filters.storage];
+    if (storeScore(v.k) < required) return false;
+  }
+  return true;
+}
+
+function renderSingle() {
+  const slug = document.getElementById('variety-select').value;
+  const out = document.getElementById('single-output');
   if (!slug) { out.innerHTML = ''; return; }
   const target = BY_SLUG[slug];
-  if (!target) { out.innerHTML = '<p class="no-result">Variëteit niet gevonden.</p>'; return; }
 
-  // Find compatible: same window as Martin's spreadsheet: -4..+3, exclude triploids, exclude self
-  const pollinators = VARIETIES
+  const filters = {
+    use: document.getElementById('f-use').value,
+    pick: parseInt(document.getElementById('f-pick').value) || null,
+    storage: parseInt(document.getElementById('f-storage').value) || null,
+  };
+
+  const candidates = VARIETIES
     .filter(v => v.s !== target.s && v.t === 0)
     .map(v => ({...v, offset: v.f - target.f}))
-    .filter(v => v.offset >= -4 && v.offset <= 3)
-    .sort((a, b) => a.offset - b.offset || a.n.localeCompare(b.n));
+    .filter(v => v.offset >= -4 && v.offset <= 3);
+  const filtered = candidates.filter(v => passesFilters(v, filters));
+  const filteredOut = candidates.length - filtered.length;
 
-  // Group by offset
+  filtered.sort((a, b) => a.offset - b.offset || a.n.localeCompare(b.n));
   const groups = {};
-  for (const v of pollinators) {
-    (groups[v.offset] = groups[v.offset] || []).push(v);
-  }
+  for (const v of filtered) (groups[v.offset] = groups[v.offset] || []).push(v);
 
   let html = '';
-  html += `<div class="target-info">`;
-  html += `Gekozen: <strong>${target.n}</strong> — bloeigroep <strong>F${target.f}</strong>`;
+  html += '<div class="target-info">';
+  html += 'Gekozen: <strong>' + target.n + '</strong> — bloeigroep <strong>F' + target.f + '</strong>';
+  if (target.u) html += ' · ' + ({EAT:'Eet',COOK:'Stoof',DUAL:'Eet/Stoof',CIDER:'Cider'})[target.u];
+  if (target.p) html += ' · pluk ' + MONTH_NL[target.p];
+  if (target.k) html += ' · bewaart tot ' + MONTH_NL[target.k];
   if (target.t) {
-    html += `<div class="triploid-warning">⚠ Dit ras is een <strong>triploïd</strong> — het produceert geen levensvatbaar stuifmeel. Het heeft niet alleen één maar idealiter <strong>twee</strong> bestuivers van buiten zichzelf nodig.</div>`;
+    html += '<div class="triploid-warning">⚠ Dit ras is een <strong>triploïd</strong> — geen levensvatbaar stuifmeel. Heeft zelf <strong>2 bestuivers</strong> nodig.</div>';
   }
-  html += `</div>`;
+  html += '</div>';
 
-  html += `<div class="results-header">${pollinators.length} geschikte bestuivers uit onze collectie</div>`;
+  let filterNote = '';
+  if (filteredOut > 0) filterNote = ' (' + filteredOut + ' verborgen door filters)';
+  html += '<div class="results-header">' + filtered.length + ' geschikte bestuivers' + filterNote + '</div>';
 
-  if (pollinators.length === 0) {
-    html += '<p class="no-result">Geen bestuivers gevonden binnen het bloeivenster (F'+(target.f-4)+' tot F'+(target.f+3)+').</p>';
+  if (filtered.length === 0) {
+    html += '<p class="no-result">Geen bestuivers gevonden. Probeer de filters losser te zetten.</p>';
   } else {
-    const offsets = Object.keys(groups).map(Number).sort((a,b) => a-b);
+    const offsets = Object.keys(groups).map(Number).sort((a,b)=>a-b);
     for (const o of offsets) {
-      html += `<div class="offset-group">`;
-      html += `<div class="offset-label">${offsetLabel(o)} — bloeigroep F${target.f + o}</div>`;
-      html += `<div class="pollinator-grid">`;
+      html += '<div class="offset-group">';
+      html += '<div class="offset-label">' + offsetLabel(o) + ' — F' + (target.f + o) + '</div>';
+      html += '<div class="pollinator-grid">';
       for (const v of groups[o]) {
-        html += `<a class="pollinator" href="appels.html#ras-${v.s}">
-          <img src="images/appels/${v.s}.jpg" alt="${v.n}" loading="lazy">
-          <div class="pollinator-body">
-            <div class="pollinator-name">${v.n}</div>
-            <div class="pollinator-meta">F${v.f}</div>
-          </div>
-        </a>`;
+        const useTag = v.u ? ({EAT:'Eet',COOK:'Stoof',DUAL:'Eet/Stoof',CIDER:'Cider'})[v.u] + ' · ' : '';
+        const pickTag = v.p ? 'pluk ' + MONTH_NL[v.p] + ' · ' : '';
+        const storeTag = v.k ? 'tot ' + MONTH_NL[v.k] : '';
+        html += '<a class="pollinator" href="appels.html#ras-' + v.s + '">' +
+          '<img src="images/appels/' + v.s + '.jpg" alt="' + v.n + '" loading="lazy">' +
+          '<div class="pollinator-body">' +
+            '<div class="pollinator-name">' + v.n + '</div>' +
+            '<div class="pollinator-meta">F' + v.f + ' · ' + useTag + pickTag + storeTag + '</div>' +
+          '</div></a>';
       }
-      html += `</div></div>`;
+      html += '</div></div>';
     }
   }
-
   out.innerHTML = html;
 }
 
-document.getElementById('variety-select').addEventListener('change', e => render(e.target.value));
+['variety-select','f-use','f-pick','f-storage'].forEach(id =>
+  document.getElementById(id).addEventListener('change', renderSingle));
+
+// === TAB 2: ORCHARD PLANNER ===
+let orchard = [];
+
+function inWindow(a, b) {
+  // a is target, b is candidate. b can pollinate a if b.f - a.f within [-4,3]
+  const off = b.f - a.f;
+  return off >= -4 && off <= 3;
+}
+
+function findPartners(target) {
+  return orchard
+    .map(slug => BY_SLUG[slug])
+    .filter(v => v.s !== target.s && v.t === 0 && inWindow(target, v));
+}
+
+function statusFor(target, partnerCount) {
+  // Triploids absolutely need >=2
+  if (target.t) {
+    if (partnerCount >= 2) return 'good';
+    return 'bad';  // 0 or 1 is insufficient for triploid
+  }
+  // Diploids: 0=bad, 1=warn, 2+=good
+  if (partnerCount === 0) return 'bad';
+  if (partnerCount === 1) return 'warn';
+  return 'good';
+}
+
+function renderOrchard() {
+  const chips = document.getElementById('orchard-chips');
+  const summary = document.getElementById('orchard-summary');
+
+  if (orchard.length === 0) {
+    chips.innerHTML = '';
+    summary.className = 'orchard-summary empty';
+    summary.textContent = 'Voeg bomen toe om de analyse te zien.';
+    return;
+  }
+
+  // Compute partners + status for each
+  const analyses = orchard.map(slug => {
+    const target = BY_SLUG[slug];
+    const partners = findPartners(target);
+    const status = statusFor(target, partners.length);
+    return {target, partners, status};
+  });
+
+  const goodCount = analyses.filter(a => a.status === 'good').length;
+  const warnCount = analyses.filter(a => a.status === 'warn').length;
+  const badCount = analyses.filter(a => a.status === 'bad').length;
+
+  summary.className = 'orchard-summary';
+  let summaryHtml = '<strong>' + orchard.length + ' bomen</strong> in je boomgaard. ';
+  if (badCount === 0 && warnCount === 0) {
+    summaryHtml += '✅ Alle bomen hebben minstens 2 bestuivers.';
+  } else {
+    const parts = [];
+    if (goodCount > 0) parts.push('✅ ' + goodCount + ' goed bestoven');
+    if (warnCount > 0) parts.push('⚠ ' + warnCount + ' met slechts 1 partner');
+    if (badCount > 0) parts.push('❌ ' + badCount + ' zonder partner');
+    summaryHtml += parts.join(' · ');
+  }
+  summary.innerHTML = summaryHtml;
+
+  // Render chips
+  chips.innerHTML = analyses.map(a => {
+    const t = a.target;
+    const partnersHtml = a.partners.length > 0
+      ? '<div class="chip-partners">Partners: ' + a.partners.map(p => p.n + ' (F' + p.f + ')').join(', ') + '</div>'
+      : (t.t
+          ? '<div class="chip-partners">Geen bestuivers in je selectie — triploïden hebben er minstens 2 nodig.</div>'
+          : '<div class="chip-partners">Geen bestuiver in je selectie.</div>');
+    const statusLabel = ({good: '✅ ' + a.partners.length, warn: '⚠ ' + a.partners.length, bad: '❌ ' + a.partners.length})[a.status];
+    const tripTag = t.t ? ' · <strong style="color:#b85c00">triploïd</strong>' : '';
+    return '<div class="chip status-' + a.status + '">' +
+      '<span class="badge-status">' + statusLabel + '</span>' +
+      '<span><span class="chip-name">' + t.n + '</span> <span class="chip-detail">F' + t.f + tripTag + '</span></span>' +
+      '<span class="remove" onclick="removeFromOrchard(\''+t.s+'\')" title="Verwijder">✕</span>' +
+      partnersHtml +
+      '</div>';
+  }).join('');
+}
+
+function addToOrchard(slug) {
+  if (!slug || orchard.includes(slug)) return;
+  orchard.push(slug);
+  renderOrchard();
+}
+
+function removeFromOrchard(slug) {
+  orchard = orchard.filter(s => s !== slug);
+  renderOrchard();
+}
+
+document.getElementById('orchard-select').addEventListener('change', e => {
+  addToOrchard(e.target.value);
+  e.target.value = '';
+});
+
+document.getElementById('orchard-clear').addEventListener('click', () => {
+  if (orchard.length > 0 && confirm('Selectie wissen?')) {
+    orchard = [];
+    renderOrchard();
+  }
+});
+
+document.getElementById('orchard-suggest').addEventListener('click', () => {
+  // For each tree currently without 2 partners, add the nearest non-trip variety to fill
+  let added = 0;
+  const maxIter = 10;
+  let iter = 0;
+  while (iter < maxIter) {
+    iter++;
+    let progress = false;
+    for (const slug of [...orchard]) {
+      const target = BY_SLUG[slug];
+      const partners = findPartners(target);
+      const needed = target.t ? 2 : 2;  // both want 2
+      if (partners.length >= needed) continue;
+      // Find a non-trip non-orchard variety in window
+      const candidates = VARIETIES
+        .filter(v => !orchard.includes(v.s) && v.t === 0 && inWindow(target, v))
+        .sort((a,b) => Math.abs(a.f - target.f) - Math.abs(b.f - target.f));
+      if (candidates.length > 0) {
+        orchard.push(candidates[0].s);
+        added++;
+        progress = true;
+      }
+    }
+    if (!progress) break;
+  }
+  renderOrchard();
+  if (added > 0) {
+    alert(added + ' bestuiver' + (added>1?'s':'') + ' toegevoegd.');
+  } else {
+    alert('Alle bomen hadden al voldoende bestuivers, of er zijn geen geschikte kandidaten meer beschikbaar.');
+  }
+});
+
+// Make removeFromOrchard global
+window.removeFromOrchard = removeFromOrchard;
 </script>
 
 </body>
