@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De hazelaarcollectie — De Griffel</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-img { margin: 0 -20px 32px; text-align: center; }
+    .hero-img img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .hero-img figcaption { font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px; }
+    .filters {
+      background: #fff; border: 1px solid #c8ddc5; border-radius: 8px;
+      padding: 18px 20px; margin: 16px 0; display: grid;
+      grid-template-columns: 1fr; gap: 12px;
+    }
+    @media (min-width: 720px) { .filters { grid-template-columns: 2fr 1fr 1fr 1fr; align-items: end; } }
+    .filter-group { display: flex; flex-direction: column; gap: 4px; }
+    .filter-group label {
+      font-size: 0.75rem; color: #2d5a27;
+      text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold;
+    }
+    .filter-group input[type="text"], .filter-group select {
+      padding: 8px 10px; border: 1px solid #c8ddc5; border-radius: 4px;
+      background: #f7f4ef; font-family: inherit; font-size: 0.95rem; color: #2c2c2c;
+    }
+    .filter-group input[type="text"]:focus, .filter-group select:focus {
+      outline: none; border-color: #2d5a27; background: #fff;
+    }
+    .results-count { font-size: 0.9rem; color: #777; margin: 0 0 16px; text-align: center; }
+    .results-count strong { color: #2d5a27; }
+    .jumplinks {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+      margin: 16px 0 32px; padding: 12px; background: #fff;
+      border: 1px solid #c8ddc5; border-radius: 8px;
+    }
+    .jumplinks a {
+      display: inline-block; padding: 4px 10px; background: #f7f4ef;
+      color: #2d5a27; border-radius: 4px; text-decoration: none;
+      font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;
+    }
+    .jumplinks a:hover { background: #c8ddc5; }
+    .jumplinks a.disabled { color: #ccc; background: #fafaf7; pointer-events: none; }
+    .letter-section { scroll-margin-top: 80px; }
+    .letter-section.empty { display: none; }
+    .letter-heading {
+      font-family: Georgia, serif; font-size: 2rem; color: #2d5a27;
+      margin: 40px 0 16px; padding-bottom: 6px; border-bottom: 1px solid #c8ddc5;
+    }
+    .variety-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
+    }
+    .variety {
+      background: #fff; border: 1px solid #c8ddc5; border-radius: 8px;
+      padding: 16px 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .variety:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .variety.hidden { display: none; }
+    .variety h3 { font-size: 1.05rem; color: #2d5a27; margin: 0 0 6px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .badge {
+      display: inline-block; padding: 2px 8px; background: #f7f4ef;
+      color: #555; border-radius: 3px; font-size: 0.75rem; letter-spacing: 0.3px;
+    }
+    .badge.country { background: #e6f0e3; color: #2d5a27; }
+    .badge.size { background: #fff8e7; color: #8a6d00; }
+    .badge.s-allele { background: #ede7f6; color: #5e35b1; font-family: monospace; }
+    .teaser { font-size: 0.9rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
+    .variety details { margin-top: 6px; font-size: 0.9rem; }
+    .variety details summary {
+      cursor: pointer; color: #2d5a27; font-weight: bold;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 6px 0; list-style: none;
+    }
+    .variety details summary::-webkit-details-marker { display: none; }
+    .variety details summary::after { content: " ▾"; }
+    .variety details[open] summary::after { content: " ▴"; }
+    .variety details .field { margin-top: 10px; font-size: 0.86rem; color: #444; line-height: 1.5; }
+    .variety details .field strong {
+      display: block; color: #2d5a27; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
+    }
+    .no-data { font-size: 0.85rem; color: #999; font-style: italic; }
+    .summary-stats {
+      background: #fff8e7; border-left: 4px solid #2d5a27;
+      padding: 14px 20px; margin: 24px 0 16px;
+      font-size: 0.95rem; color: #555;
+    }
+    .empty-state { text-align: center; padding: 60px 20px; color: #999; display: none; }
+    .empty-state.show { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>De Griffel</h1>
+    <p>Een fruitarchief — 2022–2026</p>
+  </div>
+</header>
+
+<nav>
+  <a href="/">De Griffel</a>
+  <a href="het-begin.html">Het begin</a>
+  <a href="hot-pipe.html">Hot pipe</a>
+  <a href="appels.html">Appels</a>
+  <a href="hazelaars.html" class="active">Hazelaars</a>
+  <a href="bestuiving.html">Bestuiving</a>
+  <a href="/#contact">Contact</a>
+</nav>
+
+<main>
+
+  <h2 class="plain">Onze hazelaarcollectie</h2>
+  <p class="subtitle">52 rassen, verspreid over drie continenten en drie bestemmingen</p>
+
+  <figure class="hero-img">
+    <img src="images/eerste-hazelnoot-mont-saint-jean.jpg" alt="De eerste hazelnoot aan een jonge boom in Mont-Saint-Jean">
+    <figcaption>De eerste hazelnoot aan een jonge boom in Mont-Saint-Jean — voorjaar 2025</figcaption>
+  </figure>
+
+  <p class="lead">
+    Onze hazelaarcollectie telt 52 rassen — geselecteerd op smaak, productiviteit, ziekteresistentie en niet in de laatste plaats op verhaal. De selectie spant van Spaanse landrassen (Alcover, Casina, Apegalos) tot Amerikaanse moderne <em>Eastern Filbert Blight</em>-tolerante kruisingen (Brixnut, Butler, Ennis, Yamhill) en Turkse, Italiaanse en Vlaamse klassiekers.
+  </p>
+
+  <p>
+    Vandaag groeit de collectie verder op drie plekken: in <strong>Noord-Frankrijk</strong>, op <strong>Het Schavaaienhof</strong> in Leuven, en op <strong>Grasroots</strong> in Vremde. Op die manier is de genetische diversiteit veilig gespreid — als één plek het laat afweten blijven de andere twee.
+  </p>
+
+  <p>
+    Hazelnoten zijn windbestuivers en bovendien <em>protandrisch</em>: mannelijke katjes en vrouwelijke bloemen rijpen niet altijd tegelijk. Daarbij komt nog de <strong>S-allele-incompatibiliteit</strong> — een genetisch slot dat zelfbestuiving tegengaat. In de praktijk wil dat zeggen: één hazelaar alleen draagt zelden, twee verschillende rassen samen al beter, drie of meer is ideaal.
+  </p>
+
+  <div class="summary-stats">
+    Zoek op naam of synoniem. Filter op land van oorsprong, groeikracht, grootte van de noot, of habitus.
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label for="f-search">Zoeken</label>
+      <input type="text" id="f-search" placeholder="naam of synoniem…" autocomplete="off">
+    </div>
+    <div class="filter-group">
+      <label for="f-country">Oorsprong</label>
+      <select id="f-country"><option value="">Alle</option>
+        <option value="Belgique">Belgique (1)</option>
+        <option value="Germany">Germany (1)</option>
+        <option value="Great Britain">Great Britain (1)</option>
+        <option value="Italy">Italy (2)</option>
+        <option value="Michigan, USA, from breeding by Cecil Farris, released 1989">Michigan, USA, from breeding by Cecil Farris, released 1989 (1)</option>
+        <option value="Spain">Spain (5)</option>
+        <option value="Turkey">Turkey (2)</option>
+        <option value="USA">USA (8)</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-vigor">Groeikracht</label>
+      <select id="f-vigor"><option value="">Alle</option>
+        <option value="Small">Klein</option>
+        <option value="Medium">Middel</option>
+        <option value="High">Sterk</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-size">Notengrootte</label>
+      <select id="f-size"><option value="">Alle</option>
+        <option value="Small">Klein</option>
+        <option value="Medium">Middel</option>
+        <option value="Big">Groot</option>
+        <option value="Large">Groot</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="results-count"><strong id="results-num">52</strong> van 52 rassen</p>
+
+  <div class="jumplinks" id="jumplinks">
+    <a href="#letter-A" data-letter="A">A</a>
+    <a href="#letter-B" data-letter="B">B</a>
+    <a href="#letter-C" data-letter="C">C</a>
+    <a href="#letter-E" data-letter="E">E</a>
+    <a href="#letter-F" data-letter="F">F</a>
+    <a href="#letter-G" data-letter="G">G</a>
+    <a href="#letter-H" data-letter="H">H</a>
+    <a href="#letter-I" data-letter="I">I</a>
+    <a href="#letter-J" data-letter="J">J</a>
+    <a href="#letter-K" data-letter="K">K</a>
+    <a href="#letter-L" data-letter="L">L</a>
+    <a href="#letter-M" data-letter="M">M</a>
+    <a href="#letter-N" data-letter="N">N</a>
+    <a href="#letter-P" data-letter="P">P</a>
+    <a href="#letter-R" data-letter="R">R</a>
+    <a href="#letter-S" data-letter="S">S</a>
+    <a href="#letter-T" data-letter="T">T</a>
+    <a href="#letter-W" data-letter="W">W</a>
+  </div>
+
+  <div id="letter-A" class="letter-section" data-letter="A">
+    <h2 class="letter-heading">A</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-aurea" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="aurea  spain">
+        <h3>Aurea</h3>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Open</span></div>
+        <div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-B" class="letter-section" data-letter="B">
+    <h2 class="letter-heading">B</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-bergerac" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="bergerac  turkey">
+        <h3>Bergerac</h3>
+        <div class="badges"><span class="badge country">Turkey</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span></div>
+        <div class="teaser">low productivity, medium suckering, protandrie-homogam, low oil (60.0%), and medium protein (16.4%) content, low kernel ratio (44.2%), low bleaching ability (73.3%), high tendency to alter bearing.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Eigenschappen</strong>Kern: low kernel ratio · Olie: low oil · Productie: low productivity · Wortelopslag: Medium suckering</div></details>
+      </article>
+      <article class="variety" id="ras-bergerie" data-country="Belgique" data-vigor="High" data-size="Large" data-search="bergerie louis berger belgique">
+        <h3>bergerie</h3>
+        <div class="badges"><span class="badge country">Belgique</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S3·S25</span></div>
+        <div class="teaser">, low productivity, late pollinator, low percentage of kernel, incompatibility alleles S3S?</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Louis Berger</div><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Bloei</strong>late pollinator</div><div class="field"><strong>Eigenschappen</strong>Productie: low productivity</div></details>
+      </article>
+      <article class="variety" id="ras-brixnut" data-country="USA" data-vigor="High" data-size="Medium" data-search="brixnut  usa">
+        <h3>Brixnut</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S14</span></div>
+        <div class="teaser">Incompatibility alleles S1S14</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler  usa">
+        <h3>Butler</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span></div>
+        <div class="teaser">Pollinator of Barcelona and Ennis incompatibility allels S2S3.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler  usa">
+        <h3>butler</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span></div>
+        <div class="teaser">Pollinator of Barcelona and Ennis incompatibility allels S2S3.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-C" class="letter-section" data-letter="C">
+    <h2 class="letter-heading">C</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-casina" data-country="Spain" data-vigor="High" data-size="Small" data-search="casina  spain">
+        <h3>Casina</h3>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Klein</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S10·S21</span></div>
+        <div class="teaser">Productive, incompatibility alleles (S10S21)</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Productie: productive · Wortelopslag: productive</div></details>
+      </article>
+      <article class="variety" id="ras-chinoka" data-country="" data-vigor="" data-size="" data-search="chinoka">
+        <h3>Chinoka</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-corylus-america" data-country="" data-vigor="" data-size="" data-search="corylus america">
+        <h3>Corylus America</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-cosford" data-country="Great Britain" data-vigor="High" data-size="Large" data-search="cosford  great britain">
+        <h3>Cosford</h3>
+        <div class="badges"><span class="badge country">Great Britain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S3·S11</span></div>
+        <div class="teaser">Medium productivity, medium late pollinator, high percentage of kernel, fibrous kernel, susceptible to big bud mite, incompatibility alleles S3S?</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Olie: medium late pollinator</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-E" class="letter-section" data-letter="E">
+    <h2 class="letter-heading">E</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-eastoka" data-country="" data-vigor="" data-size="" data-search="eastoka">
+        <h3>Eastoka</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-emoa-nr-1" data-country="" data-vigor="" data-size="" data-search="emoa nr 1">
+        <h3>emoa nr 1</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-ennis" data-country="USA" data-vigor="Medium" data-size="Large" data-search="ennis  usa">
+        <h3>Ennis</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S11</span></div>
+        <div class="teaser">Low blanching capacity, main variety in Oregon and France, incompatibility alleles S1S11</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-F" class="letter-section" data-letter="F">
+    <h2 class="letter-heading">F</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-fuscourubra" data-country="" data-vigor="" data-size="" data-search="fuscourubra">
+        <h3>Fuscourubra</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-G" class="letter-section" data-letter="G">
+    <h2 class="letter-heading">G</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-gem" data-country="USA" data-vigor="High" data-size="Large" data-search="gem  usa">
+        <h3>Gem</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S14</span></div>
+        <div class="teaser">Incompatibility alleles S14S2</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div></details>
+      </article>
+      <article class="variety" id="ras-giresum-54-56" data-country="" data-vigor="" data-size="" data-search="giresum 54-56">
+        <h3>Giresum 54-56</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-grand-traverse" data-country="" data-vigor="" data-size="" data-search="grand traverse">
+        <h3>Grand Traverse</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-gunslebert" data-country="Germany" data-vigor="Medium" data-size="Big" data-search="gunslebert gunslebener, gunslebert germany">
+        <h3>Gunslebert</h3>
+        <div class="badges"><span class="badge country">Germany</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">S5·S23</span></div>
+        <div class="teaser">, high productivity, medium late pollinator, bad quality of kernel incompatibility alleles S5S23</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Gunslebener, Gunslebert</div><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Olie: medium late pollinator</div></details>
+      </article>
+      <article class="variety" id="ras-geant-de-halle" data-country="" data-vigor="" data-size="" data-search="géant de halle">
+        <h3>Géant de Halle</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-H" class="letter-section" data-letter="H">
+    <h2 class="letter-heading">H</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-halle-sche-reisen" data-country="" data-vigor="" data-size="" data-search="halle&#x27;sche reisen">
+        <h3>Halle&#x27;sche Reisen</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-I" class="letter-section" data-letter="I">
+    <h2 class="letter-heading">I</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-imperial-de-trebizonde" data-country="" data-vigor="" data-size="" data-search="imperial de trébizonde">
+        <h3>Imperial de Trébizonde</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-J" class="letter-section" data-letter="J">
+    <h2 class="letter-heading">J</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-jeeve-s-samling" data-country="" data-vigor="" data-size="" data-search="jeeve&#x27;s samling">
+        <h3>Jeeve&#x27;s Samling</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-jeeves-samling" data-country="" data-vigor="" data-size="" data-search="jeeve’s samling">
+        <h3>Jeeve’s Samling</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-K" class="letter-section" data-letter="K">
+    <h2 class="letter-heading">K</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-kwanten-29" data-country="" data-vigor="" data-size="" data-search="kwanten 29">
+        <h3>Kwanten 29</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-kwanten-32" data-country="" data-vigor="" data-size="" data-search="kwanten 32">
+        <h3>Kwanten 32</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-kwanten-33" data-country="" data-vigor="" data-size="" data-search="kwanten 33">
+        <h3>Kwanten 33</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-L" class="letter-section" data-letter="L">
+    <h2 class="letter-heading">L</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-lang-tidlig-zellernoot" data-country="" data-vigor="" data-size="" data-search="lang tidlig zellernoot">
+        <h3>Lang Tidlig Zellernoot</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-lange-spaanse" data-country="" data-vigor="" data-size="" data-search="lange spaanse">
+        <h3>Lange Spaanse</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-lombardie" data-country="Michigan, USA, from breeding by Cecil Farris, released 1989" data-vigor="Semi-Vigorous, Does Particularly Well In Cold Eastern Climates" data-size="Medium" data-search="lombardie  michigan, usa, from breeding by cecil farris, released 1989">
+        <h3>Lombardie</h3>
+        <div class="badges"><span class="badge country">Michigan, USA, from breeding by Cecil Farris, released 1989</span><span class="badge">Groei: Semi-Vigorous, Does Particularly Well In Cold Eastern Climates</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Upright, Slightly Spreading, Matures To 10-15 Ft Height</span><span class="badge s-allele">S11·S25</span></div>
+        <div class="teaser">Compressed and slightly pointed
+Average weight 1.3 grams, 40-50% kernel by weight
+25% Turkish Tree Hazel hybrid, corky bark, elongated nut husk fingers, flavorful, free of fiber, thin shell, late flow…</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>round</div><div class="field"><strong>Opmerkingen</strong>Compressed and slightly pointed
+Average weight 1.3 grams, 40-50% kernel by weight
+25% Turkish Tree Hazel hybrid, corky bark, elongated nut husk fingers, flavorful, free of fiber, thin shell, late flowering, EFB tolerant/resistant</div><div class="field"><strong>Eigenschappen</strong>Productie: Yield 20+ lbs. at bearing age 2-3 years after planting</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: Tolerant, possibly resistant, not immune, small cankers observed in 2018 trials</div></details>
+      </article>
+      <article class="variety" id="ras-lyons" data-country="" data-vigor="" data-size="" data-search="lyons">
+        <h3>Lyons</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-M" class="letter-section" data-letter="M">
+    <h2 class="letter-heading">M</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-mandshurica" data-country="" data-vigor="" data-size="" data-search="mandshurica">
+        <h3>mandshurica</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-marchijva" data-country="" data-vigor="" data-size="" data-search="marchijva">
+        <h3>Marchijva</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-merville-de-bodwiller" data-country="" data-vigor="" data-size="" data-search="merville de bodwiller">
+        <h3>Merville de Bodwiller</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-montebello" data-country="Italy" data-vigor="High" data-size="Medium" data-search="montebello montebello, santa maria del gesu, nocchione italy">
+        <h3>Montebello</h3>
+        <div class="badges"><span class="badge country">Italy</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">Ss1·Ss2</span></div>
+        <div class="teaser">Cultivated in Sicily, Synonyms; Montebello (USA), Nocchione (Italy), incompatibility alleles S1S2</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Montebello, Santa Maria del Gesu, Nocchione</div><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+      </article>
+      <article class="variety" id="ras-moturk-b" data-country="" data-vigor="" data-size="" data-search="moturk-b">
+        <h3>Moturk-B</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-moturk-d" data-country="" data-vigor="" data-size="" data-search="moturk-d">
+        <h3>Moturk-D</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-N" class="letter-section" data-letter="N">
+    <h2 class="letter-heading">N</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-napoletana" data-country="" data-vigor="" data-size="" data-search="napoletana">
+        <h3>Napoletana</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-newburg" data-country="" data-vigor="" data-size="" data-search="newburg">
+        <h3>Newburg</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-nooksack" data-country="USA" data-vigor="Small" data-size="Large" data-search="nooksack nooksock usa">
+        <h3>Nooksack</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">Ss6·Ss14</span></div>
+        <div class="teaser">incompatibility alleles S6S14</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Nooksock</div><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-P" class="letter-section" data-letter="P">
+    <h2 class="letter-heading">P</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-pearson-s-prolific" data-country="" data-vigor="" data-size="" data-search="pearson&#x27;s prolific">
+        <h3>Pearson&#x27;s Prolific</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-purpurea" data-country="" data-vigor="" data-size="" data-search="purpurea">
+        <h3>Purpurea</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-R" class="letter-section" data-letter="R">
+    <h2 class="letter-heading">R</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-reed" data-country="USA" data-vigor="Medium" data-size="Medium" data-search="reed  usa">
+        <h3>Reed</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S12·S15</span></div>
+        <div class="teaser">suited to areas in which varieties of the European species can not be grown due to lack of hardiness</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+      </article>
+      <article class="variety" id="ras-riekchen-s-zellernus" data-country="" data-vigor="" data-size="" data-search="riekchen&#x27;s zellernus">
+        <h3>Riekchen&#x27;s Zellernus</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-rode-zellernoot" data-country="" data-vigor="" data-size="" data-search="rode zellernoot">
+        <h3>Rode Zellernoot</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-rosset" data-country="Spain" data-vigor="Small" data-size="Small" data-search="rosset falseta spain">
+        <h3>rosset</h3>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Klein</span><span class="badge">Habit: Open</span></div>
+        <div class="teaser">Synonym: Falseta, medium suckering, low vigour, low susceptibility to big bud mite, protogineus, high kernel ratio (48%)</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Falseta</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Productie: high kernel ratio · Wortelopslag: Medium suckering</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-S" class="letter-section" data-letter="S">
+    <h2 class="letter-heading">S</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-segorbe" data-country="Spain" data-vigor="High" data-size="Medium" data-search="segorbe  spain">
+        <h3>Segorbe</h3>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S9·S23</span></div>
+        <div class="teaser">high vigour, medium suckering, productive, cold areas, good male flowering, highly protandrous, medium kernel ratio (44%), good kernel for industry incompatibility alleles: S9S23</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: medium kernel ratio · Productie: medium kernel ratio · Wortelopslag: productive</div></details>
+      </article>
+      <article class="variety" id="ras-simon" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="simon  spain">
+        <h3>Simon</h3>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S6·S22</span></div>
+        <div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+      <article class="variety" id="ras-sivri-ghiaghli" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="sivri ghiaghli  turkey">
+        <h3>Sivri Ghiaghli</h3>
+        <div class="badges"><span class="badge country">Turkey</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S4·S12</span></div>
+        <div class="teaser">High productive, High suckering, protandrie-homogam, high oil and protein content, high kernel ratio (48.9%), low bleaching ability (72.3%), less tendency to alter bearing.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Eigenschappen</strong>Kern: high kernel ratio · Olie: high oil · Productie: high kernel ratio · Wortelopslag: productive</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: high oil</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-T" class="letter-section" data-letter="T">
+    <h2 class="letter-heading">T</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-tonda-di-gifoni" data-country="" data-vigor="" data-size="" data-search="tonda di gifoni">
+        <h3>tonda di gifoni</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-tonda-rossa" data-country="Italy" data-vigor="High" data-size="Large" data-search="tonda rossa  italy">
+        <h3>Tonda Rossa</h3>
+        <div class="badges"><span class="badge country">Italy</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S8·S23</span></div>
+        <div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div id="letter-W" class="letter-section" data-letter="W">
+    <h2 class="letter-heading">W</h2>
+    <div class="variety-grid">
+      <article class="variety" id="ras-webb-s-prize-cobb" data-country="" data-vigor="" data-size="" data-search="webb&#x27;s prize cobb">
+        <h3>webb&#x27;s prize cobb</h3>
+        <div class="badges"></div>
+        <div class="teaser"></div>
+        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+      </article>
+      <article class="variety" id="ras-willamette" data-country="USA" data-vigor="High" data-size="Medium" data-search="willamette  usa">
+        <h3>Willamette</h3>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S3</span></div>
+        <div class="teaser">moderately resistant to eastern filbert blight, intermediate susceptibility to big bud mites, incompatibility alleles S1S3</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: moderately resistant to eastern filbert blight · Knopmijt: moderately resistant to eastern filbert blight</div></details>
+      </article>
+    </div>
+  </div>
+
+  <div class="empty-state" id="empty-state">
+    <p>Geen rassen gevonden met deze filters.</p>
+    <p><button onclick="resetFilters()" style="background:none;border:1px solid #c8ddc5;border-radius:4px;padding:8px 14px;cursor:pointer;color:#555;font-family:inherit;font-size:0.85rem">Filters wissen</button></p>
+  </div>
+
+  <p class="page-end">
+    Terug naar <a href="appels.html">de appels</a> of <a href="/">De Griffel</a>.
+  </p>
+
+</main>
+
+<footer>
+  Dank aan Tom, Kaat en Ona van Loof en Bezen voor vier jaar grond in concessie. Aan Elin, voor het luisteren naar elk idee. Aan Seppe, voor de sprong. Aan Hugo Vets, Dimitri Jacobs en Jos Arits voor het eerste enthout. En aan Het Schavaaienhof, Grasroots, en de mensen in Noord-Frankrijk die de collectie verder dragen.
+  <br><br>
+  &copy; De Griffel &nbsp;|&nbsp; <a href="mailto:martin@degriffel.eu">martin@degriffel.eu</a>
+</footer>
+
+<script>
+(function() {
+  const $search = document.getElementById('f-search');
+  const $country = document.getElementById('f-country');
+  const $vigor = document.getElementById('f-vigor');
+  const $size = document.getElementById('f-size');
+  const $resultsNum = document.getElementById('results-num');
+  const $emptyState = document.getElementById('empty-state');
+  const allVarieties = Array.from(document.querySelectorAll('.variety'));
+  const allSections = Array.from(document.querySelectorAll('.letter-section'));
+  const jumplinkLetters = Array.from(document.querySelectorAll('.jumplinks a'));
+
+  function applyFilters() {
+    const q = ($search.value || '').trim().toLowerCase();
+    const country = $country.value;
+    const vigor = $vigor.value;
+    const size = $size.value;
+    let shown = 0;
+    const lettersWithMatches = new Set();
+
+    for (const v of allVarieties) {
+      const matchSearch = !q || v.dataset.search.includes(q);
+      const matchCountry = !country || v.dataset.country === country;
+      const matchVigor = !vigor || v.dataset.vigor === vigor;
+      const matchSize = !size || v.dataset.size === size;
+      const visible = matchSearch && matchCountry && matchVigor && matchSize;
+      v.classList.toggle('hidden', !visible);
+      if (visible) {
+        shown++;
+        lettersWithMatches.add(v.closest('.letter-section').dataset.letter);
+      }
+    }
+
+    for (const sec of allSections) {
+      sec.classList.toggle('empty', !lettersWithMatches.has(sec.dataset.letter));
+    }
+    for (const a of jumplinkLetters) {
+      a.classList.toggle('disabled', !lettersWithMatches.has(a.dataset.letter));
+    }
+    $resultsNum.textContent = shown;
+    $emptyState.classList.toggle('show', shown === 0);
+  }
+
+  window.resetFilters = function() {
+    $search.value=''; $country.value=''; $vigor.value=''; $size.value='';
+    applyFilters();
+  };
+
+  [$search, $country, $vigor, $size].forEach(el => {
+    el.addEventListener(el.tagName === 'INPUT' ? 'input' : 'change', applyFilters);
+  });
+})();
+</script>
+
+</body>
+</html>
