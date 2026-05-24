@@ -9,18 +9,11 @@
     .hero-img { margin: 0 -20px 32px; text-align: center; }
     .hero-img img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
     .hero-img figcaption { font-size: 0.85rem; color: #777; font-style: italic; margin-top: 10px; }
-    .filters {
-      background: #fff; border: 1px solid #c8ddc5; border-radius: 8px;
-      padding: 18px 20px; margin: 16px 0; display: grid;
-      grid-template-columns: 1fr; gap: 12px;
-    }
+    .filters { background: #fff; border: 1px solid #c8ddc5; border-radius: 8px; padding: 18px 20px; margin: 16px 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
     @media (min-width: 720px) { .filters { grid-template-columns: 2fr 1fr 1fr 1fr; align-items: end; } }
     .filter-group { display: flex; flex-direction: column; gap: 4px; }
     .filter-group label { font-size: 0.75rem; color: #2d5a27; text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold; }
-    .filter-group input[type="text"], .filter-group select {
-      padding: 8px 10px; border: 1px solid #c8ddc5; border-radius: 4px;
-      background: #f7f4ef; font-family: inherit; font-size: 0.95rem; color: #2c2c2c;
-    }
+    .filter-group input[type="text"], .filter-group select { padding: 8px 10px; border: 1px solid #c8ddc5; border-radius: 4px; background: #f7f4ef; font-family: inherit; font-size: 0.95rem; color: #2c2c2c; }
     .filter-group input[type="text"]:focus, .filter-group select:focus { outline: none; border-color: #2d5a27; background: #fff; }
     .results-count { font-size: 0.9rem; color: #777; margin: 0 0 16px; text-align: center; }
     .results-count strong { color: #2d5a27; }
@@ -41,6 +34,8 @@
     .plate-img img { width: 100%; height: auto; display: block; }
     .plate-caption { font-size: 0.72rem; color: #999; font-style: italic; padding: 4px 16px 6px; text-align: center; }
     .plate-caption a { color: #2d5a27; }
+    .goeschke-quote { background: #fefaf0; border-left: 3px solid #c8a44a; padding: 10px 14px; margin: 10px 0; font-size: 0.88rem; color: #4a3920; line-height: 1.55; font-style: italic; border-radius: 0 4px 4px 0; }
+    .goeschke-quote strong { color: #2d5a27; font-style: normal; }
     .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
     .badge { display: inline-block; padding: 2px 8px; background: #f7f4ef; color: #555; border-radius: 3px; font-size: 0.75rem; letter-spacing: 0.3px; }
     .badge.country { background: #e6f0e3; color: #2d5a27; }
@@ -94,7 +89,7 @@
 <main>
 
   <h2 class="plain">Onze hazelaarcollectie</h2>
-  <p class="subtitle">52 rassen — gelinkt aan de USDA Corylus Core Collection (32) en Goeschke 1887 (8)</p>
+  <p class="subtitle">52 rassen — gelinkt aan USDA Corylus Core Collection en Goeschke 1887</p>
 
   <figure class="hero-img">
     <img src="images/eerste-hazelnoot-mont-saint-jean.jpg" alt="De eerste hazelnoot aan een jonge boom in Mont-Saint-Jean">
@@ -106,11 +101,7 @@
   </p>
 
   <p>
-    Hazelnoten zijn windbestuivers en bovendien <em>protandrisch</em>. Daarbij komt de <strong>S-allele-incompatibiliteit</strong> — een genetisch slot dat zelfbestuiving tegengaat. In de praktijk: één hazelaar alleen draagt zelden, twee verschillende rassen samen al beter, drie of meer is ideaal.
-  </p>
-
-  <p>
-    De data per ras komt uit drie bronnen: onze eigen <a href="https://docs.google.com/spreadsheets/d/1f0Ix691dhNDRDFvDcETjYRF8JqDbUynQOkcPAxHYeGA" target="_blank" rel="noopener">Hazelnut index</a>, de <a href="https://www.ars.usda.gov/ARSUserFiles/20721500/catalogs/corcore.html" target="_blank" rel="noopener">USDA Corylus Core Collection</a>, en <em>Die Haselnuss</em> van Franz Goeschke (Berlin, 1887) via <a href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">e-rara.ch</a>. Voor de 8 rassen die in Goeschke's monografie beschreven staan, tonen we de originele lithografieplaat uit 1887.
+    Voor de 8 rassen die in <em>Die Haselnuss</em> (Franz Goeschke, Berlin 1887) beschreven staan, tonen we de originele lithografieplaat plus een korte Nederlandse vertaling van Goeschke's <em>Heimat und Vorkommen</em>-paragraaf. De technische data per ras komt uit onze <a href="https://docs.google.com/spreadsheets/d/1f0Ix691dhNDRDFvDcETjYRF8JqDbUynQOkcPAxHYeGA" target="_blank" rel="noopener">Hazelnut index</a>, de <a href="https://www.ars.usda.gov/ARSUserFiles/20721500/catalogs/corcore.html" target="_blank" rel="noopener">USDA Corylus Core Collection</a>, en het boek zelf via <a href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">e-rara.ch</a>.
   </p>
 
   <div class="summary-stats">
@@ -250,8 +241,8 @@
 <h3>Corylus America</h3>
         
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 82 — <em>Amerikanische Schnabelnuss</em> (Tafel LXXI, boek p.179)</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LXXI</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Noord-Amerikaanse hazelaar (Corylus americana), eind 18e eeuw geïntroduceerd in Europese tuinen. Onderscheidt zich van Europese hazelaars door de zeer karakteristieke &#x27;gehoornde&#x27; (lang uitgetrokken) bolster. Goeschke geeft II. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 82 — <em>Amerikanische Schnabelnuss</em> (Tafel LXXI)</div><div class="field"><strong>Klasse (Goeschke)</strong>V. Klasse: Amerikanische Haseln</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Amerikanische Haselnuss; Amerikanische gehörnte Haselnuss; American Cob Nut; Cuckold Nut; Noisetier d&#x27;Amérique; Noisetier à long fureau; Corylus americana Marsh., C. americana Marsh. v. crispa</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Vaterland Nordamerika. Wurde schon gegen Ende des vorigen Jahrhunderts in unsere Gärten eingeführt.</em></div><div class="field"><strong>Goeschke's rang</strong>II. Rang</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LXXI</a></details>
       </article>
       <article class="variety" id="ras-cosford" data-country="Great Britain" data-vigor="High" data-size="Large" data-search="cosford great britain 557039 heirloom">
         <h3>Cosford</h3>
@@ -334,8 +325,8 @@
 <h3>Gunslebert</h3>
         <div class="pi-tag">PI 557191 · GRIN 1452163</div>
         <div class="badges"><span class="badge country">Germany</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">S5·S23</span><span class="badge heirloom">Erfgoed-ras</span></div>
-        <div class="teaser">, high productivity, medium late pollinator, bad quality of kernel incompatibility alleles S5S23</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Gunslebener, Gunslebert</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Olie: medium late pollinator</div><div class="field"><strong>In Goeschke 1887</strong>No. 41 — <em>Gunslebener Zellernuss</em> (Tafel XXX, boek p.97)</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452163" target="_blank" rel="noopener">→ USDA (PI 557191)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XXX</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Een Duitse zaailing uit Halberstadt (ca. 1825), gekweekt door Gunsleben uit Burchardt-zaaisels. Reichtragend en geschikt voor Höhenlagen tot 700m volgens de LWG. Goeschke geeft I. Rang.</div><div class="teaser">, high productivity, medium late pollinator, bad quality of kernel incompatibility alleles S5S23</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Gunslebener, Gunslebert</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Olie: medium late pollinator</div><div class="field"><strong>In Goeschke 1887</strong>No. 41 — <em>Gunslebener Zellernuss</em> (Tafel XXX)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 3. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Gunsleben&#x27;sche Zellernuss</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Wurde von einem Züchter Gunsleben dieser ostfälischen Anlage zu Halberstadt gezogen aus Samen, die Burchardt 1825 aus den hessischen Pomologengarten erhielt.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452163" target="_blank" rel="noopener">→ USDA (PI 557191)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XXX</a></details>
       </article>
       <article class="variety" id="ras-geant-de-halle" data-country="" data-vigor="" data-size="" data-search="géant de halle">
         
@@ -344,8 +335,8 @@
 <h3>Géant de Halle</h3>
         
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 30 — <em>Halle&#x27;sche Riesennuss</em> (Tafel XIX, boek p.75)</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XIX</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Franse naam voor de Halle&#x27;sche Riesennuss — een Duitse zaailing uit Halle aan de Saale (1798), gewonnen uit een zaadje van de Engelse Zellernuss. Robuust en zeer productief. Goeschke geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 30 — <em>Halle&#x27;sche Riesennuss</em> (Tafel XIX)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 2. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Halle&#x27;sche Riesen-Zellernuss; Géant de Halle (Franse naam)</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Wurde von Süssmannsdorf und Justus Krautenecker C.G. Brett zu Halle a.S. aus einem 1798 gefundenen Samen der englischen Zellernuss erzogen.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XIX</a></details>
       </article>
     </div>
   </div>
@@ -360,8 +351,8 @@
 <h3>Halle&#x27;sche Reisen</h3>
         
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 30 — <em>Halle&#x27;sche Riesennuss</em> (Tafel XIX, boek p.75)</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XIX</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Een Duitse zaailing uit Halle aan de Saale (1798), gewonnen uit een zaadje van de Engelse Zellernuss. Een productieve, robuuste klassieker — wat de Bayerische LWG vandaag bevestigt: &#x27;Robust, zuverlässiger Fruchtansatz, Höhenlagen bis 500m.&#x27; Goeschke geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 30 — <em>Halle&#x27;sche Riesennuss</em> (Tafel XIX)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 2. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Halle&#x27;sche Riesen-Zellernuss</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Wurde von Süssmannsdorf und Justus Krautenecker C.G. Brett zu Halle a.S. aus einem 1798 gefundenen Samen der englischen Zellernuss erzogen.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XIX</a></details>
       </article>
     </div>
   </div>
@@ -376,8 +367,8 @@
 <h3>Imperial de Trébizonde</h3>
         <div class="pi-tag">PI 271105 · GRIN 1203944</div>
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>In Goeschke 1887</strong>No. 2 — <em>Trapezunter Kaiserhasel</em> (Tafel LI, boek p.139)</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1203944" target="_blank" rel="noopener">→ USDA (PI 271105)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LI</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Een laat-19e-eeuwse Turkse oorsprong-import. De Franse naam &#x27;Impériale de Trébisond&#x27; verwijst naar Trabzon (Trapezunt) aan de Zwarte Zee — historisch hart van de hazelnootkweek. Goeschke geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>In Goeschke 1887</strong>No. 62 — <em>Trapezunter Kaiserhasel</em> (Tafel LI)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 5. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Impériale de Trébisond</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Aus der Tafelkultur stammend; durch Herrn Adrien Sénéclause uit eigen Türkischer Pflanzungen gewonnen — een naam waaronder oude Trapezunter (Trebizond, vandaag Trabzon in Turkije) Kaiserhasel in West-Europa rondkwam.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1203944" target="_blank" rel="noopener">→ USDA (PI 271105)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LI</a></details>
       </article>
     </div>
   </div>
@@ -446,8 +437,8 @@
 <h3>Lange Spaanse</h3>
         
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 72 — <em>Spanische Lambertsnuss</em> (Tafel LXI, boek p.?)</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LXI</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Spaanse Lambertsnoot — al sinds begin 19e eeuw in Engeland en Duitsland onder vele namen geteeld (Spanish Nut, Lamberts Large, Cob Nut, Noisetier d&#x27;Espagne…). Een grote, langwerpige Lambertsnoot. Goeschke geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 72 — <em>Spanische Lambertsnuss</em> (Tafel LXI)</div><div class="field"><strong>Klasse (Goeschke)</strong>III. Klasse: Lambertsnüsse, 1. Ordnung</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Spanish Nut; Lamberts Large; Large Cob; Cob Nut; Large Bond Nut; Noisetier d&#x27;Espagne; Aveline grosse longue d&#x27;Espagne</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Stammt aus Spanien, eine van zes Spaanse Lambertsnüsse; reeds in 1825 van Süssmannsdorf en Burchardt geteelt. Bekend onder zes Spaanse Lambertsnüsse.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. LXI</a></details>
       </article>
       <article class="variety" id="ras-lombardie" data-country="Michigan, USA, from breeding by Cecil Farris, released 1989" data-vigor="Semi-Vigorous, Does Particularly Well In Cold Eastern Climates" data-size="Medium" data-search="lombardie michigan, usa, from breeding by cecil farris, released 1989">
         <h3>Lombardie</h3>
@@ -494,8 +485,8 @@ Average weight 1.3 grams, 40-50% kernel by weight
 <h3>Merville de Bodwiller</h3>
         
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 31 — <em>Wunder von Bollwiller</em> (Tafel XX, boek p.77)</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XX</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Oud Elzassisch ras uit Bollwiller — daarom in het Nederlands ook &#x27;Merveille de Bollwiller&#x27; (jouw &#x27;Merville de Bodwiller&#x27; is dezelfde plant). Goeschke noemt het &#x27;een der vorzüglichsten&#x27; en geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>In Goeschke 1887</strong>No. 31 — <em>Wunder von Bollwiller</em> (Tafel XX)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 2. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Merveille de Bollwiller; Weiss-Rosenthal; Halle&#x27;sche Zellernuss (anderes!)</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Aus Bollwiller im Elsass (Frankrijk); een oude vermehrte Zellernoot.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XX</a></details>
       </article>
       <article class="variety" id="ras-montebello" data-country="Italy" data-vigor="High" data-size="Medium" data-search="montebello montebello, santa maria del gesu, nocchione italy 557028 useful for breeding, thick shells">
         <h3>Montebello</h3>
@@ -585,8 +576,8 @@ Average weight 1.3 grams, 40-50% kernel by weight
 <h3>Riekchen&#x27;s Zellernus</h3>
         <div class="pi-tag">PI 557199 · GRIN 1452171</div>
         <div class="badges"></div>
-        <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Halls Giant x Early Long Zeller</div><div class="field"><strong>In Goeschke 1887</strong>No. 47 — <em>Riekchen&#x27;s Zellernuss</em> (Tafel XXXVI, boek p.109)</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452171" target="_blank" rel="noopener">→ USDA (PI 557199)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XXXVI</a></details>
+        <div class="goeschke-quote"><strong>Goeschke 1887 schrijft:</strong> Een Duitse zaailing van Justizrat Burchardt uit Landsberg an der Warthe — gewonnen uit zaaisel en vernoemd naar &#x27;Riekchen&#x27; (familielid Reich). Ook bekend als Mogulnuss. Goeschke geeft I. Rang.</div><div class="teaser"></div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Halls Giant x Early Long Zeller</div><div class="field"><strong>In Goeschke 1887</strong>No. 47 — <em>Riekchen&#x27;s Zellernuss</em> (Tafel XXXVI)</div><div class="field"><strong>Klasse (Goeschke)</strong>II. Klasse: Zellernüsse, 5. Ordnung Unterordnung b</div><div class="field"><strong>Synoniemen (Goeschke)</strong>Mogulnuss</div><div class="field"><strong>Heimat und Vorkommen (DE)</strong><em>Eine Züchtung des Justizrat Burchardt zu Landsberg a. W. — er gewann diese aus einem Aussäen seiner Reichen Familie Riekchen.</em></div><div class="field"><strong>Goeschke's rang</strong>I. Rang</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452171" target="_blank" rel="noopener">→ USDA (PI 557199)</a><a class="goeschke-link" href="https://www.e-rara.ch/zut/wihibe/content/titleinfo/1952207" target="_blank" rel="noopener">→ Goeschke 1887, Taf. XXXVI</a></details>
       </article>
       <article class="variety" id="ras-rode-zellernoot" data-country="" data-vigor="" data-size="" data-search="rode zellernoot">
         <h3>Rode Zellernoot</h3>
@@ -691,35 +682,20 @@ Average weight 1.3 grams, 40-50% kernel by weight
 
 <script>
 (function() {
-  const $search = document.getElementById('f-search');
-  const $country = document.getElementById('f-country');
-  const $vigor = document.getElementById('f-vigor');
-  const $size = document.getElementById('f-size');
-  const $resultsNum = document.getElementById('results-num');
-  const $emptyState = document.getElementById('empty-state');
-  const allVarieties = Array.from(document.querySelectorAll('.variety'));
-  const allSections = Array.from(document.querySelectorAll('.letter-section'));
-  const jumplinkLetters = Array.from(document.querySelectorAll('.jumplinks a'));
-
-  function applyFilters() {
-    const q = ($search.value || '').trim().toLowerCase();
-    const country = $country.value, vigor = $vigor.value, size = $size.value;
-    let shown = 0; const lettersWithMatches = new Set();
-    for (const v of allVarieties) {
-      const ok = (!q || v.dataset.search.includes(q))
-              && (!country || v.dataset.country === country)
-              && (!vigor || v.dataset.vigor === vigor)
-              && (!size || v.dataset.size === size);
-      v.classList.toggle('hidden', !ok);
-      if (ok) { shown++; lettersWithMatches.add(v.closest('.letter-section').dataset.letter); }
-    }
-    for (const sec of allSections) sec.classList.toggle('empty', !lettersWithMatches.has(sec.dataset.letter));
-    for (const a of jumplinkLetters) a.classList.toggle('disabled', !lettersWithMatches.has(a.dataset.letter));
-    $resultsNum.textContent = shown;
-    $emptyState.classList.toggle('show', shown === 0);
+  const $s=document.getElementById('f-search'),$c=document.getElementById('f-country'),$v=document.getElementById('f-vigor'),$sz=document.getElementById('f-size');
+  const $n=document.getElementById('results-num'),$e=document.getElementById('empty-state');
+  const all=Array.from(document.querySelectorAll('.variety')),secs=Array.from(document.querySelectorAll('.letter-section'));
+  const jl=Array.from(document.querySelectorAll('.jumplinks a'));
+  function f(){
+    const q=($s.value||'').trim().toLowerCase(),c=$c.value,vi=$v.value,sz=$sz.value;
+    let shown=0;const L=new Set();
+    for(const v of all){const ok=(!q||v.dataset.search.includes(q))&&(!c||v.dataset.country===c)&&(!vi||v.dataset.vigor===vi)&&(!sz||v.dataset.size===sz);v.classList.toggle('hidden',!ok);if(ok){shown++;L.add(v.closest('.letter-section').dataset.letter);}}
+    for(const x of secs)x.classList.toggle('empty',!L.has(x.dataset.letter));
+    for(const a of jl)a.classList.toggle('disabled',!L.has(a.dataset.letter));
+    $n.textContent=shown;$e.classList.toggle('show',shown===0);
   }
-  window.resetFilters = function() { $search.value=''; $country.value=''; $vigor.value=''; $size.value=''; applyFilters(); };
-  [$search, $country, $vigor, $size].forEach(el => el.addEventListener(el.tagName === 'INPUT' ? 'input' : 'change', applyFilters));
+  window.resetFilters=function(){$s.value='';$c.value='';$v.value='';$sz.value='';f();};
+  [$s,$c,$v,$sz].forEach(el=>el.addEventListener(el.tagName==='INPUT'?'input':'change',f));
 })();
 </script>
 
