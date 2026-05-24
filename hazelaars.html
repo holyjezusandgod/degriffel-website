@@ -48,7 +48,7 @@
       margin: 40px 0 16px; padding-bottom: 6px; border-bottom: 1px solid #c8ddc5;
     }
     .variety-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;
     }
     .variety {
       background: #fff; border: 1px solid #c8ddc5; border-radius: 8px;
@@ -58,6 +58,7 @@
     .variety:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .variety.hidden { display: none; }
     .variety h3 { font-size: 1.05rem; color: #2d5a27; margin: 0 0 6px; }
+    .pi-tag { font-size: 0.7rem; color: #888; font-family: monospace; margin-bottom: 8px; }
     .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
     .badge {
       display: inline-block; padding: 2px 8px; background: #f7f4ef;
@@ -66,6 +67,16 @@
     .badge.country { background: #e6f0e3; color: #2d5a27; }
     .badge.size { background: #fff8e7; color: #8a6d00; }
     .badge.s-allele { background: #ede7f6; color: #5e35b1; font-family: monospace; }
+    .badge.efb-resistant { background: #d4edda; color: #155724; }
+    .badge.efb-susceptible { background: #f8d7da; color: #721c24; }
+    .badge.breeder-choice { background: #fff3cd; color: #856404; }
+    .badge.heirloom { background: #d1ecf1; color: #0c5460; }
+    .badge.pollinizer { background: #e0f0e0; color: #2d5a27; }
+    .badge.ornamental { background: #f3e5f5; color: #6a1b9a; }
+    .badge.large { background: #fff8e7; color: #8a6d00; }
+    .badge.rootstock { background: #e8eaf6; color: #1a237e; }
+    .badge.kernel { background: #fff3e0; color: #e65100; }
+    .badge.flavor { background: #fce4ec; color: #880e4f; }
     .teaser { font-size: 0.9rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
     .variety details { margin-top: 6px; font-size: 0.9rem; }
     .variety details summary {
@@ -81,6 +92,12 @@
       display: block; color: #2d5a27; font-size: 0.75rem;
       text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
     }
+    .usda-link {
+      display: inline-block; margin-top: 10px; font-size: 0.8rem;
+      color: #2d5a27; text-decoration: none; padding: 4px 10px;
+      background: #f7f4ef; border-radius: 4px;
+    }
+    .usda-link:hover { background: #c8ddc5; }
     .no-data { font-size: 0.85rem; color: #999; font-style: italic; }
     .summary-stats {
       background: #fff8e7; border-left: 4px solid #2d5a27;
@@ -113,7 +130,7 @@
 <main>
 
   <h2 class="plain">Onze hazelaarcollectie</h2>
-  <p class="subtitle">52 rassen, verspreid over drie continenten en drie bestemmingen</p>
+  <p class="subtitle">52 rassen — 32 gelinkt aan de USDA Corylus Core Collection</p>
 
   <figure class="hero-img">
     <img src="images/eerste-hazelnoot-mont-saint-jean.jpg" alt="De eerste hazelnoot aan een jonge boom in Mont-Saint-Jean">
@@ -121,7 +138,7 @@
   </figure>
 
   <p class="lead">
-    Onze hazelaarcollectie telt 52 rassen — geselecteerd op smaak, productiviteit, ziekteresistentie en niet in de laatste plaats op verhaal. De selectie spant van Spaanse landrassen (Alcover, Casina, Apegalos) tot Amerikaanse moderne <em>Eastern Filbert Blight</em>-tolerante kruisingen (Brixnut, Butler, Ennis, Yamhill) en Turkse, Italiaanse en Vlaamse klassiekers.
+    Onze hazelaarcollectie telt 52 rassen — geselecteerd op smaak, productiviteit, ziekteresistentie en niet in de laatste plaats op verhaal. De selectie spant van Spaanse landrassen (Casina, Segorbe) tot Amerikaanse EFB-resistente kruisingen (Brixnut, Butler, Ennis), Italiaanse klassiekers (Montebello, Tonda Rossa) en Vlaamse zaden.
   </p>
 
   <p>
@@ -129,17 +146,21 @@
   </p>
 
   <p>
-    Hazelnoten zijn windbestuivers en bovendien <em>protandrisch</em>: mannelijke katjes en vrouwelijke bloemen rijpen niet altijd tegelijk. Daarbij komt nog de <strong>S-allele-incompatibiliteit</strong> — een genetisch slot dat zelfbestuiving tegengaat. In de praktijk wil dat zeggen: één hazelaar alleen draagt zelden, twee verschillende rassen samen al beter, drie of meer is ideaal.
+    Hazelnoten zijn windbestuivers en bovendien <em>protandrisch</em>: mannelijke katjes en vrouwelijke bloemen rijpen niet altijd tegelijk. Daarbij komt nog de <strong>S-allele-incompatibiliteit</strong> — een genetisch slot dat zelfbestuiving tegengaat. In de praktijk: één hazelaar alleen draagt zelden, twee verschillende rassen samen al beter, drie of meer is ideaal.
+  </p>
+
+  <p>
+    32 van onze 52 rassen zijn gelinkt aan de <a href="https://www.ars.usda.gov/ARSUserFiles/20721500/catalogs/corcore.html" target="_blank" rel="noopener">USDA Corylus Core Collection</a> bij de National Clonal Germplasm Repository (NCGR) in Corvallis, Oregon. Klik op "→ USDA-record" in een kaart om naar de officiële GRIN-Global accession te gaan, met pedigree, virus-testen en uitgebreide observaties.
   </p>
 
   <div class="summary-stats">
-    Zoek op naam of synoniem. Filter op land van oorsprong, groeikracht, grootte van de noot, of habitus.
+    Zoek op naam of synoniem. Filter op land van oorsprong, groeikracht, of grootte van de noot.
   </div>
 
   <div class="filters">
     <div class="filter-group">
       <label for="f-search">Zoeken</label>
-      <input type="text" id="f-search" placeholder="naam of synoniem…" autocomplete="off">
+      <input type="text" id="f-search" placeholder="naam, synoniem of PI-nummer…" autocomplete="off">
     </div>
     <div class="filter-group">
       <label for="f-country">Oorsprong</label>
@@ -199,11 +220,12 @@
   <div id="letter-A" class="letter-section" data-letter="A">
     <h2 class="letter-heading">A</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-aurea" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="aurea  spain">
+      <article class="variety" id="ras-aurea" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="aurea spain 557050 ornamental, golden foliage">
         <h3>Aurea</h3>
-        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Open</span></div>
+        <div class="pi-tag">PI 557050 · GRIN 1452022</div>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Open</span><span class="badge ornamental">Sierhazelaar</span><span class="badge ornamental">Geel blad</span></div>
         <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Clonal selection of C. avellana with yellow foliage</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452022" target="_blank" rel="noopener">→ USDA-record (PI 557050)</a></details>
       </article>
     </div>
   </div>
@@ -211,35 +233,40 @@
   <div id="letter-B" class="letter-section" data-letter="B">
     <h2 class="letter-heading">B</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-bergerac" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="bergerac  turkey">
+      <article class="variety" id="ras-bergerac" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="bergerac turkey">
         <h3>Bergerac</h3>
+        
         <div class="badges"><span class="badge country">Turkey</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span></div>
         <div class="teaser">low productivity, medium suckering, protandrie-homogam, low oil (60.0%), and medium protein (16.4%) content, low kernel ratio (44.2%), low bleaching ability (73.3%), high tendency to alter bearing.</div>
         <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Eigenschappen</strong>Kern: low kernel ratio · Olie: low oil · Productie: low productivity · Wortelopslag: Medium suckering</div></details>
       </article>
       <article class="variety" id="ras-bergerie" data-country="Belgique" data-vigor="High" data-size="Large" data-search="bergerie louis berger belgique">
         <h3>bergerie</h3>
+        
         <div class="badges"><span class="badge country">Belgique</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S3·S25</span></div>
         <div class="teaser">, low productivity, late pollinator, low percentage of kernel, incompatibility alleles S3S?</div>
         <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Louis Berger</div><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Bloei</strong>late pollinator</div><div class="field"><strong>Eigenschappen</strong>Productie: low productivity</div></details>
       </article>
-      <article class="variety" id="ras-brixnut" data-country="USA" data-vigor="High" data-size="Medium" data-search="brixnut  usa">
+      <article class="variety" id="ras-brixnut" data-country="USA" data-vigor="High" data-size="Medium" data-search="brixnut usa 557031">
         <h3>Brixnut</h3>
+        <div class="pi-tag">PI 557031 · GRIN 1452003</div>
         <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S14</span></div>
         <div class="teaser">Incompatibility alleles S1S14</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x DuChilly</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452003" target="_blank" rel="noopener">→ USDA-record (PI 557031)</a></details>
       </article>
-      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler  usa">
+      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler usa 557077 efb susceptible, large nuts, pollinizer, breeder choice">
         <h3>Butler</h3>
-        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span></div>
+        <div class="pi-tag">PI 557077 · GRIN 1452049</div>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span><span class="badge efb-susceptible">EFB-gevoelig</span><span class="badge large">Grote noten</span><span class="badge pollinizer">Bestuiver</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser">Pollinator of Barcelona and Ennis incompatibility allels S2S3.</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x Daviana</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452049" target="_blank" rel="noopener">→ USDA-record (PI 557077)</a></details>
       </article>
-      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler  usa">
+      <article class="variety" id="ras-butler" data-country="USA" data-vigor="High" data-size="Medium" data-search="butler usa 557077 efb susceptible, large nuts, pollinizer, breeder choice">
         <h3>butler</h3>
-        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span></div>
+        <div class="pi-tag">PI 557077 · GRIN 1452049</div>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S3</span><span class="badge efb-susceptible">EFB-gevoelig</span><span class="badge large">Grote noten</span><span class="badge pollinizer">Bestuiver</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser">Pollinator of Barcelona and Ennis incompatibility allels S2S3.</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x Daviana</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452049" target="_blank" rel="noopener">→ USDA-record (PI 557077)</a></details>
       </article>
     </div>
   </div>
@@ -247,29 +274,33 @@
   <div id="letter-C" class="letter-section" data-letter="C">
     <h2 class="letter-heading">C</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-casina" data-country="Spain" data-vigor="High" data-size="Small" data-search="casina  spain">
+      <article class="variety" id="ras-casina" data-country="Spain" data-vigor="High" data-size="Small" data-search="casina spain 557033 v efb susceptible, breeder choice">
         <h3>Casina</h3>
-        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Klein</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S10·S21</span></div>
+        <div class="pi-tag">PI 557033 · GRIN 1452005</div>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Klein</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S10·S21</span><span class="badge efb-susceptible">zeer EFB-gevoelig</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser">Productive, incompatibility alleles (S10S21)</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Productie: productive · Wortelopslag: productive</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection from the wild in Northern Spain</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Productie: productive · Wortelopslag: productive</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452005" target="_blank" rel="noopener">→ USDA-record (PI 557033)</a></details>
       </article>
-      <article class="variety" id="ras-chinoka" data-country="" data-vigor="" data-size="" data-search="chinoka">
+      <article class="variety" id="ras-chinoka" data-country="" data-vigor="" data-size="" data-search="chinoka 557387">
         <h3>Chinoka</h3>
+        <div class="pi-tag">PI 557387 · GRIN 1452359</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>C. colurna (chinensis) x C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452359" target="_blank" rel="noopener">→ USDA-record (PI 557387)</a></details>
       </article>
       <article class="variety" id="ras-corylus-america" data-country="" data-vigor="" data-size="" data-search="corylus america">
         <h3>Corylus America</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-cosford" data-country="Great Britain" data-vigor="High" data-size="Large" data-search="cosford  great britain">
+      <article class="variety" id="ras-cosford" data-country="Great Britain" data-vigor="High" data-size="Large" data-search="cosford great britain 557039 heirloom">
         <h3>Cosford</h3>
-        <div class="badges"><span class="badge country">Great Britain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S3·S11</span></div>
+        <div class="pi-tag">PI 557039 · GRIN 1452011</div>
+        <div class="badges"><span class="badge country">Great Britain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S3·S11</span><span class="badge heirloom">Erfgoed-ras</span></div>
         <div class="teaser">Medium productivity, medium late pollinator, high percentage of kernel, fibrous kernel, susceptible to big bud mite, incompatibility alleles S3S?</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Olie: medium late pollinator</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Olie: medium late pollinator</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452011" target="_blank" rel="noopener">→ USDA-record (PI 557039)</a></details>
       </article>
     </div>
   </div>
@@ -277,23 +308,26 @@
   <div id="letter-E" class="letter-section" data-letter="E">
     <h2 class="letter-heading">E</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-eastoka" data-country="" data-vigor="" data-size="" data-search="eastoka">
+      <article class="variety" id="ras-eastoka" data-country="" data-vigor="" data-size="" data-search="eastoka 557357 tree hazel, cold hardy">
         <h3>Eastoka</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 557357 · GRIN 1452329</div>
+        <div class="badges"><span class="badge tree-hazel">Boomhazel</span><span class="badge other">Cold Hardy</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>C. colurna x large-fruited C. avellana cultivar</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452329" target="_blank" rel="noopener">→ USDA-record (PI 557357)</a></details>
       </article>
       <article class="variety" id="ras-emoa-nr-1" data-country="" data-vigor="" data-size="" data-search="emoa nr 1">
         <h3>emoa nr 1</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-ennis" data-country="USA" data-vigor="Medium" data-size="Large" data-search="ennis  usa">
+      <article class="variety" id="ras-ennis" data-country="USA" data-vigor="Medium" data-size="Large" data-search="ennis usa 557045 v efb susceptible, v large nuts, breeder choice">
         <h3>Ennis</h3>
-        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S11</span></div>
+        <div class="pi-tag">PI 557045 · GRIN 1452017</div>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S11</span><span class="badge efb-susceptible">zeer EFB-gevoelig</span><span class="badge other">V Large Nuts</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser">Low blanching capacity, main variety in Oregon and France, incompatibility alleles S1S11</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x Daviana made from a nursery in Washington</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452017" target="_blank" rel="noopener">→ USDA-record (PI 557045)</a></details>
       </article>
     </div>
   </div>
@@ -303,6 +337,7 @@
     <div class="variety-grid">
       <article class="variety" id="ras-fuscourubra" data-country="" data-vigor="" data-size="" data-search="fuscourubra">
         <h3>Fuscourubra</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -313,32 +348,37 @@
   <div id="letter-G" class="letter-section" data-letter="G">
     <h2 class="letter-heading">G</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-gem" data-country="USA" data-vigor="High" data-size="Large" data-search="gem  usa">
+      <article class="variety" id="ras-gem" data-country="USA" data-vigor="High" data-size="Large" data-search="gem usa 557029 efb resistant">
         <h3>Gem</h3>
-        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S14</span></div>
+        <div class="pi-tag">PI 557029 · GRIN 1452001</div>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S2·S14</span><span class="badge efb-resistant">EFB-resistent</span></div>
         <div class="teaser">Incompatibility alleles S14S2</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x DuChilly</div><div class="field"><strong>Vorm van de noot</strong>Long</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452001" target="_blank" rel="noopener">→ USDA-record (PI 557029)</a></details>
       </article>
       <article class="variety" id="ras-giresum-54-56" data-country="" data-vigor="" data-size="" data-search="giresum 54-56">
         <h3>Giresum 54-56</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-grand-traverse" data-country="" data-vigor="" data-size="" data-search="grand traverse">
+      <article class="variety" id="ras-grand-traverse" data-country="" data-vigor="" data-size="" data-search="grand traverse 617185 efb resistant, cold hardy, bud mite resi">
         <h3>Grand Traverse</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 617185 · GRIN 1007151</div>
+        <div class="badges"><span class="badge efb-resistant">EFB-resistent</span><span class="badge other">Cold Hardy</span><span class="badge other">Bud Mite Resi</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>Faroka x OSU 18.114 (Barcelona x Royal)</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1007151" target="_blank" rel="noopener">→ USDA-record (PI 617185)</a></details>
       </article>
-      <article class="variety" id="ras-gunslebert" data-country="Germany" data-vigor="Medium" data-size="Big" data-search="gunslebert gunslebener, gunslebert germany">
+      <article class="variety" id="ras-gunslebert" data-country="Germany" data-vigor="Medium" data-size="Big" data-search="gunslebert gunslebener, gunslebert germany 557191 heirloom">
         <h3>Gunslebert</h3>
-        <div class="badges"><span class="badge country">Germany</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">S5·S23</span></div>
+        <div class="pi-tag">PI 557191 · GRIN 1452163</div>
+        <div class="badges"><span class="badge country">Germany</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">S5·S23</span><span class="badge heirloom">Erfgoed-ras</span></div>
         <div class="teaser">, high productivity, medium late pollinator, bad quality of kernel incompatibility alleles S5S23</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Gunslebener, Gunslebert</div><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Olie: medium late pollinator</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Gunslebener, Gunslebert</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>Vorm van de noot</strong>Round</div><div class="field"><strong>Bloei</strong>medium late pollinator</div><div class="field"><strong>Eigenschappen</strong>Olie: medium late pollinator</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452163" target="_blank" rel="noopener">→ USDA-record (PI 557191)</a></details>
       </article>
       <article class="variety" id="ras-geant-de-halle" data-country="" data-vigor="" data-size="" data-search="géant de halle">
         <h3>Géant de Halle</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -351,6 +391,7 @@
     <div class="variety-grid">
       <article class="variety" id="ras-halle-sche-reisen" data-country="" data-vigor="" data-size="" data-search="halle&#x27;sche reisen">
         <h3>Halle&#x27;sche Reisen</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -361,11 +402,12 @@
   <div id="letter-I" class="letter-section" data-letter="I">
     <h2 class="letter-heading">I</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-imperial-de-trebizonde" data-country="" data-vigor="" data-size="" data-search="imperial de trébizonde">
+      <article class="variety" id="ras-imperial-de-trebizonde" data-country="" data-vigor="" data-size="" data-search="imperial de trébizonde 271105">
         <h3>Imperial de Trébizonde</h3>
+        <div class="pi-tag">PI 271105 · GRIN 1203944</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1203944" target="_blank" rel="noopener">→ USDA-record (PI 271105)</a></details>
       </article>
     </div>
   </div>
@@ -373,14 +415,16 @@
   <div id="letter-J" class="letter-section" data-letter="J">
     <h2 class="letter-heading">J</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-jeeve-s-samling" data-country="" data-vigor="" data-size="" data-search="jeeve&#x27;s samling">
+      <article class="variety" id="ras-jeeve-s-samling" data-country="" data-vigor="" data-size="" data-search="jeeve&#x27;s samling 557169">
         <h3>Jeeve&#x27;s Samling</h3>
+        <div class="pi-tag">PI 557169 · GRIN 1452141</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452141" target="_blank" rel="noopener">→ USDA-record (PI 557169)</a></details>
       </article>
       <article class="variety" id="ras-jeeves-samling" data-country="" data-vigor="" data-size="" data-search="jeeve’s samling">
         <h3>Jeeve’s Samling</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -393,18 +437,21 @@
     <div class="variety-grid">
       <article class="variety" id="ras-kwanten-29" data-country="" data-vigor="" data-size="" data-search="kwanten 29">
         <h3>Kwanten 29</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
       <article class="variety" id="ras-kwanten-32" data-country="" data-vigor="" data-size="" data-search="kwanten 32">
         <h3>Kwanten 32</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
       <article class="variety" id="ras-kwanten-33" data-country="" data-vigor="" data-size="" data-search="kwanten 33">
         <h3>Kwanten 33</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -417,18 +464,21 @@
     <div class="variety-grid">
       <article class="variety" id="ras-lang-tidlig-zellernoot" data-country="" data-vigor="" data-size="" data-search="lang tidlig zellernoot">
         <h3>Lang Tidlig Zellernoot</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
       <article class="variety" id="ras-lange-spaanse" data-country="" data-vigor="" data-size="" data-search="lange spaanse">
         <h3>Lange Spaanse</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-lombardie" data-country="Michigan, USA, from breeding by Cecil Farris, released 1989" data-vigor="Semi-Vigorous, Does Particularly Well In Cold Eastern Climates" data-size="Medium" data-search="lombardie  michigan, usa, from breeding by cecil farris, released 1989">
+      <article class="variety" id="ras-lombardie" data-country="Michigan, USA, from breeding by Cecil Farris, released 1989" data-vigor="Semi-Vigorous, Does Particularly Well In Cold Eastern Climates" data-size="Medium" data-search="lombardie michigan, usa, from breeding by cecil farris, released 1989">
         <h3>Lombardie</h3>
+        
         <div class="badges"><span class="badge country">Michigan, USA, from breeding by Cecil Farris, released 1989</span><span class="badge">Groei: Semi-Vigorous, Does Particularly Well In Cold Eastern Climates</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Upright, Slightly Spreading, Matures To 10-15 Ft Height</span><span class="badge s-allele">S11·S25</span></div>
         <div class="teaser">Compressed and slightly pointed
 Average weight 1.3 grams, 40-50% kernel by weight
@@ -437,11 +487,12 @@ Average weight 1.3 grams, 40-50% kernel by weight
 Average weight 1.3 grams, 40-50% kernel by weight
 25% Turkish Tree Hazel hybrid, corky bark, elongated nut husk fingers, flavorful, free of fiber, thin shell, late flowering, EFB tolerant/resistant</div><div class="field"><strong>Eigenschappen</strong>Productie: Yield 20+ lbs. at bearing age 2-3 years after planting</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: Tolerant, possibly resistant, not immune, small cankers observed in 2018 trials</div></details>
       </article>
-      <article class="variety" id="ras-lyons" data-country="" data-vigor="" data-size="" data-search="lyons">
+      <article class="variety" id="ras-lyons" data-country="" data-vigor="" data-size="" data-search="lyons 557136">
         <h3>Lyons</h3>
+        <div class="pi-tag">PI 557136 · GRIN 1452108</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Barcelona x DuChilly</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452108" target="_blank" rel="noopener">→ USDA-record (PI 557136)</a></details>
       </article>
     </div>
   </div>
@@ -449,41 +500,47 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-M" class="letter-section" data-letter="M">
     <h2 class="letter-heading">M</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-mandshurica" data-country="" data-vigor="" data-size="" data-search="mandshurica">
+      <article class="variety" id="ras-mandshurica" data-country="" data-vigor="" data-size="" data-search="mandshurica 557415">
         <h3>mandshurica</h3>
+        <div class="pi-tag">PI 557415 · GRIN 1452387</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. sieboldiana from Korea</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452387" target="_blank" rel="noopener">→ USDA-record (PI 557415)</a></details>
       </article>
       <article class="variety" id="ras-marchijva" data-country="" data-vigor="" data-size="" data-search="marchijva">
         <h3>Marchijva</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
       <article class="variety" id="ras-merville-de-bodwiller" data-country="" data-vigor="" data-size="" data-search="merville de bodwiller">
         <h3>Merville de Bodwiller</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-montebello" data-country="Italy" data-vigor="High" data-size="Medium" data-search="montebello montebello, santa maria del gesu, nocchione italy">
+      <article class="variety" id="ras-montebello" data-country="Italy" data-vigor="High" data-size="Medium" data-search="montebello montebello, santa maria del gesu, nocchione italy 557028 useful for breeding, thick shells">
         <h3>Montebello</h3>
-        <div class="badges"><span class="badge country">Italy</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">Ss1·Ss2</span></div>
+        <div class="pi-tag">PI 557028 · GRIN 1452000</div>
+        <div class="badges"><span class="badge country">Italy</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">Ss1·Ss2</span><span class="badge other">Useful For Breeding</span><span class="badge other">Thick Shells</span></div>
         <div class="teaser">Cultivated in Sicily, Synonyms; Montebello (USA), Nocchione (Italy), incompatibility alleles S1S2</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Montebello, Santa Maria del Gesu, Nocchione</div><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Montebello, Santa Maria del Gesu, Nocchione</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Seedling selection</div><div class="field"><strong>Vorm van de noot</strong>Round</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452000" target="_blank" rel="noopener">→ USDA-record (PI 557028)</a></details>
       </article>
-      <article class="variety" id="ras-moturk-b" data-country="" data-vigor="" data-size="" data-search="moturk-b">
+      <article class="variety" id="ras-moturk-b" data-country="" data-vigor="" data-size="" data-search="moturk-b 557359 rootstock, tree hazel">
         <h3>Moturk-B</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 557359 · GRIN 1452331</div>
+        <div class="badges"><span class="badge rootstock">Onderstam</span><span class="badge tree-hazel">Boomhazel</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>Morrisoka x C. colurna</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452331" target="_blank" rel="noopener">→ USDA-record (PI 557359)</a></details>
       </article>
-      <article class="variety" id="ras-moturk-d" data-country="" data-vigor="" data-size="" data-search="moturk-d">
+      <article class="variety" id="ras-moturk-d" data-country="" data-vigor="" data-size="" data-search="moturk-d 557349 rootstock, tree hazel">
         <h3>Moturk-D</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 557349 · GRIN 1452321</div>
+        <div class="badges"><span class="badge rootstock">Onderstam</span><span class="badge tree-hazel">Boomhazel</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>Morrisoka x C.colurna</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452321" target="_blank" rel="noopener">→ USDA-record (PI 557349)</a></details>
       </article>
     </div>
   </div>
@@ -491,23 +548,26 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-N" class="letter-section" data-letter="N">
     <h2 class="letter-heading">N</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-napoletana" data-country="" data-vigor="" data-size="" data-search="napoletana">
+      <article class="variety" id="ras-napoletana" data-country="" data-vigor="" data-size="" data-search="napoletana 557188">
         <h3>Napoletana</h3>
+        <div class="pi-tag">PI 557188 · GRIN 1452160</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452160" target="_blank" rel="noopener">→ USDA-record (PI 557188)</a></details>
       </article>
-      <article class="variety" id="ras-newburg" data-country="" data-vigor="" data-size="" data-search="newburg">
+      <article class="variety" id="ras-newburg" data-country="" data-vigor="" data-size="" data-search="newburg 557372 tree hazel, v efb susceptible, rootstock, breeder choice">
         <h3>Newburg</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 557372 · GRIN 1452344</div>
+        <div class="badges"><span class="badge tree-hazel">Boomhazel</span><span class="badge efb-susceptible">zeer EFB-gevoelig</span><span class="badge rootstock">Onderstam</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. colurna x C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452344" target="_blank" rel="noopener">→ USDA-record (PI 557372)</a></details>
       </article>
-      <article class="variety" id="ras-nooksack" data-country="USA" data-vigor="Small" data-size="Large" data-search="nooksack nooksock usa">
+      <article class="variety" id="ras-nooksack" data-country="USA" data-vigor="Small" data-size="Large" data-search="nooksack nooksock usa 557259">
         <h3>Nooksack</h3>
+        <div class="pi-tag">PI 557259 · GRIN 1452231</div>
         <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Open</span><span class="badge s-allele">Ss6·Ss14</span></div>
         <div class="teaser">incompatibility alleles S6S14</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Nooksock</div><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Nooksock</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Chance seedling of Kentish Cob</div><div class="field"><strong>Vorm van de noot</strong>Round</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452231" target="_blank" rel="noopener">→ USDA-record (PI 557259)</a></details>
       </article>
     </div>
   </div>
@@ -515,14 +575,16 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-P" class="letter-section" data-letter="P">
     <h2 class="letter-heading">P</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-pearson-s-prolific" data-country="" data-vigor="" data-size="" data-search="pearson&#x27;s prolific">
+      <article class="variety" id="ras-pearson-s-prolific" data-country="" data-vigor="" data-size="" data-search="pearson&#x27;s prolific 557140">
         <h3>Pearson&#x27;s Prolific</h3>
+        <div class="pi-tag">PI 557140 · GRIN 1452112</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452112" target="_blank" rel="noopener">→ USDA-record (PI 557140)</a></details>
       </article>
       <article class="variety" id="ras-purpurea" data-country="" data-vigor="" data-size="" data-search="purpurea">
         <h3>Purpurea</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
@@ -533,29 +595,33 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-R" class="letter-section" data-letter="R">
     <h2 class="letter-heading">R</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-reed" data-country="USA" data-vigor="Medium" data-size="Medium" data-search="reed  usa">
+      <article class="variety" id="ras-reed" data-country="USA" data-vigor="Medium" data-size="Medium" data-search="reed usa 557392">
         <h3>Reed</h3>
+        <div class="pi-tag">PI 557392 · GRIN 1452364</div>
         <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S12·S15</span></div>
         <div class="teaser">suited to areas in which varieties of the European species can not be grown due to lack of hardiness</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Round</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus hybrid</em></div><div class="field"><strong>Pedigree (USDA)</strong>Rush x Bollwyler</div><div class="field"><strong>Vorm van de noot</strong>Round</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452364" target="_blank" rel="noopener">→ USDA-record (PI 557392)</a></details>
       </article>
-      <article class="variety" id="ras-riekchen-s-zellernus" data-country="" data-vigor="" data-size="" data-search="riekchen&#x27;s zellernus">
+      <article class="variety" id="ras-riekchen-s-zellernus" data-country="" data-vigor="" data-size="" data-search="riekchen&#x27;s zellernus 557199">
         <h3>Riekchen&#x27;s Zellernus</h3>
+        <div class="pi-tag">PI 557199 · GRIN 1452171</div>
         <div class="badges"></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Halls Giant x Early Long Zeller</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452171" target="_blank" rel="noopener">→ USDA-record (PI 557199)</a></details>
       </article>
       <article class="variety" id="ras-rode-zellernoot" data-country="" data-vigor="" data-size="" data-search="rode zellernoot">
         <h3>Rode Zellernoot</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-rosset" data-country="Spain" data-vigor="Small" data-size="Small" data-search="rosset falseta spain">
+      <article class="variety" id="ras-rosset" data-country="Spain" data-vigor="Small" data-size="Small" data-search="rosset falseta spain 557108">
         <h3>rosset</h3>
+        <div class="pi-tag">PI 557108 · GRIN 1452080</div>
         <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Klein</span><span class="badge">Habit: Open</span></div>
         <div class="teaser">Synonym: Falseta, medium suckering, low vigour, low susceptibility to big bud mite, protogineus, high kernel ratio (48%)</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Falseta</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Productie: high kernel ratio · Wortelopslag: Medium suckering</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Synoniem</strong>Falseta</div><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Cultivated selection of hazelnut from Tarragona</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite · Productie: high kernel ratio · Wortelopslag: Medium suckering</div><div class="field"><strong>Ziektegevoeligheid</strong>Knopmijt: susceptibility to big bud mite</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452080" target="_blank" rel="noopener">→ USDA-record (PI 557108)</a></details>
       </article>
     </div>
   </div>
@@ -563,23 +629,26 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-S" class="letter-section" data-letter="S">
     <h2 class="letter-heading">S</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-segorbe" data-country="Spain" data-vigor="High" data-size="Medium" data-search="segorbe  spain">
+      <article class="variety" id="ras-segorbe" data-country="Spain" data-vigor="High" data-size="Medium" data-search="segorbe spain 557046 breeder choice">
         <h3>Segorbe</h3>
-        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S9·S23</span></div>
+        <div class="pi-tag">PI 557046 · GRIN 1452018</div>
+        <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S9·S23</span><span class="badge breeder-choice">Veredelaarskeuze</span></div>
         <div class="teaser">high vigour, medium suckering, productive, cold areas, good male flowering, highly protandrous, medium kernel ratio (44%), good kernel for industry incompatibility alleles: S9S23</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: medium kernel ratio · Productie: medium kernel ratio · Wortelopslag: productive</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><div class="field"><strong>Eigenschappen</strong>Kern: medium kernel ratio · Productie: medium kernel ratio · Wortelopslag: productive</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452018" target="_blank" rel="noopener">→ USDA-record (PI 557046)</a></details>
       </article>
-      <article class="variety" id="ras-simon" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="simon  spain">
+      <article class="variety" id="ras-simon" data-country="Spain" data-vigor="Small" data-size="Medium" data-search="simon spain 557166">
         <h3>Simon</h3>
+        <div class="pi-tag">PI 557166 · GRIN 1452138</div>
         <div class="badges"><span class="badge country">Spain</span><span class="badge">Groei: Klein</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S6·S22</span></div>
         <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Negret x Garrofi</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452138" target="_blank" rel="noopener">→ USDA-record (PI 557166)</a></details>
       </article>
-      <article class="variety" id="ras-sivri-ghiaghli" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="sivri ghiaghli  turkey">
+      <article class="variety" id="ras-sivri-ghiaghli" data-country="Turkey" data-vigor="Medium" data-size="Medium" data-search="sivri ghiaghli turkey 304633">
         <h3>Sivri Ghiaghli</h3>
+        <div class="pi-tag">PI 304633 · GRIN 1228651</div>
         <div class="badges"><span class="badge country">Turkey</span><span class="badge">Groei: Middel</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S4·S12</span></div>
         <div class="teaser">High productive, High suckering, protandrie-homogam, high oil and protein content, high kernel ratio (48.9%), low bleaching ability (72.3%), less tendency to alter bearing.</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Eigenschappen</strong>Kern: high kernel ratio · Olie: high oil · Productie: high kernel ratio · Wortelopslag: productive</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: high oil</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>C. avellana selection from Turkey</div><div class="field"><strong>Vorm van de noot</strong>Long</div><div class="field"><strong>Eigenschappen</strong>Kern: high kernel ratio · Olie: high oil · Productie: high kernel ratio · Wortelopslag: productive</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: high oil</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1228651" target="_blank" rel="noopener">→ USDA-record (PI 304633)</a></details>
       </article>
     </div>
   </div>
@@ -589,15 +658,17 @@ Average weight 1.3 grams, 40-50% kernel by weight
     <div class="variety-grid">
       <article class="variety" id="ras-tonda-di-gifoni" data-country="" data-vigor="" data-size="" data-search="tonda di gifoni">
         <h3>tonda di gifoni</h3>
+        
         <div class="badges"></div>
         <div class="teaser"></div>
         <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
       </article>
-      <article class="variety" id="ras-tonda-rossa" data-country="Italy" data-vigor="High" data-size="Large" data-search="tonda rossa  italy">
+      <article class="variety" id="ras-tonda-rossa" data-country="Italy" data-vigor="High" data-size="Large" data-search="tonda rossa italy 557118">
         <h3>Tonda Rossa</h3>
+        <div class="pi-tag">PI 557118 · GRIN 1452090</div>
         <div class="badges"><span class="badge country">Italy</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Groot</span><span class="badge">Habit: Recht</span><span class="badge s-allele">S8·S23</span></div>
         <div class="teaser"></div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Vorm van de noot</strong>Oblong</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Cultivated selection of hazelnut from Italy</div><div class="field"><strong>Vorm van de noot</strong>Oblong</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452090" target="_blank" rel="noopener">→ USDA-record (PI 557118)</a></details>
       </article>
     </div>
   </div>
@@ -605,17 +676,19 @@ Average weight 1.3 grams, 40-50% kernel by weight
   <div id="letter-W" class="letter-section" data-letter="W">
     <h2 class="letter-heading">W</h2>
     <div class="variety-grid">
-      <article class="variety" id="ras-webb-s-prize-cobb" data-country="" data-vigor="" data-size="" data-search="webb&#x27;s prize cobb">
+      <article class="variety" id="ras-webb-s-prize-cobb" data-country="" data-vigor="" data-size="" data-search="webb&#x27;s prize cobb 557160 early pollen">
         <h3>webb&#x27;s prize cobb</h3>
-        <div class="badges"></div>
+        <div class="pi-tag">PI 557160 · GRIN 1452132</div>
+        <div class="badges"><span class="badge early-pollen">Vroege stuifmeel-gever</span></div>
         <div class="teaser"></div>
-        <div class="no-data">Aanvullende gegevens nog niet beschikbaar.</div>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Selection of C. avellana</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452132" target="_blank" rel="noopener">→ USDA-record (PI 557160)</a></details>
       </article>
-      <article class="variety" id="ras-willamette" data-country="USA" data-vigor="High" data-size="Medium" data-search="willamette  usa">
+      <article class="variety" id="ras-willamette" data-country="USA" data-vigor="High" data-size="Medium" data-search="willamette usa 557234 efb susceptible">
         <h3>Willamette</h3>
-        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S3</span></div>
+        <div class="pi-tag">PI 557234 · GRIN 1452206</div>
+        <div class="badges"><span class="badge country">USA</span><span class="badge">Groei: Sterk</span><span class="badge size">Noot: Middel</span><span class="badge">Habit: Middel</span><span class="badge s-allele">S1·S3</span><span class="badge efb-susceptible">EFB-gevoelig</span></div>
         <div class="teaser">moderately resistant to eastern filbert blight, intermediate susceptibility to big bud mites, incompatibility alleles S1S3</div>
-        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: moderately resistant to eastern filbert blight · Knopmijt: moderately resistant to eastern filbert blight</div></details>
+        <details><summary>Volledige beschrijving</summary><div class="field"><strong>Soort</strong><em>Corylus avellana L.</em></div><div class="field"><strong>Pedigree (USDA)</strong>Montebello x Compton</div><div class="field"><strong>Eigenschappen</strong>Kern: susceptibility to big bud mite</div><div class="field"><strong>Ziektegevoeligheid</strong>EFB: moderately resistant to eastern filbert blight · Knopmijt: moderately resistant to eastern filbert blight</div><a class="usda-link" href="https://npgsweb.ars-grin.gov/gringlobal/accessiondetail.aspx?id=1452206" target="_blank" rel="noopener">→ USDA-record (PI 557234)</a></details>
       </article>
     </div>
   </div>
@@ -656,38 +729,24 @@ Average weight 1.3 grams, 40-50% kernel by weight
     const size = $size.value;
     let shown = 0;
     const lettersWithMatches = new Set();
-
     for (const v of allVarieties) {
-      const matchSearch = !q || v.dataset.search.includes(q);
-      const matchCountry = !country || v.dataset.country === country;
-      const matchVigor = !vigor || v.dataset.vigor === vigor;
-      const matchSize = !size || v.dataset.size === size;
-      const visible = matchSearch && matchCountry && matchVigor && matchSize;
-      v.classList.toggle('hidden', !visible);
-      if (visible) {
-        shown++;
-        lettersWithMatches.add(v.closest('.letter-section').dataset.letter);
-      }
+      const ok = (!q || v.dataset.search.includes(q))
+              && (!country || v.dataset.country === country)
+              && (!vigor || v.dataset.vigor === vigor)
+              && (!size || v.dataset.size === size);
+      v.classList.toggle('hidden', !ok);
+      if (ok) { shown++; lettersWithMatches.add(v.closest('.letter-section').dataset.letter); }
     }
-
-    for (const sec of allSections) {
-      sec.classList.toggle('empty', !lettersWithMatches.has(sec.dataset.letter));
-    }
-    for (const a of jumplinkLetters) {
-      a.classList.toggle('disabled', !lettersWithMatches.has(a.dataset.letter));
-    }
+    for (const sec of allSections) sec.classList.toggle('empty', !lettersWithMatches.has(sec.dataset.letter));
+    for (const a of jumplinkLetters) a.classList.toggle('disabled', !lettersWithMatches.has(a.dataset.letter));
     $resultsNum.textContent = shown;
     $emptyState.classList.toggle('show', shown === 0);
   }
-
   window.resetFilters = function() {
     $search.value=''; $country.value=''; $vigor.value=''; $size.value='';
     applyFilters();
   };
-
-  [$search, $country, $vigor, $size].forEach(el => {
-    el.addEventListener(el.tagName === 'INPUT' ? 'input' : 'change', applyFilters);
-  });
+  [$search, $country, $vigor, $size].forEach(el => el.addEventListener(el.tagName === 'INPUT' ? 'input' : 'change', applyFilters));
 })();
 </script>
 
